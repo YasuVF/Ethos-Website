@@ -212,6 +212,21 @@ function getIdeologyLabel(x, y, z) {
 window.onload = showSection;
 
 function plot3D(x, y, z) {
+  const ideology = getIdeologyLabel(x, y, z);
+
+  const colorMap = {
+    'Non-Adherence Socialism (anarcho-xx, utopian)': '#f44336',
+    'Libertarian': '#4caf50',
+    'Liberalism': '#03a9f4',
+    'Anarchism': '#ff9800',
+    'Adherence Socialism (e.g., Marxism, National-Socialism)': '#9c27b0',
+    'Conservatism': '#3f51b5',
+    'Technocratic': '#00bcd4',
+    'Progressivism': '#e91e63'
+  };
+
+  const pointColor = colorMap[ideology] || '#999999';
+
   const data = [{
     type: 'scatter3d',
     mode: 'markers',
@@ -220,7 +235,7 @@ function plot3D(x, y, z) {
     z: [z],
     marker: {
       size: 8,
-      color: '#2196f3'
+      color: pointColor
     }
   }];
 
