@@ -122,7 +122,6 @@ function showSection() {
   const progress = (start / questions.length) * 100;
   document.getElementById("progress-bar").style.width = `${progress}%`;
 }
-}
 
 function createAnswerOption(index, choice, label, currentResponse) {
   const selectedClass = currentResponse === choice ? 'selected' : '';
@@ -185,6 +184,34 @@ function getIdeologyLabel(x, y, z) {
 }
 
 window.onload = showSection;
+
+function submitAnswer(index, choice, button) {
+  responses[index] = choice;
+
+  const buttons = button.parentElement.querySelectorAll('.answer-option');
+  buttons.forEach(btn => btn.classList.remove('selected'));
+
+  button.classList.add('selected');
+}
+
+function nextSection() {
+  const start = sectionIndex * 10;
+  const end = start + 10;
+  const unanswered = questions.slice(start, end).some((_, i) => !responses[start + i]);
+
+  if (unanswered) {
+    alert("Please answer all questions in this section before continuing.");
+    return;
+  }
+
+  sectionIndex++;
+  if (sectionIndex * 10 < questions.length) {
+    showSection();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  } else {
+    calculateResults();
+  }
+}
 
 function plot3D(x, y, z) {
   const ideology = getIdeologyLabel(x, y, z);
@@ -318,3 +345,4 @@ function plot3D(x, y, z) {
   };
 
   Plotly.newPlot('graph', data, layout);
+}
