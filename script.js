@@ -116,10 +116,12 @@ function showSection() {
     `;
   });
 
-  html += `<div style="display: flex; justify-content: space-between; gap: 10px;">
-  ${sectionIndex > 0 ? '<button onclick=\"prevSection()\">Back</button>' : '<div></div>'}
-  <button onclick=\"nextSection()\">Next Section</button>
-</div>`;
+  html += `
+  <div style="display: flex; justify-content: space-between; gap: 10px;">
+    ${sectionIndex > 0 ? '<button onclick="prevSection()">Back</button>' : '<div></div>'}
+    <button onclick="nextSection()">Next Section</button>
+  </div>
+`;
   container.innerHTML = html;
 
   const progress = (Math.min(responses.filter(Boolean).length, questions.length) / questions.length) * 100;
@@ -415,3 +417,4 @@ function plot3D(x, y, z) {
 
   Plotly.newPlot('graph', data, layout);
 }
+
