@@ -72,6 +72,10 @@ const questions = [
   { text: "Tradition without critical thinking leads to stagnation.", axis: "adherence", direction: -1 }
 ];
 
+const questions = [
+  // [... same question data as before ...]
+];
+
 const sectionTitles = [
   "Property & Production",
   "Wealth & Redistribution",
@@ -176,7 +180,10 @@ function calculateResults() {
     <p><strong>Authority (y):</strong> ${y.toFixed(2)}</p>
     <p><strong>Adherence (z):</strong> ${z.toFixed(2)}</p>
     <p><strong>Ideological Interpretation:</strong> ${label}</p>
-    <p style="margin-top: 20px;"><strong>Context:</strong> ${examples[label] || 'No historical context available for this quadrant.'}</p>
+    <div class="result-description" style="margin-top: 20px; padding: 12px; border: 1px solid #ccc; border-radius: 8px; background-color: #f9f9f9;">
+  <strong>Context:</strong><br>
+  ${examples[label] || 'No historical context available for this quadrant.'}
+</div>
   `;
 
   resultBox.classList.add("fade-out");
