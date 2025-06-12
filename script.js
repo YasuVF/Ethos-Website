@@ -72,10 +72,6 @@ const questions = [
   { text: "Tradition without critical thinking leads to stagnation.", axis: "adherence", direction: -1 }
 ];
 
-const questions = [
-  // [full question list unchanged for brevity — keep all questions here exactly as you posted]
-];
-
 const sectionTitles = [
   "Property & Production",
   "Wealth & Redistribution",
