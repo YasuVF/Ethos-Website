@@ -167,7 +167,7 @@ function calculateResults() {
   resultBox.innerHTML = '<div style="text-align:center;padding:40px;"><div class="spinner"></div><p>Loading results...</p></div>';
   const label = getIdeologyLabel(x, y, z);
   const examples = {
-    'Adherence Socialism': 'Examples include the USSR, Maoist China, and other centrally planned regimes. Known for both economic equality and severe authoritarian repression.',
+    'Adherence Socialism (e.g., Marxism, National-Socialism)': 'Examples include the USSR, Maoist China, and other centrally planned regimes. Known for both economic equality and severe authoritarian repression.',
     'Progressivism': 'Found in many welfare democracies. Examples include post-WWII Scandinavia, FDR’s New Deal, and civil rights movements.',
     'Utopian Socialism': 'Visionary and idealistic systems like Robert Owen’s New Harmony or early 19th-century communal experiments.',
     'Corporatism': 'Advocates cooperation between classes; seen in Mussolini’s Italy and some managed economies.',
@@ -204,14 +204,14 @@ function calculateResults() {
 function getIdeologyLabel(x, y, z) {
   const quadrant = `${x < 0 ? 'Left' : 'Right'},${y > 0 ? 'Anarchist' : 'Authoritarian'},${z > 0 ? 'Secular' : 'Religious'}`;
   const map = {
-    'Left,Authoritarian,Religious': 'Adherence Socialism',
+    'Left,Authoritarian,Religious': 'Adherence Socialism (e.g., Marxism, National-Socialism)',
     'Left,Authoritarian,Secular': 'Progressivism',
     'Left,Anarchist,Religious': 'Utopian Socialism',
     'Left,Anarchist,Secular': 'Corporatism',
     'Right,Authoritarian,Religious': 'Conservatism',
-    'Right,Authoritarian,Secular': 'Liberalism',  // swapped
+    'Right,Authoritarian,Secular': 'Anarchism',  // swapped here
     'Right,Anarchist,Religious': 'Libertarianism',
-    'Right,Anarchist,Secular': 'Anarchism'         // swapped
+    'Right,Anarchist,Secular': 'Liberalism'       // swapped here
   };
   return map[quadrant] || 'Unclassified Position';
 }
@@ -260,7 +260,7 @@ function plot3D(x, y, z) {
   const ideology = getIdeologyLabel(x, y, z);
 
   const colorMap = {
-    'Adherence Socialism': '#9c27b0',
+    'Adherence Socialism (e.g., Marxism, National-Socialism)': '#9c27b0',
     'Progressivism': '#e91e63',
     'Utopian Socialism': '#f44336',
     'Corporatism': '#ff9800',
@@ -287,7 +287,7 @@ function plot3D(x, y, z) {
 
   const regionDefinitions = [
   {
-    name: 'Adherence Socialism', color: '#9c27b0',
+    name: 'Adherence Socialism (e.g., Marxism, National-Socialism)', color: '#9c27b0',
     vertices: [
       [-1, -1, -1], [0, -1, -1], [0, 0, -1], [-1, 0, -1],
       [-1, -1, 0], [0, -1, 0], [0, 0, 0], [-1, 0, 0]
@@ -304,6 +304,9 @@ function plot3D(x, y, z) {
     name: 'Anarchism', color: '#00bcd4',
     vertices: [
       [0, -1, 0], [1, -1, 0], [1, 0, 0], [0, 0, 0],
+      [0, -1, 1], [1, -1, 1], [1, 0, 1], [0, 0, 1]
+    ], [1, 0, 0], [1, 1, 0], [0, 1, 0],
+      [0, 0, 1], [1, 0, 1], [1, 1, 1], [0, 1, 1], [1, -1, 0], [1, 0, 0], [0, 0, 0],
       [0, -1, 1], [1, -1, 1], [1, 0, 1], [0, 0, 1]
     ]
   },
@@ -332,6 +335,9 @@ function plot3D(x, y, z) {
     name: 'Liberalism', color: '#03a9f4',
     vertices: [
       [0, 0, 0], [1, 0, 0], [1, 1, 0], [0, 1, 0],
+      [0, 0, 1], [1, 0, 1], [1, 1, 1], [0, 1, 1]
+    ], [1, -1, 0], [1, 0, 0], [0, 0, 0],
+      [0, -1, 1], [1, -1, 1], [1, 0, 1], [0, 0, 1], [1, 0, 0], [1, 1, 0], [0, 1, 0],
       [0, 0, 1], [1, 0, 1], [1, 1, 1], [0, 1, 1]
     ]
   },
