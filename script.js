@@ -72,7 +72,8 @@ const questions = [
   { text: "Tradition without critical thinking leads to stagnation.", axis: "adherence", direction: -1 }
 ];
 
-onst sectionTitles = [
+
+const sectionTitles = [
   "Property & Production",
   "Wealth & Redistribution",
   "Law & Order",
@@ -249,7 +250,7 @@ function nextSection() {
   sectionIndex++;
   if (sectionIndex * 10 < questions.length) {
     showSection();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    document.getElementById("quiz").scrollIntoView({ behavior: 'smooth' });
   } else {
     calculateResults();
   }
