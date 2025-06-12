@@ -163,6 +163,7 @@ function calculateResults() {
   z = z / questions.filter(q => q.axis === "adherence").length;
 
   const resultBox = document.getElementById("quiz");
+  resultBox.innerHTML = '<div style="text-align:center;padding:40px;"><div class="spinner"></div><p>Loading results...</p></div>';
   const label = getIdeologyLabel(x, y, z);
   const examples = {
     'Adherence Socialism (e.g., Marxism, National-Socialism)': 'Examples include the USSR, Maoist China, and other centrally planned regimes. Known for both economic equality and severe authoritarian repression.',
@@ -417,4 +418,3 @@ function plot3D(x, y, z) {
 
   Plotly.newPlot('graph', data, layout);
 }
-
