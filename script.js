@@ -107,10 +107,10 @@ function showSection() {
       <div ${borderStyle}>
         <p><strong>Q${index + 1}:</strong> ${q.text}</p>
         <div class="answer-set">
-          ${createAnswerOption(index, 'agree', 'Agree')}
-          ${createAnswerOption(index, 'somewhat_agree', 'Somewhat Agree')}
-          ${createAnswerOption(index, 'somewhat_disagree', 'Somewhat Disagree')}
-          ${createAnswerOption(index, 'disagree', 'Disagree')}
+          ${createAnswerOption(index, 'agree', 'Agree', responses[index])}
+          ${createAnswerOption(index, 'somewhat_agree', 'Somewhat Agree', responses[index])}
+          ${createAnswerOption(index, 'somewhat_disagree', 'Somewhat Disagree', responses[index])}
+          ${createAnswerOption(index, 'disagree', 'Disagree', responses[index])}
         </div>
       </div>
     `;
@@ -122,10 +122,16 @@ function showSection() {
   const progress = (start / questions.length) * 100;
   document.getElementById("progress-bar").style.width = `${progress}%`;
 }
+}
 
-function createAnswerOption(index, choice, label) {
+function createAnswerOption(index, choice, label, currentResponse) {
+  const selectedClass = currentResponse === choice ? 'selected' : '';
   return `
-    <div class="answer-option" onclick="submitAnswer(${index}, '${choice}', this)">
+    <div class="answer-option ${selectedClass}" onclick="submitAnswer(${index}, '${choice}', this)">
+      <span class="circle"></span>
+      <span class="answer-text">${label}</span>
+    </div>`;
+}, '${choice}', this)">
       <span class="circle"></span>
       <span class="answer-text">${label}</span>
     </div>`;
