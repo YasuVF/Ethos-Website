@@ -318,4 +318,3 @@ function plot3D(x, y, z) {
   };
 
   Plotly.newPlot('graph', data, layout);
-}
