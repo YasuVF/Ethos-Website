@@ -72,7 +72,6 @@ const questions = [
   { text: "Tradition without critical thinking leads to stagnation.", axis: "adherence", direction: -1 }
 ];
 
-
 const sectionTitles = [
   "Property & Production",
   "Wealth & Redistribution",
@@ -209,9 +208,9 @@ function getIdeologyLabel(x, y, z) {
     'Left,Anarchist,Religious': 'Utopian Socialism',
     'Left,Anarchist,Secular': 'Corporatism',
     'Right,Authoritarian,Religious': 'Conservatism',
-    'Right,Authoritarian,Secular': 'Anarchism',  // swapped here
+    'Right,Authoritarian,Secular': 'Liberalism',  // swapped here
     'Right,Anarchist,Religious': 'Libertarianism',
-    'Right,Anarchist,Secular': 'Liberalism'       // swapped here
+    'Right,Anarchist,Secular': 'Anarchist'       // swapped here
   };
   return map[quadrant] || 'Unclassified Position';
 }
@@ -301,14 +300,9 @@ function plot3D(x, y, z) {
     ]
   },
   {
-    name: 'Anarchism', color: '#00bcd4',
+    name: 'Liberalism', color: '#00bcd4',
     vertices: [
-      [0, -1, 1], [1, -1, 1], [1, 0, 1], [0, 0, 1],
-      [0, -1, 0], [1, -1, 0], [1, 0, 0], [0, 0, 0]
-    ], [1, -1, 0], [1, 0, 0], [0, 0, 0],
-      [0, -1, 1], [1, -1, 1], [1, 0, 1], [0, 0, 1]
-    ], [1, 0, 0], [1, 1, 0], [0, 1, 0],
-      [0, 0, 1], [1, 0, 1], [1, 1, 1], [0, 1, 1], [1, -1, 0], [1, 0, 0], [0, 0, 0],
+      [0, -1, 0], [1, -1, 0], [1, 0, 0], [0, 0, 0],
       [0, -1, 1], [1, -1, 1], [1, 0, 1], [0, 0, 1]
     ]
   },
@@ -334,16 +328,9 @@ function plot3D(x, y, z) {
     ]
   },
   {
-    name: 'Liberalism', color: '#03a9f4',
+    name: 'Anarchism', color: '#03a9f4',
     vertices: [
-      [0, -1, 1], [1, -1, 1], [1, 0, 1], [0, 0, 1],
-      [0, -1, 0], [1, -1, 0], [1, 0, 0], [0, 0, 0]
-    ], [1, 0, 1], [1, 1, 1], [0, 1, 1],
-      [0, 0, 0], [1, 0, 0], [1, 1, 0], [0, 1, 0]
-    ], [1, 0, 0], [1, 1, 0], [0, 1, 0],
-      [0, 0, 1], [1, 0, 1], [1, 1, 1], [0, 1, 1]
-    ], [1, -1, 0], [1, 0, 0], [0, 0, 0],
-      [0, -1, 1], [1, -1, 1], [1, 0, 1], [0, 0, 1], [1, 0, 0], [1, 1, 0], [0, 1, 0],
+      [0, 0, 0], [1, 0, 0], [1, 1, 0], [0, 1, 0],
       [0, 0, 1], [1, 0, 1], [1, 1, 1], [0, 1, 1]
     ]
   },
