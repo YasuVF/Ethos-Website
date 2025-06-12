@@ -3,6 +3,31 @@
 <head>
   <title>3D Political Compass</title>
   <style>
+  body.dark-mode {
+    background-color: #121212;
+    color: #e0e0e0;
+  }
+  body.dark-mode #quiz {
+    background-color: #1e1e1e;
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.05);
+  }
+  body.dark-mode .question-box,
+  body.dark-mode .answer-option {
+    background-color: #222;
+    border-color: #444;
+  }
+  body.dark-mode .answer-text {
+    color: #ddd;
+  }
+  body.dark-mode .answer-option.selected {
+    background-color: rgba(33, 150, 243, 0.3);
+    border-color: #2196f3;
+  }
+  body.dark-mode aside button {
+    background-color: white !important;
+    color: black !important;
+  }
+
   body {
     font-family: 'Segoe UI', Tahoma, sans-serif;
     background-color: #f6f6f6;
@@ -128,28 +153,7 @@
   }
   </style>
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-<style>
-    aside button {
-    background-color: white !important;
-    color: black !important;
-  }
-  body.dark-mode #quiz {
-    background-color: #1e1e1e;
-    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.05);
-  }
-  body.dark-mode .question-box,
-  body.dark-mode .answer-option {
-    background-color: #222;
-    border-color: #444;
-  }
-  body.dark-mode .answer-text {
-    color: #ddd;
-  }
-  body.dark-mode .answer-option.selected {
-    background-color: rgba(33, 150, 243, 0.3);
-    border-color: #2196f3;
-  }
-</style>
+
 <script>
   function toggleDarkMode() {
     document.body.classList.toggle('dark-mode');
