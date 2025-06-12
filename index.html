@@ -24,7 +24,6 @@
     border-color: #2196f3;
   }
   
-
   body {
     font-family: 'Segoe UI', Tahoma, sans-serif;
     background-color: #f6f6f6;
@@ -149,15 +148,7 @@
     transform: translateY(0);
   }
   </style>
-<script src="https://cdn.plot.ly/plotly-latest.min.js">function toggleDonations() {
-  const aside = document.querySelector('aside');
-  const main = document.querySelector('main').parentElement;
-  const hidden = aside.style.display === 'none';
-  aside.style.display = hidden ? 'block' : 'none';
-  main.style.marginLeft = hidden ? '260px' : '60px';
-  document.getElementById('donationToggleBtn').innerText = hidden ? 'Hide Donations' : 'Show Donations';
-}
-</script>
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 
 <script>
 function toggleDarkMode() {
@@ -170,6 +161,16 @@ function toggleDarkMode() {
   } else {
     knob.style.transform = 'translateX(0)';
   }
+}
+</script>
+<script>
+function toggleDonations() {
+  const aside = document.querySelector('aside');
+  const main = document.querySelector('main').parentElement;
+  const hidden = aside.style.display === 'none';
+  aside.style.display = hidden ? 'block' : 'none';
+  main.style.marginLeft = hidden ? '260px' : '60px';
+  document.getElementById('donationToggleBtn').innerText = hidden ? 'Hide Donations' : 'Show Donations';
 }
 </script>
 </head>
