@@ -128,20 +128,48 @@
   }
   </style>
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<style>
+  body.dark-mode {
+    background-color: #121212;
+    color: #e0e0e0;
+  }
+  body.dark-mode #quiz {
+    background-color: #1e1e1e;
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.05);
+  }
+  body.dark-mode .question-box,
+  body.dark-mode .answer-option {
+    background-color: #222;
+    border-color: #444;
+  }
+  body.dark-mode .answer-text {
+    color: #ddd;
+  }
+  body.dark-mode .answer-option.selected {
+    background-color: rgba(33, 150, 243, 0.3);
+    border-color: #2196f3;
+  }
+</style>
+<script>
+  function toggleDarkMode() {
+    document.body.classList.toggle('dark-mode');
+  }
+</script>
 </head>
 <body>
 <div style="position: relative; display: flex; justify-content: center;">
   <aside style="position: fixed; left: 0; top: 0; width: 260px; background-color: #ffffff; border-radius: 12px; padding: 16px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
   <h3>Support This Project</h3>
   <p style="font-size: 14px;">If you found this tool valuable, consider donating crypto to help with hosting and development:</p>
-  <p><strong>Bitcoin:</strong><br><a href="https://nowpayments.io/donation?api_key=YOUR_API_KEY&currency=btc" target="_blank"><button style="display: flex; align-items: center; gap: 8px; padding: 10px 14px; background-color: #f7931a; color: white; font-weight: bold; border: none; border-radius: 6px; cursor: pointer;"><img src="https://cryptologos.cc/logos/bitcoin-btc-logo.png" alt="BTC" style="height: 20px;"> BTC</button></a></p>
-  <p><strong>Ethereum:</strong><br><a href="https://nowpayments.io/donation?api_key=YOUR_API_KEY&currency=eth" target="_blank"><button style="display: flex; align-items: center; gap: 8px; padding: 10px 14px; background-color: #3c3c3d; color: white; font-weight: bold; border: none; border-radius: 6px; cursor: pointer;"><img src="https://cryptologos.cc/logos/ethereum-eth-logo.png" alt="ETH" style="height: 20px;"> ETH</button></a></p>
-  <p><strong>Ravencoin (RVN):</strong><br><a href="https://nowpayments.io/donation?api_key=YOUR_API_KEY&currency=rvn" target="_blank"><button style="display: flex; align-items: center; gap: 8px; padding: 10px 14px; background-color: #3445ad; color: white; font-weight: bold; border: none; border-radius: 6px; cursor: pointer;"><img src="https://cryptologos.cc/logos/ravencoin-rvn-logo.png" alt="RVN" style="height: 20px;"> RVN</button></a></p>
-  <p><strong>Ethereum Classic (ETC):</strong><br><a href="https://nowpayments.io/donation?api_key=YOUR_API_KEY&currency=etc" target="_blank"><button style="display: flex; align-items: center; gap: 8px; padding: 10px 14px; background-color: #008000; color: white; font-weight: bold; border: none; border-radius: 6px; cursor: pointer;"><img src="https://cryptologos.cc/logos/ethereum-classic-etc-logo.png" alt="ETC" style="height: 20px;"> ETC</button></a></p>
-  <p><strong>Monero (XMR):</strong><br><a href="https://nowpayments.io/donation?api_key=YOUR_API_KEY&currency=xmr" target="_blank"><button style="display: flex; align-items: center; gap: 8px; padding: 10px 14px; background-color: #ff6600; color: white; font-weight: bold; border: none; border-radius: 6px; cursor: pointer;"><img src="https://cryptologos.cc/logos/monero-xmr-logo.png" alt="XMR" style="height: 20px;"> XMR</button></a></p>
+  <p><a href="https://nowpayments.io/donation?api_key=YOUR_API_KEY&currency=btc" target="_blank"><button style="display: flex; align-items: center; gap: 8px; padding: 10px 14px; background-color: #f7931a; color: white; font-weight: bold; border: none; border-radius: 6px; cursor: pointer;"><img src="https://cryptologos.cc/logos/bitcoin-btc-logo.png" alt="BTC" style="height: 20px;"> Bitcoin</button></a></p>
+  <p><a href="https://nowpayments.io/donation?api_key=YOUR_API_KEY&currency=eth" target="_blank"><button style="display: flex; align-items: center; gap: 8px; padding: 10px 14px; background-color: #3c3c3d; color: white; font-weight: bold; border: none; border-radius: 6px; cursor: pointer;"><img src="https://cryptologos.cc/logos/ethereum-eth-logo.png" alt="ETH" style="height: 20px;"> Ethereum</button></a></p>
+  <p><a href="https://nowpayments.io/donation?api_key=YOUR_API_KEY&currency=rvn" target="_blank"><button style="display: flex; align-items: center; gap: 8px; padding: 10px 14px; background-color: #3445ad; color: white; font-weight: bold; border: none; border-radius: 6px; cursor: pointer;"><img src="https://cryptologos.cc/logos/ravencoin-rvn-logo.png" alt="RVN" style="height: 20px;"> Ravencoin (RVN)</button></a></p>
+  <p><a href="https://nowpayments.io/donation?api_key=YOUR_API_KEY&currency=etc" target="_blank"><button style="display: flex; align-items: center; gap: 8px; padding: 10px 14px; background-color: #008000; color: white; font-weight: bold; border: none; border-radius: 6px; cursor: pointer;"><img src="https://cryptologos.cc/logos/ethereum-classic-etc-logo.png" alt="ETC" style="height: 20px;"> Ethereum Classic (ETC)</button></a></p>
+  <p><a href="https://nowpayments.io/donation?api_key=YOUR_API_KEY&currency=xmr" target="_blank"><button style="display: flex; align-items: center; gap: 8px; padding: 10px 14px; background-color: #ff6600; color: white; font-weight: bold; border: none; border-radius: 6px; cursor: pointer;"><img src="https://cryptologos.cc/logos/monero-xmr-logo.png" alt="XMR" style="height: 20px;"> Monero (XMR)</button></a></p>
 </aside>
   <div style="margin-left: 160px; margin-right: 80px; max-width: 1100px;">
   <main style="flex: 1;">
+<button onclick="toggleDarkMode()" style="margin-bottom: 20px; padding: 8px 12px; border-radius: 6px; background-color: #333; color: white; border: none; cursor: pointer;">Toggle Dark Mode</button>
     <h1>3D Political Compass Test</h1>
   <p>This test was created to map political ideology using a three-dimensional model and accurate ideology interpretations, offering a deeper and more nuanced view than traditional left-right or authoritarian-libertarian charts. Due to the nature of 3D modeling, references to 'up' and 'down' become difficult, so take them as general guides and examine the results carefully. Your answers will place you along three axes:</p>
 <ul>
