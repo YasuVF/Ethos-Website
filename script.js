@@ -72,6 +72,7 @@ const questions = [
   { text: "Tradition without critical thinking leads to stagnation.", axis: "adherence", direction: -1 }
 ];
 
+
 const sectionTitles = [
   "Property & Production",
   "Wealth & Redistribution",
@@ -251,7 +252,12 @@ function plot3D(x, y, z) {
     {x: [-1, 0, 0, -1], y: [0, 0, 1, 1], z: [0, 0, 1, 1], color: '#e91e63'}          // Progressivism
   ];
 
-  const regionMeshes = regions.map(region => ({
+  const regionLabels = [
+    'Non-Adherence Socialism', 'Libertarian', 'Liberalism', 'Anarchism',
+    'Adherence Socialism', 'Conservatism', 'Technocratic', 'Progressivism'
+  ];
+
+  const regionMeshes = regions.map((region, index) => ({
     type: 'mesh3d',
     x: region.x,
     y: region.y,
@@ -260,7 +266,9 @@ function plot3D(x, y, z) {
     opacity: 0.15,
     color: region.color,
     showscale: false,
-    hoverinfo: 'skip'
+    hoverinfo: 'skip',
+    name: regionLabels[index],
+    showlegend: true
   }));
 
   const data = [...regionMeshes, ideologyPoint];
