@@ -312,8 +312,8 @@ function plot3D(x, y, z) {
 
   const regionMeshes = regionDefinitions.map(region => {
     const x = region.vertices.map(v => v[0]);
-    const y = region.vertices.map(v => v[1]);
-    const z = region.vertices.map(v => v[2]);
+    const y = region.vertices.map(v => -v[1]);
+    const z = region.vertices.map(v => -v[2]);
 
     const i = [], j = [], k = [];
     faces.forEach(tri => {
