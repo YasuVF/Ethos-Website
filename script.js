@@ -126,7 +126,23 @@ function calculateResults() {
     <p><strong>Economic (x):</strong> ${x.toFixed(2)}</p>
     <p><strong>Authority (y):</strong> ${y.toFixed(2)}</p>
     <p><strong>Adherence (z):</strong> ${z.toFixed(2)}</p>
+    <p><strong>Ideological Interpretation:</strong> ${getIdeologyLabel(x, y, z)}</p>
   `;
+}
+
+  function getIdeologyLabel(x, y, z) {
+    const quadrant = `${x < 0 ? 'Left' : 'Right'},${y < 0 ? 'Anarchist' : 'Authoritarian'},${z < 0 ? 'Secular' : 'Religious'}`;
+    const map = {
+      'Left,Authoritarian,Religious': 'Adherence Socialism (e.g., Marxism, National-Socialism)',
+      'Left,Authoritarian,Secular': 'Progressivism',
+      'Left,Anarchist,Religious': 'Utopian/NatSoc Anarchism',
+      'Left,Anarchist,Secular': 'Anarchism',
+      'Right,Authoritarian,Religious': 'Conservatism',
+      'Right,Authoritarian,Secular': 'Technocratic',
+      'Right,Anarchist,Religious': 'Libertarian Conservatism',
+      'Right,Anarchist,Secular': 'Liberalism'
+    };
+    return map[quadrant] || 'Unclassified Position';
 }
 
 window.onload = showQuestion;
