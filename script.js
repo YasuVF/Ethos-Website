@@ -119,8 +119,21 @@ function showSection() {
   html += `<button onclick="nextSection()">Next Section</button>`;
   container.innerHTML = html;
 
-  const progress = (start / questions.length) * 100;
+  const progress = (Math.min(responses.filter(Boolean).length, questions.length) / questions.length) * 100;
   document.getElementById("progress-bar").style.width = `${progress}%`;
+
+  // Show percentage text inside progress bar
+  if (!document.getElementById("progress-text")) {
+    const text = document.createElement("div");
+    text.id = "progress-text";
+    text.style.position = "absolute";
+    text.style.width = "100%";
+    text.style.textAlign = "center";
+    text.style.fontSize = "12px";
+    text.style.top = "-20px";
+    document.getElementById("progress-container").appendChild(text);
+  }
+  document.getElementById("progress-text").textContent = `${Math.round(progress)}%`;
 }
 
 function createAnswerOption(index, choice, label, currentResponse) {
@@ -333,7 +346,37 @@ function plot3D(x, y, z) {
     };
   });
 
-  const data = [...regionMeshes, ideologyPoint];
+  const gridLines = {
+    type: 'scatter3d',
+    mode: 'lines',
+    x: [], y: [], z: [],
+    line: {
+      color: 'rgba(0,0,0,0.2)',
+      width: 2,
+      dash: 'dash'
+    },
+    showlegend: false,
+    hoverinfo: 'skip'
+  };
+
+  const bounds = [-1, 0, 1];
+  for (let xi = 0; xi < bounds.length; xi++) {
+    for (let yi = 0; yi < bounds.length; yi++) {
+      gridLines.x.push(bounds[xi], bounds[xi], null);
+      gridLines.y.push(bounds[yi], bounds[yi], null);
+      gridLines.z.push(-1, 1, null);
+
+      gridLines.x.push(bounds[xi], bounds[xi], null);
+      gridLines.y.push(-1, 1, null);
+      gridLines.z.push(bounds[yi], bounds[yi], null);
+
+      gridLines.x.push(-1, 1, null);
+      gridLines.y.push(bounds[xi], bounds[xi], null);
+      gridLines.z.push(bounds[yi], bounds[yi], null);
+    }
+  }
+
+  const data = [...regionMeshes, ideologyPoint, gridLines];
 
   const layout = {
     margin: { l: 0, r: 0, b: 0, t: 0 },
