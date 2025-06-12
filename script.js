@@ -72,6 +72,7 @@ const questions = [
   { text: "Tradition without critical thinking leads to stagnation.", axis: "adherence", direction: -1 }
 ];
 
+
 const sectionTitles = [
   "Property & Production",
   "Wealth & Redistribution",
@@ -101,6 +102,29 @@ function showSection() {
   let html = `<h2>${sectionTitle}</h2>`;
 
   sectionQuestions.forEach((q, i) => {
+    const index = start + i;
+    const unansweredClass = responses[index] ? '' : 'style="border: 2px solid red; padding: 8px; border-radius: 6px;"';
+    html += `
+      <div ${unansweredClass}>
+        <p><strong>Q${index + 1}:</strong> ${q.text}</p>
+        <div style="margin-bottom: 10px;">
+          <button onclick="submitAnswer(${index}, 'agree')">Agree</button>
+          <button onclick="submitAnswer(${index}, 'somewhat_agree')">Somewhat Agree</button>
+          <button onclick="submitAnswer(${index}, 'somewhat_disagree')">Somewhat Disagree</button>
+          <button onclick="submitAnswer(${index}, 'disagree')">Disagree</button>
+        </div>
+      </div>
+    `;
+  });
+
+  html += `<button onclick="nextSection()">Next Section</button>`;
+  container.innerHTML = html;
+
+  const progress = (start / questions.length) * 100;
+  document.getElementById("progress-bar").style.width = `${progress}%`;
+}</h2>`;
+
+  sectionQuestions.forEach((q, i) => {
     html += `
       <p><strong>Q${start + i + 1}:</strong> ${q.text}</p>
       <div style="margin-bottom: 10px;">
@@ -124,10 +148,31 @@ function submitAnswer(index, choice) {
 }
 
 function nextSection() {
+  const start = sectionIndex * 10;
+  const end = start + 10;
+  const unanswered = questions.slice(start, end).some((_, i) => !responses[start + i]);
+
+  if (unanswered) {
+    alert("Please answer all questions in this section before continuing.");
+    showSection(); // refresh with visual warnings
+    return;
+  }
+
   sectionIndex++;
   if (sectionIndex * 10 < questions.length) {
     showSection();
   } else {
+    calculateResults();
+  }
+}
+
+  sectionIndex++;
+  if (sectionIndex * 10 < questions.length) {
+    showSection();
+  } else {
+    calculateResults();
+  }
+} else {
     calculateResults();
   }
 }
