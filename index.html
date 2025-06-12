@@ -156,7 +156,9 @@ function toggleDarkMode() {
   const toggle = document.querySelector('input[type="checkbox"]');
   const knob = document.getElementById('toggleKnob');
   const slider = document.getElementById('toggleSlider');
+
   body.classList.toggle('dark-mode');
+
   if (body.classList.contains('dark-mode')) {
     knob.style.transform = 'translateX(22px)';
     slider.style.backgroundColor = '#999';
@@ -164,6 +166,7 @@ function toggleDarkMode() {
     knob.style.transform = 'translateX(0)';
     slider.style.backgroundColor = '#333';
   }
+}
 } else {
     knob.style.transform = 'translateX(0)';
   }
