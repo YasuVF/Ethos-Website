@@ -72,6 +72,7 @@ const questions = [
   { text: "Tradition without critical thinking leads to stagnation.", axis: "adherence", direction: -1 }
 ];
 
+
 const sectionTitles = [
   "Property & Production",
   "Wealth & Redistribution",
@@ -244,57 +245,49 @@ function plot3D(x, y, z) {
   const regionDefinitions = [
     {
       name: 'Utopian/NatSoc Anarchism', color: '#f44336',
-      vertices: [
-        [-1, -1, -1], [0, -1, -1], [0, 0, -1], [-1, 0, -1],
+      vertices: [$1].map(([x, y, z]) => [x, -y, -z]), [0, -1, -1], [0, 0, -1], [-1, 0, -1],
         [-1, -1, 0], [0, -1, 0], [0, 0, 0], [-1, 0, 0]
       ]
     },
     {
       name: 'Libertarian Conservatism', color: '#4caf50',
-      vertices: [
-        [0, -1, -1], [1, -1, -1], [1, 0, -1], [0, 0, -1],
+      vertices: [$1].map(([x, y, z]) => [x, -y, -z]), [1, -1, -1], [1, 0, -1], [0, 0, -1],
         [0, -1, 0], [1, -1, 0], [1, 0, 0], [0, 0, 0]
       ]
     },
     {
       name: 'Liberalism', color: '#03a9f4',
-      vertices: [
-        [0, -1, 0], [1, -1, 0], [1, 0, 0], [0, 0, 0],
+      vertices: [$1].map(([x, y, z]) => [x, -y, -z]), [1, -1, 0], [1, 0, 0], [0, 0, 0],
         [0, -1, 1], [1, -1, 1], [1, 0, 1], [0, 0, 1]
       ]
     },
     {
       name: 'Anarchism', color: '#ff9800',
-      vertices: [
-        [-1, -1, 0], [0, -1, 0], [0, 0, 0], [-1, 0, 0],
+      vertices: [$1].map(([x, y, z]) => [x, -y, -z]), [0, -1, 0], [0, 0, 0], [-1, 0, 0],
         [-1, -1, 1], [0, -1, 1], [0, 0, 1], [-1, 0, 1]
       ]
     },
     {
       name: 'Adherence Socialism (e.g., Marxism, National-Socialism)', color: '#9c27b0',
-      vertices: [
-        [-1, 0, -1], [0, 0, -1], [0, 1, -1], [-1, 1, -1],
+      vertices: [$1].map(([x, y, z]) => [x, -y, -z]), [0, 0, -1], [0, 1, -1], [-1, 1, -1],
         [-1, 0, 0], [0, 0, 0], [0, 1, 0], [-1, 1, 0]
       ]
     },
     {
       name: 'Conservatism', color: '#3f51b5',
-      vertices: [
-        [0, 0, -1], [1, 0, -1], [1, 1, -1], [0, 1, -1],
+      vertices: [$1].map(([x, y, z]) => [x, -y, -z]), [1, 0, -1], [1, 1, -1], [0, 1, -1],
         [0, 0, 0], [1, 0, 0], [1, 1, 0], [0, 1, 0]
       ]
     },
     {
       name: 'Technocratic', color: '#00bcd4',
-      vertices: [
-        [0, 0, 0], [1, 0, 0], [1, 1, 0], [0, 1, 0],
+      vertices: [$1].map(([x, y, z]) => [x, -y, -z]), [1, 0, 0], [1, 1, 0], [0, 1, 0],
         [0, 0, 1], [1, 0, 1], [1, 1, 1], [0, 1, 1]
       ]
     },
     {
       name: 'Progressivism', color: '#e91e63',
-      vertices: [
-        [-1, 0, 0], [0, 0, 0], [0, 1, 0], [-1, 1, 0],
+      vertices: [$1].map(([x, y, z]) => [x, -y, -z]), [0, 0, 0], [0, 1, 0], [-1, 1, 0],
         [-1, 0, 1], [0, 0, 1], [0, 1, 1], [-1, 1, 1]
       ]
     }
