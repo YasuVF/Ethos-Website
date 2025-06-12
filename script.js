@@ -6,9 +6,9 @@ const questions = [
   { text: "Nationalizing major corporations is sometimes necessary to protect public interests.", axis: "economic", direction: -1 },
   { text: "The free market, left alone, produces better outcomes than any government plan.", axis: "economic", direction: 1 },
   { text: "Excessive corporate profit is often a sign of exploitation.", axis: "economic", direction: 1 },
-  { text: "It’s wrong for a private control most of the land and natural resources.", axis: "economic", direction: -1 },
-  { text: "Competition between private companies drives economic progress compared to corporate globalization.", axis: "economic", direction: 1 },
-  { text: "Collective ownership, such as stock of a corporation, is a fairer way to manage economic output.", axis: "economic", direction: -1 },
+  { text: "It’s wrong for a private ownership of most the land and natural resources.", axis: "economic", direction: -1 },
+  { text: "Competition between private companies drives more economic progress compared to corporate globalization.", axis: "economic", direction: 1 },
+  { text: "Collective ownership, such as stock's of a corporation, is a fairer way to manage economic output.", axis: "economic", direction: -1 },
   { text: "People should be free to own as much property or capital as they can acquire.", axis: "economic", direction: 1 },
 
   // Section 2: Wealth & Redistribution
