@@ -72,6 +72,15 @@ const questions = [
   { text: "Tradition without critical thinking leads to stagnation.", axis: "adherence", direction: -1 }
 ];
 
+const sectionTitles = [
+  "Property & Production",
+  "Wealth & Redistribution",
+  "Law & Order",
+  "Power & Rebellion",
+  "Faith & Morality",
+  "Tradition & Progress"
+];
+
 const answerScores = {
   "agree": 1,
   "somewhat_agree": 0.5,
@@ -79,32 +88,45 @@ const answerScores = {
   "disagree": -1
 };
 
-let current = 0;
+let sectionIndex = 0;
 let responses = [];
 
-function showQuestion() {
-  const q = questions[current];
-
-  // Update progress bar
-  const progress = ((current) / questions.length) * 100;
-  document.getElementById("progress-bar").style.width = `${progress}%`;
-
+function showSection() {
   const container = document.getElementById("quiz");
-  container.innerHTML = `
-    <h2>Question ${current + 1} of ${questions.length}</h2>
-    <p>${q.text}</p>
-    <button onclick="submitAnswer('agree')">Agree</button>
-    <button onclick="submitAnswer('somewhat_agree')">Somewhat Agree</button>
-    <button onclick="submitAnswer('somewhat_disagree')">Somewhat Disagree</button>
-    <button onclick="submitAnswer('disagree')">Disagree</button>
-  `;
+  const start = sectionIndex * 10;
+  const end = start + 10;
+  const sectionQuestions = questions.slice(start, end);
+
+  const sectionTitle = sectionTitles[sectionIndex];
+  let html = `<h2>${sectionTitle}</h2>`;
+
+  sectionQuestions.forEach((q, i) => {
+    html += `
+      <p><strong>Q${start + i + 1}:</strong> ${q.text}</p>
+      <div style="margin-bottom: 10px;">
+        <button onclick="submitAnswer(${start + i}, 'agree')">Agree</button>
+        <button onclick="submitAnswer(${start + i}, 'somewhat_agree')">Somewhat Agree</button>
+        <button onclick="submitAnswer(${start + i}, 'somewhat_disagree')">Somewhat Disagree</button>
+        <button onclick="submitAnswer(${start + i}, 'disagree')">Disagree</button>
+      </div>
+    `;
+  });
+
+  html += `<button onclick="nextSection()">Next Section</button>`;
+  container.innerHTML = html;
+
+  const progress = (start / questions.length) * 100;
+  document.getElementById("progress-bar").style.width = `${progress}%`;
 }
 
-function submitAnswer(choice) {
-  responses.push(choice);
-  current++;
-  if (current < questions.length) {
-    showQuestion();
+function submitAnswer(index, choice) {
+  responses[index] = choice;
+}
+
+function nextSection() {
+  sectionIndex++;
+  if (sectionIndex * 10 < questions.length) {
+    showSection();
   } else {
     calculateResults();
   }
@@ -133,6 +155,7 @@ function calculateResults() {
     <p><strong>Adherence (z):</strong> ${z.toFixed(2)}</p>
     <p><strong>Ideological Interpretation:</strong> ${getIdeologyLabel(x, y, z)}</p>
   `;
+  document.getElementById("progress-bar").style.width = `100%`;
 }
 
 function getIdeologyLabel(x, y, z) {
@@ -150,4 +173,4 @@ function getIdeologyLabel(x, y, z) {
   return map[quadrant] || 'Unclassified Position';
 }
 
-window.onload = showQuestion;
+window.onload = showSection;
