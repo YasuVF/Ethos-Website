@@ -72,6 +72,10 @@ const questions = [
   { text: "Tradition without critical thinking leads to stagnation.", axis: "adherence", direction: -1 }
 ];
 
+const questions = [
+  // [full question list unchanged for brevity — keep all questions here exactly as you posted]
+];
+
 const sectionTitles = [
   "Property & Production",
   "Wealth & Redistribution",
@@ -169,14 +173,21 @@ function calculateResults() {
   z = z / questions.filter(q => q.axis === "adherence").length;
 
   const resultBox = document.getElementById("quiz");
-  resultBox.innerHTML = `
+  const html = `
     <h2>Your Results:</h2>
     <p><strong>Economic (x):</strong> ${x.toFixed(2)}</p>
     <p><strong>Authority (y):</strong> ${y.toFixed(2)}</p>
     <p><strong>Adherence (z):</strong> ${z.toFixed(2)}</p>
     <p><strong>Ideological Interpretation:</strong> ${getIdeologyLabel(x, y, z)}</p>
   `;
-  document.getElementById("progress-bar").style.width = `100%`;
+
+  resultBox.classList.add("fade-out");
+  setTimeout(() => {
+    resultBox.innerHTML = html;
+    resultBox.classList.remove("fade-out");
+    resultBox.classList.add("fade-in");
+    setTimeout(() => resultBox.classList.remove("fade-in"), 300);
+  }, 300);
 }
 
 function getIdeologyLabel(x, y, z) {
@@ -195,3 +206,4 @@ function getIdeologyLabel(x, y, z) {
 }
 
 window.onload = showSection;
+
