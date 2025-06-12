@@ -166,7 +166,7 @@ function calculateResults() {
   resultBox.innerHTML = '<div style="text-align:center;padding:40px;"><div class="spinner"></div><p>Loading results...</p></div>';
   const label = getIdeologyLabel(x, y, z);
   const examples = {
-    'Adherence Socialism (e.g., Marxism, National-Socialism)': 'Examples include the USSR, Maoist China, and other centrally planned regimes. Known for both economic equality and severe authoritarian repression.',
+    'Adherence Socialism': 'Examples include the USSR, Maoist China, and other centrally planned regimes. Known for both economic equality and severe authoritarian repression.',
     'Progressivism': 'Found in many welfare democracies. Examples include post-WWII Scandinavia, FDR’s New Deal, and civil rights movements.',
     'Utopian Socialism': 'Visionary and idealistic systems like Robert Owen’s New Harmony or early 19th-century communal experiments.',
     'Corporatism': 'Advocates cooperation between classes; seen in Mussolini’s Italy and some managed economies.',
