@@ -102,9 +102,10 @@ function showSection() {
 
   sectionQuestions.forEach((q, i) => {
     const index = start + i;
-    const unansweredClass = responses[index] ? '' : 'style="border: 2px solid red; padding: 8px; border-radius: 6px;"';
+    const answered = responses[index];
+    const borderStyle = answered ? 'style="border: 1px solid #ccc; padding: 12px; border-radius: 8px; margin-bottom: 15px;"' : 'style="border: 2px solid red; padding: 12px; border-radius: 8px; margin-bottom: 15px;"';
     html += `
-      <div ${unansweredClass}>
+      <div ${borderStyle}>
         <p><strong>Q${index + 1}:</strong> ${q.text}</p>
         <div class="answer-set">
           ${createAnswerOption(index, 'agree', 'Agree')}
