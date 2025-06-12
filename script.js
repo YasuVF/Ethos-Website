@@ -126,6 +126,11 @@ function showSection() {
   if (progressText) {
     progressText.textContent = `${Math.round(progress)}%`;
   }
+
+  const progressText = document.getElementById("progress-text");
+  if (progressText) {
+    progressText.textContent = `${Math.round(progress)}%`;
+  }
 }
 
 function createAnswerOption(index, choice, label, currentResponse) {
