@@ -117,8 +117,8 @@ function showSection() {
   });
 
   html += `<div style="display: flex; justify-content: space-between; gap: 10px;">
-  <button onclick="prevSection()">Back</button>
-  <button onclick="nextSection()">Next Section</button>
+  ${sectionIndex > 0 ? '<button onclick=\"prevSection()\">Back</button>' : '<div></div>'}
+  <button onclick=\"nextSection()\">Next Section</button>
 </div>`;
   container.innerHTML = html;
 
