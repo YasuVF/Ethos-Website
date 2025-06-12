@@ -279,7 +279,7 @@ function plot3D(x, y, z) {
       ]
     },
     {
-      name: 'Corporatism ', color: '#00bcd4',
+      name: 'Corporatism', color: '#00bcd4',
       vertices: [$1].map(([x, y, z]) => [x, -y, -z]), [1, 0, 0], [1, 1, 0], [0, 1, 0],
         [0, 0, 1], [1, 0, 1], [1, 1, 1], [0, 1, 1]
       ]
