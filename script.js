@@ -106,11 +106,11 @@ function showSection() {
     html += `
       <div ${unansweredClass}>
         <p><strong>Q${index + 1}:</strong> ${q.text}</p>
-        <div style="margin-bottom: 10px;">
-          <button class="answer-button" data-question="${index}" data-choice="agree" onclick="submitAnswer(${index}, 'agree', this)">Agree</button>
-          <button class="answer-button" data-question="${index}" data-choice="somewhat_agree" onclick="submitAnswer(${index}, 'somewhat_agree', this)">Somewhat Agree</button>
-          <button class="answer-button" data-question="${index}" data-choice="somewhat_disagree" onclick="submitAnswer(${index}, 'somewhat_disagree', this)">Somewhat Disagree</button>
-          <button class="answer-button" data-question="${index}" data-choice="disagree" onclick="submitAnswer(${index}, 'disagree', this)">Disagree</button>
+        <div class="answer-set">
+          ${createAnswerOption(index, 'agree', 'Agree')}
+          ${createAnswerOption(index, 'somewhat_agree', 'Somewhat Agree')}
+          ${createAnswerOption(index, 'somewhat_disagree', 'Somewhat Disagree')}
+          ${createAnswerOption(index, 'disagree', 'Disagree')}
         </div>
       </div>
     `;
@@ -123,15 +123,20 @@ function showSection() {
   document.getElementById("progress-bar").style.width = `${progress}%`;
 }
 
-function submitAnswer(index, choice, button) {
+function createAnswerOption(index, choice, label) {
+  return `
+    <div class="answer-option" onclick="submitAnswer(${index}, '${choice}', this)">
+      <span class="circle"></span>
+      <span class="answer-text">${label}</span>
+    </div>`;
+}
+
+function submitAnswer(index, choice, optionDiv) {
   responses[index] = choice;
 
-  // Remove selected class from all buttons in the same group
-  const buttons = button.parentElement.querySelectorAll('.answer-button');
-  buttons.forEach(btn => btn.classList.remove('selected'));
-
-  // Add selected class to the clicked button
-  button.classList.add('selected');
+  const siblings = optionDiv.parentElement.querySelectorAll('.answer-option');
+  siblings.forEach(el => el.classList.remove('selected'));
+  optionDiv.classList.add('selected');
 }
 
 function nextSection() {
@@ -141,7 +146,7 @@ function nextSection() {
 
   if (unanswered) {
     alert("Please answer all questions in this section before continuing.");
-    showSection(); // refresh with visual warnings
+    showSection();
     return;
   }
 
@@ -202,4 +207,3 @@ function getIdeologyLabel(x, y, z) {
 }
 
 window.onload = showSection;
-
