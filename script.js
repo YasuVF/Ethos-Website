@@ -122,18 +122,10 @@ function showSection() {
   const progress = (Math.min(responses.filter(Boolean).length, questions.length) / questions.length) * 100;
   document.getElementById("progress-bar").style.width = `${progress}%`;
 
-  // Show percentage text inside progress bar
-  if (!document.getElementById("progress-text")) {
-    const text = document.createElement("div");
-    text.id = "progress-text";
-    text.style.position = "absolute";
-    text.style.width = "100%";
-    text.style.textAlign = "center";
-    text.style.fontSize = "12px";
-    text.style.top = "-20px";
-    document.getElementById("progress-container").appendChild(text);
+  const progressText = document.getElementById("progress-text");
+  if (progressText) {
+    progressText.textContent = `${Math.round(progress)}%`;
   }
-  document.getElementById("progress-text").textContent = `${Math.round(progress)}%`;
 }
 
 function createAnswerOption(index, choice, label, currentResponse) {
