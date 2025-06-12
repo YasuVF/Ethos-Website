@@ -190,6 +190,7 @@ function calculateResults() {
     resultBox.classList.add("fade-in");
     setTimeout(() => resultBox.classList.remove("fade-in"), 300);
   }, 300);
+  render3DCube(x, y, z);
 }
 
 function getIdeologyLabel(x, y, z) {
@@ -208,3 +209,35 @@ function getIdeologyLabel(x, y, z) {
 }
 
 window.onload = showSection;
+function render3DCube(x, y, z) {
+  const container = document.getElementById("three-container");
+  container.innerHTML = ""; // clear previous render
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(75, container.clientWidth / 400, 0.1, 1000);
+  const renderer = new THREE.WebGLRenderer();
+  renderer.setSize(container.clientWidth, 400);
+  container.appendChild(renderer.domElement);
+
+  // Draw a wireframe cube
+  const geometry = new THREE.BoxGeometry(2, 2, 2);
+  const material = new THREE.MeshBasicMaterial({ color: 0xcccccc, wireframe: true });
+  const cube = new THREE.Mesh(geometry, material);
+  scene.add(cube);
+
+  // Mark the user's point
+  const dotGeometry = new THREE.SphereGeometry(0.05, 16, 16);
+  const dotMaterial = new THREE.MeshBasicMaterial({ color: 0xff0000 });
+  const dot = new THREE.Mesh(dotGeometry, dotMaterial);
+  dot.position.set(x, y, z);
+  scene.add(dot);
+
+  camera.position.z = 5;
+  function animate() {
+    requestAnimationFrame(animate);
+    cube.rotation.y += 0.01;
+    cube.rotation.x += 0.005;
+    renderer.render(scene, camera);
+  }
+  animate();
+}
