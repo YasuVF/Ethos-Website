@@ -201,11 +201,11 @@ function getIdeologyLabel(x, y, z) {
   const map = {
     'Left,Authoritarian,Religious': 'Adherence Socialism (e.g., Marxism, National-Socialism)',
     'Left,Authoritarian,Secular': 'Progressivism',
-    'Left,Anarchist,Religious': 'Utopian/NatSoc Anarchism',
+    'Left,Anarchist,Religious': 'Utopian Socialism',
     'Left,Anarchist,Secular': 'Anarchism',
     'Right,Authoritarian,Religious': 'Conservatism',
     'Right,Authoritarian,Secular': 'Technocratic',
-    'Right,Anarchist,Religious': 'Libertarian Conservatism',
+    'Right,Anarchist,Religious': 'Libertarianism',
     'Right,Anarchist,Secular': 'Liberalism'
   };
   return map[quadrant] || 'Unclassified Position';
@@ -219,11 +219,11 @@ function plot3D(x, y, z) {
   const colorMap = {
     'Adherence Socialism (e.g., Marxism, National-Socialism)': '#9c27b0',
     'Progressivism': '#e91e63',
-    'Utopian/NatSoc Anarchism': '#f44336',
+    'Utopian Socialism': '#f44336',
     'Anarchism': '#ff9800',
     'Conservatism': '#3f51b5',
-    'Technocratic': '#00bcd4',
-    'Libertarian Conservatism': '#4caf50',
+    'Corporatism': '#00bcd4',
+    'Conservatism': '#4caf50',
     'Liberalism': '#03a9f4'
   };
 
@@ -244,13 +244,13 @@ function plot3D(x, y, z) {
 
   const regionDefinitions = [
     {
-      name: 'Utopian/NatSoc Anarchism', color: '#f44336',
+      name: 'Utopian Socialism', color: '#f44336',
       vertices: [$1].map(([x, y, z]) => [x, -y, -z]), [0, -1, -1], [0, 0, -1], [-1, 0, -1],
         [-1, -1, 0], [0, -1, 0], [0, 0, 0], [-1, 0, 0]
       ]
     },
     {
-      name: 'Libertarian Conservatism', color: '#4caf50',
+      name: 'Libertarianism', color: '#4caf50',
       vertices: [$1].map(([x, y, z]) => [x, -y, -z]), [1, -1, -1], [1, 0, -1], [0, 0, -1],
         [0, -1, 0], [1, -1, 0], [1, 0, 0], [0, 0, 0]
       ]
@@ -268,7 +268,7 @@ function plot3D(x, y, z) {
       ]
     },
     {
-      name: 'Adherence Socialism (e.g., Marxism, National-Socialism)', color: '#9c27b0',
+      name: 'Adherence Socialism (e.g., Marxism, National-Socialism, Fascism)', color: '#9c27b0',
       vertices: [$1].map(([x, y, z]) => [x, -y, -z]), [0, 0, -1], [0, 1, -1], [-1, 1, -1],
         [-1, 0, 0], [0, 0, 0], [0, 1, 0], [-1, 1, 0]
       ]
@@ -280,7 +280,7 @@ function plot3D(x, y, z) {
       ]
     },
     {
-      name: 'Technocratic', color: '#00bcd4',
+      name: 'Corporatism ', color: '#00bcd4',
       vertices: [$1].map(([x, y, z]) => [x, -y, -z]), [1, 0, 0], [1, 1, 0], [0, 1, 0],
         [0, 0, 1], [1, 0, 1], [1, 1, 1], [0, 1, 1]
       ]
