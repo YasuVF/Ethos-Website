@@ -240,45 +240,30 @@ function plot3D(x, y, z) {
     name: ideology
   };
 
-  const cubeCorners = [
-    { x: -1, y: -1, z: -1, color: '#f44336', label: 'Non-Adherence Socialism' },
-    { x: 1, y: -1, z: -1, color: '#4caf50', label: 'Libertarian' },
-    { x: 1, y: -1, z: 1, color: '#03a9f4', label: 'Liberalism' },
-    { x: -1, y: -1, z: 1, color: '#ff9800', label: 'Anarchism' },
-    { x: -1, y: 1, z: -1, color: '#9c27b0', label: 'Adherence Socialism' },
-    { x: 1, y: 1, z: -1, color: '#3f51b5', label: 'Conservatism' },
-    { x: 1, y: 1, z: 1, color: '#00bcd4', label: 'Technocratic' },
-    { x: -1, y: 1, z: 1, color: '#e91e63', label: 'Progressivism' }
+  const regions = [
+    {x: [-1, 0, 0, -1], y: [-1, -1, 0, 0], z: [-1, -1, -1, -1], color: '#f44336'}, // Non-Adherence Socialism
+    {x: [0, 1, 1, 0], y: [-1, -1, 0, 0], z: [-1, -1, -1, -1], color: '#4caf50'},     // Libertarian
+    {x: [0, 1, 1, 0], y: [-1, -1, 0, 0], z: [0, 0, 1, 1], color: '#03a9f4'},         // Liberalism
+    {x: [-1, 0, 0, -1], y: [-1, -1, 0, 0], z: [0, 0, 1, 1], color: '#ff9800'},       // Anarchism
+    {x: [-1, 0, 0, -1], y: [0, 0, 1, 1], z: [-1, -1, -1, -1], color: '#9c27b0'},     // Adherence Socialism
+    {x: [0, 1, 1, 0], y: [0, 0, 1, 1], z: [-1, -1, -1, -1], color: '#3f51b5'},       // Conservatism
+    {x: [0, 1, 1, 0], y: [0, 0, 1, 1], z: [0, 0, 1, 1], color: '#00bcd4'},           // Technocratic
+    {x: [-1, 0, 0, -1], y: [0, 0, 1, 1], z: [0, 0, 1, 1], color: '#e91e63'}          // Progressivism
   ];
 
-  const cornerPoints = cubeCorners.map(corner => ({
-    type: 'scatter3d',
-    mode: 'markers',
-    x: [corner.x],
-    y: [corner.y],
-    z: [corner.z],
-    marker: {
-      size: 6,
-      color: corner.color
-    },
-    name: corner.label,
-    showlegend: true
-  }));
-
-  const volumeRegions = cubeCorners.map(corner => ({
+  const regionMeshes = regions.map(region => ({
     type: 'mesh3d',
-    x: [corner.x],
-    y: [corner.y],
-    z: [corner.z],
+    x: region.x,
+    y: region.y,
+    z: region.z,
+    i: [0], j: [1], k: [2],
     opacity: 0.15,
-    color: corner.color,
-    alphahull: 10,
-    name: corner.label,
+    color: region.color,
     showscale: false,
     hoverinfo: 'skip'
   }));
 
-  const data = [...volumeRegions, ideologyPoint, ...cornerPoints];
+  const data = [...regionMeshes, ideologyPoint];
 
   const layout = {
     margin: { l: 0, r: 0, b: 0, t: 0 },
