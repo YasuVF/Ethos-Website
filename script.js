@@ -197,7 +197,7 @@ function calculateResults() {
 
   // Plot 3D point
   plot3D(x, y, z);
-  }, 300);
+  }, 1500);
 }
 
 function getIdeologyLabel(x, y, z) {
