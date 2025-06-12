@@ -116,7 +116,10 @@ function showSection() {
     `;
   });
 
-  html += `<button onclick="nextSection()">Next Section</button>`;
+  html += `<div style="display: flex; justify-content: space-between; gap: 10px;">
+  <button onclick="prevSection()">Back</button>
+  <button onclick="nextSection()">Next Section</button>
+</div>`;
   container.innerHTML = html;
 
   const progress = (Math.min(responses.filter(Boolean).length, questions.length) / questions.length) * 100;
@@ -160,7 +163,7 @@ function calculateResults() {
   const resultBox = document.getElementById("quiz");
   const label = getIdeologyLabel(x, y, z);
   const examples = {
-    'Adherence Socialism': 'Examples include the USSR, Maoist China, Nazi-Germany and other centrally planned regimes. Known for both socialist/communist economies and severe authoritarian repression.',
+    'Adherence Socialism (e.g., Marxism, National-Socialism)': 'Examples include the USSR, Maoist China, and other centrally planned regimes. Known for both economic equality and severe authoritarian repression.',
     'Progressivism': 'Found in many welfare democracies. Examples include post-WWII Scandinavia, FDR’s New Deal, and civil rights movements.',
     'Utopian Socialism': 'Visionary and idealistic systems like Robert Owen’s New Harmony or early 19th-century communal experiments.',
     'Corporatism': 'Advocates cooperation between classes; seen in Mussolini’s Italy and some managed economies.',
@@ -220,6 +223,14 @@ function submitAnswer(index, choice, button) {
   buttons.forEach(btn => btn.classList.remove('selected'));
 
   button.classList.add('selected');
+}
+
+function prevSection() {
+  if (sectionIndex > 0) {
+    sectionIndex--;
+    showSection();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 }
 
 function nextSection() {
