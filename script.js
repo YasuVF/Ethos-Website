@@ -131,38 +131,6 @@ function createAnswerOption(index, choice, label, currentResponse) {
       <span class="circle"></span>
       <span class="answer-text">${label}</span>
     </div>`;
-}, '${choice}', this)">
-      <span class="circle"></span>
-      <span class="answer-text">${label}</span>
-    </div>`;
-}
-
-function submitAnswer(index, choice, optionDiv) {
-  responses[index] = choice;
-
-  const siblings = optionDiv.parentElement.querySelectorAll('.answer-option');
-  siblings.forEach(el => el.classList.remove('selected'));
-  optionDiv.classList.add('selected');
-}
-
-function nextSection() {
-  const start = sectionIndex * 10;
-  const end = start + 10;
-  const unanswered = questions.slice(start, end).some((_, i) => !responses[start + i]);
-
-  if (unanswered) {
-    alert("Please answer all questions in this section before continuing.");
-    showSection();
-    return;
-  }
-
-  sectionIndex++;
-  if (sectionIndex * 10 < questions.length) {
-    showSection();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  } else {
-    calculateResults();
-  }
 }
 
 function calculateResults() {
@@ -351,5 +319,3 @@ function plot3D(x, y, z) {
 
   Plotly.newPlot('graph', data, layout);
 }
-
-
