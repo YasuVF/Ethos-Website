@@ -72,6 +72,7 @@ const questions = [
   { text: "Tradition without critical thinking leads to stagnation.", axis: "adherence", direction: -1 }
 ];
 
+
 const sectionTitles = [
   "Property & Production",
   "Wealth & Redistribution",
@@ -409,6 +410,10 @@ function plot3D(x, y, z) {
 
   const layout = {
     margin: { l: 0, r: 0, b: 0, t: 0 },
+    legend: {
+      orientation: 'h',
+      y: -0.2
+    },
     scene: {
       xaxis: { title: 'Economic' },
       yaxis: { title: 'Authority' },
