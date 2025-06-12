@@ -203,7 +203,7 @@ function getIdeologyLabel(x, y, z) {
     'Left,Anarchist,Religious': 'Utopian Socialism',
     'Left,Anarchist,Secular': 'Anarchism',
     'Right,Authoritarian,Religious': 'Conservatism',
-    'Right,Authoritarian,Secular': 'Technocratic',
+    'Right,Authoritarian,Secular': 'Corporatism',
     'Right,Anarchist,Religious': 'Libertarianism',
     'Right,Anarchist,Secular': 'Liberalism'
   };
