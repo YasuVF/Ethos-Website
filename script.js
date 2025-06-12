@@ -84,6 +84,11 @@ let responses = [];
 
 function showQuestion() {
   const q = questions[current];
+
+  // Update progress bar
+  const progress = ((current) / questions.length) * 100;
+  document.getElementById("progress-bar").style.width = `${progress}%`;
+
   const container = document.getElementById("quiz");
   container.innerHTML = `
     <h2>Question ${current + 1} of ${questions.length}</h2>
@@ -130,19 +135,19 @@ function calculateResults() {
   `;
 }
 
-  function getIdeologyLabel(x, y, z) {
-    const quadrant = `${x < 0 ? 'Left' : 'Right'},${y < 0 ? 'Anarchist' : 'Authoritarian'},${z < 0 ? 'Secular' : 'Religious'}`;
-    const map = {
-      'Left,Authoritarian,Religious': 'Adherence Socialism (e.g., Marxism, National-Socialism)',
-      'Left,Authoritarian,Secular': 'Progressivism',
-      'Left,Anarchist,Religious': 'Utopian/NatSoc Anarchism',
-      'Left,Anarchist,Secular': 'Anarchism',
-      'Right,Authoritarian,Religious': 'Conservatism',
-      'Right,Authoritarian,Secular': 'Technocratic',
-      'Right,Anarchist,Religious': 'Libertarian Conservatism',
-      'Right,Anarchist,Secular': 'Liberalism'
-    };
-    return map[quadrant] || 'Unclassified Position';
+function getIdeologyLabel(x, y, z) {
+  const quadrant = `${x < 0 ? 'Left' : 'Right'},${y < 0 ? 'Anarchist' : 'Authoritarian'},${z < 0 ? 'Secular' : 'Religious'}`;
+  const map = {
+    'Left,Authoritarian,Religious': 'Adherence Socialism (e.g., Marxism, National-Socialism)',
+    'Left,Authoritarian,Secular': 'Progressivism',
+    'Left,Anarchist,Religious': 'Utopian/NatSoc Anarchism',
+    'Left,Anarchist,Secular': 'Anarchism',
+    'Right,Authoritarian,Religious': 'Conservatism',
+    'Right,Authoritarian,Secular': 'Technocratic',
+    'Right,Anarchist,Religious': 'Libertarian Conservatism',
+    'Right,Anarchist,Secular': 'Liberalism'
+  };
+  return map[quadrant] || 'Unclassified Position';
 }
 
 window.onload = showQuestion;
