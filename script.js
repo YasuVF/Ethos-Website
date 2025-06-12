@@ -184,9 +184,9 @@ function getIdeologyLabel(x, y, z) {
     'Left,Authoritarian,Religious': 'Adherence Socialism (e.g., Marxism, National-Socialism)',
     'Left,Authoritarian,Secular': 'Progressivism',
     'Left,Anarchist,Religious': 'Utopian Socialism',
-    'Left,Anarchist,Secular': 'Anarchism',
+    'Left,Anarchist,Secular': 'Corporatism',
     'Right,Authoritarian,Religious': 'Conservatism',
-    'Right,Authoritarian,Secular': 'Corporatism',
+    'Right,Authoritarian,Secular': 'Anarchism',
     'Right,Anarchist,Religious': 'Libertarianism',
     'Right,Anarchist,Secular': 'Liberalism'
   };
@@ -232,9 +232,9 @@ function plot3D(x, y, z) {
     'Adherence Socialism (e.g., Marxism, National-Socialism)': '#9c27b0',
     'Progressivism': '#e91e63',
     'Utopian Socialism': '#f44336',
-    'Anarchism': '#ff9800',
+    'Corporatism': '#ff9800',
     'Conservatism': '#3f51b5',
-    'Corporatism': '#00bcd4',
+    'Anarchism': '#00bcd4',
     'Libertarianism': '#4caf50',
     'Liberalism': '#03a9f4'
   };
@@ -270,7 +270,7 @@ function plot3D(x, y, z) {
     ]
   },
   {
-    name: 'Corporatism', color: '#00bcd4',
+    name: 'Anarchism', color: '#00bcd4',
     vertices: [
       [0, -1, 0], [1, -1, 0], [1, 0, 0], [0, 0, 0],
       [0, -1, 1], [1, -1, 1], [1, 0, 1], [0, 0, 1]
@@ -305,7 +305,7 @@ function plot3D(x, y, z) {
     ]
   },
   {
-    name: 'Anarchism', color: '#ff9800',
+    name: 'Corporatism', color: '#ff9800',
     vertices: [
       [-1, 0, 0], [0, 0, 0], [0, 1, 0], [-1, 1, 0],
       [-1, 0, 1], [0, 0, 1], [0, 1, 1], [-1, 1, 1]
