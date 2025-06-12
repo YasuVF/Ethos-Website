@@ -72,7 +72,6 @@ const questions = [
   { text: "Tradition without critical thinking leads to stagnation.", axis: "adherence", direction: -1 }
 ];
 
-
 const sectionTitles = [
   "Property & Production",
   "Wealth & Redistribution",
@@ -243,14 +242,14 @@ function plot3D(x, y, z) {
 
   const regionDefinitions = [
     {
-      name: 'Non-Adherence Socialism', color: '#f44336',
+      name: 'Utopian/NatSoc Anarchism', color: '#f44336',
       vertices: [
         [-1, -1, -1], [0, -1, -1], [0, 0, -1], [-1, 0, -1],
         [-1, -1, 0], [0, -1, 0], [0, 0, 0], [-1, 0, 0]
       ]
     },
     {
-      name: 'Libertarian', color: '#4caf50',
+      name: 'Libertarian Conservatism', color: '#4caf50',
       vertices: [
         [0, -1, -1], [1, -1, -1], [1, 0, -1], [0, 0, -1],
         [0, -1, 0], [1, -1, 0], [1, 0, 0], [0, 0, 0]
@@ -271,7 +270,7 @@ function plot3D(x, y, z) {
       ]
     },
     {
-      name: 'Adherence Socialism', color: '#9c27b0',
+      name: 'Adherence Socialism (e.g., Marxism, National-Socialism)', color: '#9c27b0',
       vertices: [
         [-1, 0, -1], [0, 0, -1], [0, 1, -1], [-1, 1, -1],
         [-1, 0, 0], [0, 0, 0], [0, 1, 0], [-1, 1, 0]
