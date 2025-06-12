@@ -231,8 +231,8 @@ function plot3D(x, y, z) {
     type: 'scatter3d',
     mode: 'markers',
     x: [x],
-    y: [y],
-    z: [z],
+    y: [-y],
+    z: [-z],
     marker: {
       size: 8,
       color: pointColor
