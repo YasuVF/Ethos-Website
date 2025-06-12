@@ -196,15 +196,15 @@ function calculateResults() {
 }
 
 function getIdeologyLabel(x, y, z) {
-  const quadrant = `${x < 0 ? 'Left' : 'Right'},${y < 0 ? 'Anarchist' : 'Authoritarian'},${z < 0 ? 'Secular' : 'Religious'}`;
+  const quadrant = `${x < 0 ? 'Left' : 'Right'},${y > 0 ? 'Anarchist' : 'Authoritarian'},${z > 0 ? 'Secular' : 'Religious'}`;
   const map = {
     'Left,Authoritarian,Religious': 'Adherence Socialism (e.g., Marxism, National-Socialism)',
     'Left,Authoritarian,Secular': 'Progressivism',
-    'Left,Anarchist,Religious': 'Utopian Socialism',
+    'Left,Anarchist,Religious': 'Utopian/NatSoc Anarchism',
     'Left,Anarchist,Secular': 'Anarchism',
     'Right,Authoritarian,Religious': 'Conservatism',
-    'Right,Authoritarian,Secular': 'Corporatism',
-    'Right,Anarchist,Religious': 'Libertarianism',
+    'Right,Authoritarian,Secular': 'Technocratic',
+    'Right,Anarchist,Religious': 'Libertarian Conservatism',
     'Right,Anarchist,Secular': 'Liberalism'
   };
   return map[quadrant] || 'Unclassified Position';
@@ -218,11 +218,11 @@ function plot3D(x, y, z) {
   const colorMap = {
     'Adherence Socialism (e.g., Marxism, National-Socialism)': '#9c27b0',
     'Progressivism': '#e91e63',
-    'Utopian Socialism': '#f44336',
+    'Utopian/NatSoc Anarchism': '#f44336',
     'Anarchism': '#ff9800',
     'Conservatism': '#3f51b5',
-    'Corporatism': '#00bcd4',
-    'Conservatism': '#4caf50',
+    'Technocratic': '#00bcd4',
+    'Libertarian Conservatism': '#4caf50',
     'Liberalism': '#03a9f4'
   };
 
@@ -243,50 +243,58 @@ function plot3D(x, y, z) {
 
   const regionDefinitions = [
     {
-      name: 'Utopian Socialism', color: '#f44336',
-      vertices: [$1].map(([x, y, z]) => [x, -y, -z]), [0, -1, -1], [0, 0, -1], [-1, 0, -1],
+      name: 'Utopian/NatSoc Anarchism', color: '#f44336',
+      vertices: [
+        [-1, -1, -1], [0, -1, -1], [0, 0, -1], [-1, 0, -1],
         [-1, -1, 0], [0, -1, 0], [0, 0, 0], [-1, 0, 0]
       ]
     },
     {
-      name: 'Libertarianism', color: '#4caf50',
-      vertices: [$1].map(([x, y, z]) => [x, -y, -z]), [1, -1, -1], [1, 0, -1], [0, 0, -1],
+      name: 'Libertarian Conservatism', color: '#4caf50',
+      vertices: [
+        [0, -1, -1], [1, -1, -1], [1, 0, -1], [0, 0, -1],
         [0, -1, 0], [1, -1, 0], [1, 0, 0], [0, 0, 0]
       ]
     },
     {
       name: 'Liberalism', color: '#03a9f4',
-      vertices: [$1].map(([x, y, z]) => [x, -y, -z]), [1, -1, 0], [1, 0, 0], [0, 0, 0],
+      vertices: [
+        [0, -1, 0], [1, -1, 0], [1, 0, 0], [0, 0, 0],
         [0, -1, 1], [1, -1, 1], [1, 0, 1], [0, 0, 1]
       ]
     },
     {
       name: 'Anarchism', color: '#ff9800',
-      vertices: [$1].map(([x, y, z]) => [x, -y, -z]), [0, -1, 0], [0, 0, 0], [-1, 0, 0],
+      vertices: [
+        [-1, -1, 0], [0, -1, 0], [0, 0, 0], [-1, 0, 0],
         [-1, -1, 1], [0, -1, 1], [0, 0, 1], [-1, 0, 1]
       ]
     },
     {
-      name: 'Adherence Socialism (e.g., Marxism, National-Socialism, Fascism)', color: '#9c27b0',
-      vertices: [$1].map(([x, y, z]) => [x, -y, -z]), [0, 0, -1], [0, 1, -1], [-1, 1, -1],
+      name: 'Adherence Socialism (e.g., Marxism, National-Socialism)', color: '#9c27b0',
+      vertices: [
+        [-1, 0, -1], [0, 0, -1], [0, 1, -1], [-1, 1, -1],
         [-1, 0, 0], [0, 0, 0], [0, 1, 0], [-1, 1, 0]
       ]
     },
     {
       name: 'Conservatism', color: '#3f51b5',
-      vertices: [$1].map(([x, y, z]) => [x, -y, -z]), [1, 0, -1], [1, 1, -1], [0, 1, -1],
+      vertices: [
+        [0, 0, -1], [1, 0, -1], [1, 1, -1], [0, 1, -1],
         [0, 0, 0], [1, 0, 0], [1, 1, 0], [0, 1, 0]
       ]
     },
     {
-      name: 'Corporatism', color: '#00bcd4',
-      vertices: [$1].map(([x, y, z]) => [x, -y, -z]), [1, 0, 0], [1, 1, 0], [0, 1, 0],
+      name: 'Technocratic', color: '#00bcd4',
+      vertices: [
+        [0, 0, 0], [1, 0, 0], [1, 1, 0], [0, 1, 0],
         [0, 0, 1], [1, 0, 1], [1, 1, 1], [0, 1, 1]
       ]
     },
     {
       name: 'Progressivism', color: '#e91e63',
-      vertices: [$1].map(([x, y, z]) => [x, -y, -z]), [0, 0, 0], [0, 1, 0], [-1, 1, 0],
+      vertices: [
+        [-1, 0, 0], [0, 0, 0], [0, 1, 0], [-1, 1, 0],
         [-1, 0, 1], [0, 0, 1], [0, 1, 1], [-1, 1, 1]
       ]
     }
@@ -337,3 +345,4 @@ function plot3D(x, y, z) {
 
   Plotly.newPlot('graph', data, layout);
 }
+
