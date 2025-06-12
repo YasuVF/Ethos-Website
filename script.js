@@ -138,6 +138,11 @@ function createAnswerOption(index, choice, label, currentResponse) {
 }
 
 function calculateResults() {
+  document.getElementById("progress-bar").style.width = "100%";
+  const progressText = document.getElementById("progress-text");
+  if (progressText) {
+    progressText.textContent = "100%";
+  }
   let x = 0, y = 0, z = 0;
 
   for (let i = 0; i < questions.length; i++) {
