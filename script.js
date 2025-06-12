@@ -1,27 +1,27 @@
 const questions = [
   // Section 1: Property & Production
   { text: "The government should own and operate key industries.", axis: "economic", direction: -1 },
-  { text: "Large corporations lead to more innovation than privately owned companies ever could.", axis: "economic", direction: 1 },
+  { text: "Large corporations lead to more innovation than privately owned companies ever could.", axis: "economic", direction: -1 },
   { text: "Workers should have a say in how the companies they work for are run.", axis: "economic", direction: -1 },
   { text: "Nationalizing major corporations is sometimes necessary to protect public interests.", axis: "economic", direction: -1 },
   { text: "The free market, left alone, produces better outcomes than any government plan.", axis: "economic", direction: 1 },
-  { text: "Excessive corporate profit is often a sign of exploitation.", axis: "economic", direction: -1 },
-  { text: "It’s wrong for a small number of people to control most of the land and natural resources.", axis: "economic", direction: -1 },
-  { text: "Competition between private companies drives economic progress.", axis: "economic", direction: 1 },
-  { text: "Collective ownership is a fairer way to manage economic output.", axis: "economic", direction: -1 },
+  { text: "Excessive corporate profit is often a sign of exploitation.", axis: "economic", direction: 1 },
+  { text: "It’s wrong for a private control most of the land and natural resources.", axis: "economic", direction: -1 },
+  { text: "Competition between private companies drives economic progress compared to corporate globalization.", axis: "economic", direction: 1 },
+  { text: "Collective ownership, such as stock of a corporation, is a fairer way to manage economic output.", axis: "economic", direction: -1 },
   { text: "People should be free to own as much property or capital as they can acquire.", axis: "economic", direction: 1 },
 
   // Section 2: Wealth & Redistribution
-  { text: "A fair society must include some form of wealth redistribution.", axis: "economic", direction: -1 },
+  { text: "A fair society must include some form of forced wealth redistribution.", axis: "economic", direction: -1 },
   { text: "People who earn more should pay proportionally higher taxes.", axis: "economic", direction: -1 },
   { text: "Universal basic income would do more harm than good.", axis: "economic", direction: 1 },
   { text: "No one should become a billionaire while others struggle to afford housing.", axis: "economic", direction: -1 },
-  { text: "The rich contribute more to society by investing and creating jobs.", axis: "economic", direction: 1 },
+  { text: "The rich, absent their holdings, contribute more to society by investing and creating jobs.", axis: "economic", direction: 1 },
   { text: "Social welfare programs often discourage personal responsibility.", axis: "economic", direction: 1 },
   { text: "Economic inequality is an unavoidable outcome of a free society.", axis: "economic", direction: 1 },
-  { text: "Public services like education and healthcare should be free for everyone.", axis: "economic", direction: -1 },
+  { text: "Public services like education and healthcare should be free, or subsidized, for everyone.", axis: "economic", direction: -1 },
   { text: "Heavily taxing inherited wealth is a necessary step toward fairness.", axis: "economic", direction: -1 },
-  { text: "Society functions best when people can keep most of what they earn.", axis: "economic", direction: 1 },
+  { text: "Society functions best when individuals retain most of their earnings, choosing donations over taxation.", axis: "economic", direction: 1 },
 
   // Section 3: Law & Order
   { text: "Maintaining law and order should be the government’s top priority.", axis: "authority", direction: 1 },
