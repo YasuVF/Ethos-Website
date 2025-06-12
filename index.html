@@ -3,6 +3,43 @@
 <head>
   <title>3D Political Compass</title>
   <style>
+/* Toggle styles */
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 28px;
+}
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.toggle-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0; left: 0;
+  right: 0; bottom: 0;
+  background-color: #333;
+  border-radius: 28px;
+  transition: 0.4s;
+}
+.toggle-knob {
+  position: absolute;
+  height: 22px;
+  width: 22px;
+  left: 3px;
+  top: 3px;
+  background-color: white;
+  border-radius: 50%;
+  transition: 0.4s;
+}
+.toggle-switch input:checked + .toggle-slider {
+  background-color: #999;
+}
+.toggle-switch input:checked + .toggle-slider .toggle-knob {
+  transform: translateX(22px);
+}
   body.dark-mode {
     background-color: #121212;
     color: #e0e0e0;
@@ -150,24 +187,7 @@
   </style>
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 
-<script>
-function toggleDarkMode() {
-  const body = document.body;
-  const toggle = document.querySelector('input[type="checkbox"]');
-  const knob = document.getElementById('toggleKnob');
-  const slider = document.getElementById('toggleSlider');
 
-  body.classList.toggle('dark-mode');
-
-  if (body.classList.contains('dark-mode')) {
-    knob.style.transform = 'translateX(22px)';
-    slider.style.backgroundColor = '#999';
-  } else {
-    knob.style.transform = 'translateX(0)';
-    slider.style.backgroundColor = '#333';
-  }
-}
-</script>
 <script>
 function toggleDonations() {
   const aside = document.querySelector('aside');
@@ -203,10 +223,11 @@ function toggleDonations() {
   <div style="margin-left: 160px; margin-right: 80px; max-width: 1100px;">
   <main style="flex: 1;">
 <div style="position: fixed; top: 10px; right: 10px; z-index: 1000; display: flex; gap: 10px;">
-  <label style="position: relative; display: inline-block; width: 50px; height: 28px;">
-  <input type="checkbox" onchange="toggleDarkMode()" style="opacity: 0; width: 0; height: 0;">
-  <span id="toggleSlider" style="position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #333; border-radius: 28px; transition: 0.4s;"></span>
-  <span id="toggleKnob" style="position: absolute; height: 22px; width: 22px; left: 3px; top: 3px; background-color: white; border-radius: 50%; transition: 0.4s;"></span>
+  <label class="toggle-switch">
+  <input type="checkbox" onchange="document.body.classList.toggle('dark-mode')">
+  <span class="toggle-slider">
+    <span class="toggle-knob"></span>
+  </span>
 </label>
 <button id="donationToggleBtn" onclick="toggleDonations()" style="padding: 6px 10px; font-size: 14px; border-radius: 6px; background-color: #2196f3; color: white; border: none; cursor: pointer;">Hide Donations</button>
 </div>
