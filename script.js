@@ -72,7 +72,6 @@ const questions = [
   { text: "Tradition without critical thinking leads to stagnation.", axis: "adherence", direction: -1 }
 ];
 
-
 const sectionTitles = [
   "Property & Production",
   "Wealth & Redistribution",
@@ -108,30 +107,11 @@ function showSection() {
       <div ${unansweredClass}>
         <p><strong>Q${index + 1}:</strong> ${q.text}</p>
         <div style="margin-bottom: 10px;">
-          <button onclick="submitAnswer(${index}, 'agree')">Agree</button>
-          <button onclick="submitAnswer(${index}, 'somewhat_agree')">Somewhat Agree</button>
-          <button onclick="submitAnswer(${index}, 'somewhat_disagree')">Somewhat Disagree</button>
-          <button onclick="submitAnswer(${index}, 'disagree')">Disagree</button>
+          <button class="answer-button" data-question="${index}" data-choice="agree" onclick="submitAnswer(${index}, 'agree', this)">Agree</button>
+          <button class="answer-button" data-question="${index}" data-choice="somewhat_agree" onclick="submitAnswer(${index}, 'somewhat_agree', this)">Somewhat Agree</button>
+          <button class="answer-button" data-question="${index}" data-choice="somewhat_disagree" onclick="submitAnswer(${index}, 'somewhat_disagree', this)">Somewhat Disagree</button>
+          <button class="answer-button" data-question="${index}" data-choice="disagree" onclick="submitAnswer(${index}, 'disagree', this)">Disagree</button>
         </div>
-      </div>
-    `;
-  });
-
-  html += `<button onclick="nextSection()">Next Section</button>`;
-  container.innerHTML = html;
-
-  const progress = (start / questions.length) * 100;
-  document.getElementById("progress-bar").style.width = `${progress}%`;
-}</h2>`;
-
-  sectionQuestions.forEach((q, i) => {
-    html += `
-      <p><strong>Q${start + i + 1}:</strong> ${q.text}</p>
-      <div style="margin-bottom: 10px;">
-        <button onclick="submitAnswer(${start + i}, 'agree')">Agree</button>
-        <button onclick="submitAnswer(${start + i}, 'somewhat_agree')">Somewhat Agree</button>
-        <button onclick="submitAnswer(${start + i}, 'somewhat_disagree')">Somewhat Disagree</button>
-        <button onclick="submitAnswer(${start + i}, 'disagree')">Disagree</button>
       </div>
     `;
   });
@@ -143,8 +123,15 @@ function showSection() {
   document.getElementById("progress-bar").style.width = `${progress}%`;
 }
 
-function submitAnswer(index, choice) {
+function submitAnswer(index, choice, button) {
   responses[index] = choice;
+
+  // Remove selected class from all buttons in the same group
+  const buttons = button.parentElement.querySelectorAll('.answer-button');
+  buttons.forEach(btn => btn.classList.remove('selected'));
+
+  // Add selected class to the clicked button
+  button.classList.add('selected');
 }
 
 function nextSection() {
@@ -162,17 +149,6 @@ function nextSection() {
   if (sectionIndex * 10 < questions.length) {
     showSection();
   } else {
-    calculateResults();
-  }
-}
-
-  sectionIndex++;
-  if (sectionIndex * 10 < questions.length) {
-    showSection();
-  } else {
-    calculateResults();
-  }
-} else {
     calculateResults();
   }
 }
