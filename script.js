@@ -153,6 +153,7 @@ function nextSection() {
   sectionIndex++;
   if (sectionIndex * 10 < questions.length) {
     showSection();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   } else {
     calculateResults();
   }
@@ -344,4 +345,3 @@ function plot3D(x, y, z) {
 
   Plotly.newPlot('graph', data, layout);
 }
-
