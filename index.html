@@ -28,6 +28,7 @@
     padding: 25px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     margin-top: 30px;
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
   }
 
   button {
@@ -63,19 +64,30 @@
     background: linear-gradient(to right, #4caf50, #81c784);
     transition: width 0.3s ease-in-out;
   }
+
+  button.answer-button {
+    width: auto;
+    display: inline-block;
+    margin: 6px;
+    padding: 12px 18px;
+    font-size: 14px;
+    border: none; /* removed the red/gray border */
+    border-radius: 50%;
+    background-color: transparent;
+    color: #333;
+    transition: all 0.3s ease-in-out;
+  }
+
   button.answer-button:hover {
     background-color: rgba(76, 175, 80, 0.1);
-    border-color: #4caf50;
+    border: 2px solid #4caf50;
     color: #4caf50;
-}
+  }
 
   button.answer-button.selected {
     background-color: #4caf50;
-    border-color: #4caf50;
+    border: 2px solid #4caf50;
     color: white;
-}
-  #quiz {
-    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
   }
 
   .fade-out {
@@ -87,34 +99,22 @@
     opacity: 1;
     transform: translateY(0);
   }
-  button.answer-button {
-    width: auto;
-    display: inline-block;
-    margin: 6px;
-    padding: 12px 18px;
-    font-size: 14px;
-    border: 2px solid #ccc;
-    border-radius: 50%;
-    background-color: transparent;
-    color: #333;
-    transition: all 0.3s ease-in-out;
-  }
-</style>
+  </style>
 </head>
 <body>
   <h1>3D Political Compass Test</h1>
-  <p>This test was created to map political ideology using a 3-dimensional model, offering a deeper and more nuanced view than traditional left-right or authoritarian-libertarian charts. Your answers will place you along three axes:
+  <p>This test was created to map political ideology using a 3-dimensional model, offering a deeper and more nuanced view than traditional left-right or authoritarian-libertarian charts. Your answers will place you along three axes:</p>
 <ul>
   <li><strong>Economic (X-axis)</strong>: Left (Socialist) ↔ Right (Capitalist)</li>
   <li><strong>Authority (Y-axis)</strong>: Down (Reformist) ↔ Up (Traditionalist)</li>
   <li><strong>Adherence (Z-axis)</strong>: Forward (Relativistic) ↔ Back (Principled)</li>
 </ul>
-Answer each question honestly. There are no right or wrong responses — only insights.</p>
+<p>Answer each question honestly. There are no right or wrong responses — only insights.</p>
 <hr>
-<div id="progress-container" style="height: 10px; background: #ddd; margin-bottom: 20px;">
-  <div id="progress-bar" style="height: 100%; width: 0%; background: #4caf50;"></div>
+<div id="progress-container">
+  <div id="progress-bar"></div>
 </div>
 <div id="quiz"></div>
-  <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
