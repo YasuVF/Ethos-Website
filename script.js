@@ -241,35 +241,96 @@ function plot3D(x, y, z) {
     name: ideology
   };
 
-  const regions = [
-    {x: [-1, 0, 0, -1], y: [-1, -1, 0, 0], z: [-1, -1, -1, -1], color: '#f44336'}, // Non-Adherence Socialism
-    {x: [0, 1, 1, 0], y: [-1, -1, 0, 0], z: [-1, -1, -1, -1], color: '#4caf50'},     // Libertarian
-    {x: [0, 1, 1, 0], y: [-1, -1, 0, 0], z: [0, 0, 1, 1], color: '#03a9f4'},         // Liberalism
-    {x: [-1, 0, 0, -1], y: [-1, -1, 0, 0], z: [0, 0, 1, 1], color: '#ff9800'},       // Anarchism
-    {x: [-1, 0, 0, -1], y: [0, 0, 1, 1], z: [-1, -1, -1, -1], color: '#9c27b0'},     // Adherence Socialism
-    {x: [0, 1, 1, 0], y: [0, 0, 1, 1], z: [-1, -1, -1, -1], color: '#3f51b5'},       // Conservatism
-    {x: [0, 1, 1, 0], y: [0, 0, 1, 1], z: [0, 0, 1, 1], color: '#00bcd4'},           // Technocratic
-    {x: [-1, 0, 0, -1], y: [0, 0, 1, 1], z: [0, 0, 1, 1], color: '#e91e63'}          // Progressivism
+  const regionDefinitions = [
+    {
+      name: 'Non-Adherence Socialism', color: '#f44336',
+      vertices: [
+        [-1, -1, -1], [0, -1, -1], [0, 0, -1], [-1, 0, -1],
+        [-1, -1, 0], [0, -1, 0], [0, 0, 0], [-1, 0, 0]
+      ]
+    },
+    {
+      name: 'Libertarian', color: '#4caf50',
+      vertices: [
+        [0, -1, -1], [1, -1, -1], [1, 0, -1], [0, 0, -1],
+        [0, -1, 0], [1, -1, 0], [1, 0, 0], [0, 0, 0]
+      ]
+    },
+    {
+      name: 'Liberalism', color: '#03a9f4',
+      vertices: [
+        [0, -1, 0], [1, -1, 0], [1, 0, 0], [0, 0, 0],
+        [0, -1, 1], [1, -1, 1], [1, 0, 1], [0, 0, 1]
+      ]
+    },
+    {
+      name: 'Anarchism', color: '#ff9800',
+      vertices: [
+        [-1, -1, 0], [0, -1, 0], [0, 0, 0], [-1, 0, 0],
+        [-1, -1, 1], [0, -1, 1], [0, 0, 1], [-1, 0, 1]
+      ]
+    },
+    {
+      name: 'Adherence Socialism', color: '#9c27b0',
+      vertices: [
+        [-1, 0, -1], [0, 0, -1], [0, 1, -1], [-1, 1, -1],
+        [-1, 0, 0], [0, 0, 0], [0, 1, 0], [-1, 1, 0]
+      ]
+    },
+    {
+      name: 'Conservatism', color: '#3f51b5',
+      vertices: [
+        [0, 0, -1], [1, 0, -1], [1, 1, -1], [0, 1, -1],
+        [0, 0, 0], [1, 0, 0], [1, 1, 0], [0, 1, 0]
+      ]
+    },
+    {
+      name: 'Technocratic', color: '#00bcd4',
+      vertices: [
+        [0, 0, 0], [1, 0, 0], [1, 1, 0], [0, 1, 0],
+        [0, 0, 1], [1, 0, 1], [1, 1, 1], [0, 1, 1]
+      ]
+    },
+    {
+      name: 'Progressivism', color: '#e91e63',
+      vertices: [
+        [-1, 0, 0], [0, 0, 0], [0, 1, 0], [-1, 1, 0],
+        [-1, 0, 1], [0, 0, 1], [0, 1, 1], [-1, 1, 1]
+      ]
+    }
   ];
 
-  const regionLabels = [
-    'Non-Adherence Socialism', 'Libertarian', 'Liberalism', 'Anarchism',
-    'Adherence Socialism', 'Conservatism', 'Technocratic', 'Progressivism'
+  const faces = [
+    [0, 1, 2], [0, 2, 3], // bottom
+    [4, 5, 6], [4, 6, 7], // top
+    [0, 1, 5], [0, 5, 4], // front
+    [2, 3, 7], [2, 7, 6], // back
+    [1, 2, 6], [1, 6, 5], // right
+    [0, 3, 7], [0, 7, 4]  // left
   ];
 
-  const regionMeshes = regions.map((region, index) => ({
-    type: 'mesh3d',
-    x: region.x,
-    y: region.y,
-    z: region.z,
-    i: [0], j: [1], k: [2],
-    opacity: 0.15,
-    color: region.color,
-    showscale: false,
-    hoverinfo: 'skip',
-    name: regionLabels[index],
-    showlegend: true
-  }));
+  const regionMeshes = regionDefinitions.map(region => {
+    const x = region.vertices.map(v => v[0]);
+    const y = region.vertices.map(v => v[1]);
+    const z = region.vertices.map(v => v[2]);
+
+    const i = [], j = [], k = [];
+    faces.forEach(tri => {
+      i.push(tri[0], tri[0], tri[0]);
+      j.push(tri[1], tri[1], tri[1]);
+      k.push(tri[2], tri[2], tri[2]);
+    });
+
+    return {
+      type: 'mesh3d',
+      x, y, z,
+      i, j, k,
+      color: region.color,
+      opacity: 0.2,
+      name: region.name,
+      showlegend: true
+    };
+  });
 
   const data = [...regionMeshes, ideologyPoint];
 
@@ -283,4 +344,5 @@ function plot3D(x, y, z) {
   };
 
   Plotly.newPlot('graph', data, layout);
+}
 }
