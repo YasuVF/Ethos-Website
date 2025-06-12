@@ -325,7 +325,7 @@ function plot3D(x, y, z) {
       x, y, z,
       i, j, k,
       color: region.color,
-      opacity: 0.2,
+      opacity: 0.08,
       name: region.name,
       showlegend: true
     };
@@ -344,3 +344,4 @@ function plot3D(x, y, z) {
 
   Plotly.newPlot('graph', data, layout);
 }
+
