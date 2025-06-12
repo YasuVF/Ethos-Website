@@ -203,7 +203,7 @@ function getIdeologyLabel(x, y, z) {
     'Left,Anarchist,Religious': 'Utopian Socialism',
     'Left,Anarchist,Secular': 'Anarchism',
     'Right,Authoritarian,Religious': 'Conservatism',
-    'Right,Authoritarian,Secular': 'Technocratic',
+    'Right,Authoritarian,Secular': 'Corporatism',
     'Right,Anarchist,Religious': 'Libertarianism',
     'Right,Anarchist,Secular': 'Liberalism'
   };
@@ -279,7 +279,7 @@ function plot3D(x, y, z) {
       ]
     },
     {
-      name: 'Corporatism ', color: '#00bcd4',
+      name: 'Corporatism', color: '#00bcd4',
       vertices: [$1].map(([x, y, z]) => [x, -y, -z]), [1, 0, 0], [1, 1, 0], [0, 1, 0],
         [0, 0, 1], [1, 0, 1], [1, 1, 1], [0, 1, 1]
       ]
