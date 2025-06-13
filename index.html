@@ -273,6 +273,11 @@ function toggleDonations() {
   </div>
 </header>
 
+<!-- Donation toggle button under header -->
+<div style="margin-top: 10px; text-align: right; padding: 0 24px;">
+  <button id="donationToggleBtn" onclick="toggleDonations()" style="padding: 10px 16px; font-size: 16px; border-radius: 6px; background-color: #2196f3; color: white; border: none; cursor: pointer;">Hide Donations</button>
+</div>
+
 <!-- Tab Section for Explanations -->
 <div class="tab-container" style="margin-bottom: 30px;">
   <div class="tab-buttons" style="display: flex; gap: 10px; justify-content: center; margin-bottom: 10px;">
@@ -317,20 +322,7 @@ function toggleDonations() {
 </aside>
   <div style="margin-left: 160px; margin-right: 80px; max-width: 1100px;">
   <main style="flex: 1;">
-<!-- Dark mode toggle (independent position) -->
-<div style="position: fixed; top: 40px; right: 180px; z-index: 1000;">
-  <label class="toggle-switch">
-    <input type="checkbox" onchange="document.body.classList.toggle('dark-mode')">
-    <span class="toggle-slider">
-      <span class="toggle-knob"></span>
-    </span>
-  </label>
-</div>
 
-<!-- Donation toggle button -->
-<div style="position: fixed; top: 20px; right: 20px; z-index: 1000;">
-  <button id="donationToggleBtn" onclick="toggleDonations()" style="padding: 10px 16px; font-size: 16px; border-radius: 6px; background-color: #2196f3; color: white; border: none; cursor: pointer;">Hide Donations</button>
-</div>
     <hr style="border: none; height: 2px; background: black; margin: 30px auto;">
 <h1>3D Political Compass Test</h1>
   <p>This test was created to map political ideology using a three-dimensional model and accurate ideology interpretations, offering a deeper and more nuanced view than traditional left-right or authoritarian-libertarian charts. Due to the nature of 3D modeling, references to 'up' and 'down' become difficult, so take them as general guides and examine the results carefully. Your answers will place you along three axes:</p>
@@ -376,3 +368,4 @@ function showTab(id) {
 </script>
 </body>
 </html>
+
