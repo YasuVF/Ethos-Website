@@ -166,14 +166,14 @@ function calculateResults() {
   resultBox.innerHTML = '<div style="text-align:center;padding:40px;"><div class="spinner"></div><p>Loading results...</p></div>';
   const label = getIdeologyLabel(x, y, z);
   const examples = {
-    'Realist Socialism': 'Examples include the USSR, Maoist China, and other centrally planned regimes. Known for both economic equality and severe authoritarian repression.',
-    'Progressivism': 'Found in many welfare democracies. Examples include post-WWII Scandinavia, FDR’s New Deal, and civil rights movements.',
-    'Utopian Socialism': 'Visionary and idealistic systems like Robert Owen’s New Harmony or early 19th-century communal experiments.',
-    'Corporatism': 'Advocates cooperation between classes; seen in Mussolini’s Italy and some managed economies.',
-    'Conservatism': 'Tradition-oriented systems such as monarchist states, religious nationalisms, or modern culture-focused right-wing movements.',
-    'Anarchism': 'Anti-authoritarian left-wing thought, like anarcho-communism or syndicalism. Associated with figures like Kropotkin and Emma Goldman.',
-    'Libertarianism': 'Individual freedom-oriented. Examples include U.S. right-libertarians like Ron Paul and economic minarchism.',
-    'Liberalism': 'Classical liberalism and modern centrism. Foundational to most Western democracies; values civil rights and free markets.'
+    'Realist Socialism': 'A system where socialist policies favor select groups while enforcing strict ideological rules, as seen in the USSR, Maoist China, and other centrally planned regimes.',
+    'Progressivism': 'A system where socialist policies benefit select groups while enforcing secular ideology, seen in welfare democracies like post-WWII Scandinavia and FDR’s New Deal.',
+    'Utopian Socialism': 'A system where socialist policies support the whole society, emphasizing acceptance over enforcement, seen in visionary models like Robert Owen’s New Harmony.',
+    'Corporatism': 'A political system of interest representation and policymaking whereby corporate groups come together and negotiate contracts or policy on the basis of their common interests.',
+    'Conservatism': 'A system where capitalist policies uphold traditional structures with strict enforcement, seen in monarchist states and religious nationalisms.',
+    'Anarchism': 'An anti-socialist and anti-traditionalist movement rejecting socialist corporatism and state governance, exemplified by Anarcho-Capitalism and Technocratic Movements.',
+    'Libertarianism': 'A movement centered on individual liberty, often adhering to traditional values and laws, supporting limited government interventions.',
+    'Liberalism': 'An ideology enforcing secular laws while promoting individual rights, civil liberties, and equity, often reflected in civil rights and social justice movements.'
   };
 
   const html = `
