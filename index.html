@@ -256,17 +256,20 @@ function toggleDonations() {
 <body>
 
 <!-- Header Bar -->
-<header class="main-header">
-  <div class="header-left">
-    <img src="Ethos-Brand-Logo.png" alt="ETHOS Logo" style="height: 40px; margin-right: 10px; vertical-align: middle;">
+<header class="main-header" style="display: flex; justify-content: space-between; align-items: center; padding: 4px 24px; height: 48px;">
+  <div class="header-left" style="display: flex; align-items: center;">
+    <img src="Ethos-Brand-Logo.png" alt="ETHOS Logo" style="height: 40px; margin-right: 10px;">
     <span class="brand">ETHOS</span>
   </div>
+
   <nav class="header-nav" style="display: flex; gap: 16px; align-items: center;">
     <button onclick="document.getElementById('faq').scrollIntoView({ behavior: 'smooth' })">Home</button>
     <button onclick="document.getElementById('faq').scrollIntoView({ behavior: 'smooth' })">Explanation</button>
     <button onclick="document.getElementById('quiz').scrollIntoView({ behavior: 'smooth' })">Test</button>
     <button onclick="document.getElementById('faq').scrollIntoView({ behavior: 'smooth' })">FAQ</button>
-  <div class="header-right" style="display: flex; align-items: center; gap: 8px; padding-right: 8px;">
+  </nav>
+
+  <div class="header-right" style="display: flex; align-items: center; gap: 8px;">
     <button id="donationToggleBtn" onclick="toggleDonations()" style="padding: 8px 12px; font-size: 14px; border-radius: 6px; background-color: #2196f3; color: white; border: none; cursor: pointer;">Hide Donations</button>
     <label class="toggle-switch">
       <input type="checkbox" onchange="document.body.classList.toggle('dark-mode')">
@@ -275,25 +278,6 @@ function toggleDonations() {
   </div>
 </header>
 
-<!-- Tab Section for Explanations -->
-<div class="tab-container" style="margin-bottom: 30px;">
-  <div class="tab-buttons" style="display: flex; gap: 10px; justify-content: center; margin-bottom: 10px;">
-    <button class="tab-btn active" onclick="showTab('axis')">Axes Explained</button>
-    <button class="tab-btn" onclick="showTab('quadrants')">Ideology Zones</button>
-    <button class="tab-btn" onclick="showTab('faq')">FAQ</button>
-  </div>
-  <div id="axis" class="tab-content active">
-</div>
-  <div id="quadrants" class="tab-content" style="display:none;">
-    <p>Ideology zones are based on three axes, each representing a crucial component of political identity. For instance, a conservative and a realist socialist are quite similar—both are authoritative and derive meaning and morals from their principles. However, their primary difference lies in their views on property and ownership: one believes in capitalism, the other in socialism. Similarly, this comparison can be applied to each of the quadrants.</p>
-    <p>The ideology zones have been developed through the consolidation of numerous works, studies, AI analysis, and in-depth research. These were conducted without biases, implications, or external funding. Each identity is presented as it truly is, rather than as an idealized outcome.</p>
-    <p>Please keep in mind that while these ideological zones represent the major categories, there are many smaller quadrants within each. For instance, if you find yourself near the center, it might be more accurate to identify as a centrist rather than where a slight deviation places you.</p>
-  </div>
-  <div id="faq" class="tab-content" style="display:none;">
-    <p><strong>Why a 3D model?</strong> Because 2D fails to capture moral adherence and historical complexity.</p>
-    <p><strong>Is this test accurate?</strong> It's meant to illustrate ideological orientation — not label people.</p>
-  </div>
-</div>
 <div style="position: relative; display: flex; justify-content: center;">
   <aside style="position: fixed; left: 0; top: 0; width: 260px; background-color: #ffffff; border-radius: 12px; padding: 16px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
   <h3>Support This Project</h3>
