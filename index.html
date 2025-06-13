@@ -198,7 +198,46 @@
     opacity: 1;
     transform: translateY(0);
   }
-  </style>
+  .main-header {
+  position: sticky;
+  top: 0;
+  background-color: #222;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 24px;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+.brand {
+  font-size: 22px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+.header-nav button {
+  margin: 0 10px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+.header-nav button:hover {
+  text-decoration: underline;
+}
+.header-right {
+  display: flex;
+  align-items: center;
+}
+
+body.dark-mode .main-header {
+  background-color: #111;
+  color: #e0e0e0;
+  box-shadow: 0 2px 4px rgba(255,255,255,0.1);
+}
+
+</style>
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 
 
@@ -214,6 +253,49 @@ function toggleDonations() {
 </script>
 </head>
 <body>
+
+<!-- Header Bar -->
+<header class="main-header">
+  <div class="header-left">
+    <img src="Ethos-Brand-Logo.png" alt="ETHOS Logo" style="height: 40px; margin-right: 10px; vertical-align: middle;">
+    <span class="brand">ETHOS</span>
+  </div>
+  <nav class="header-nav">
+    <button onclick="document.getElementById('quiz').scrollIntoView({ behavior: 'smooth' })">Test</button>
+    <button onclick="document.getElementById('graph').scrollIntoView({ behavior: 'smooth' })">Results</button>
+    <button onclick="document.getElementById('faq').scrollIntoView({ behavior: 'smooth' })">FAQ</button>
+  </nav>
+  <div class="header-right">
+    <label class="toggle-switch">
+      <input type="checkbox" onchange="document.body.classList.toggle('dark-mode')">
+      <span class="toggle-slider"><span class="toggle-knob"></span></span>
+    </label>
+  </div>
+</header>
+
+<!-- Tab Section for Explanations -->
+<div class="tab-container" style="margin-bottom: 30px;">
+  <div class="tab-buttons" style="display: flex; gap: 10px; justify-content: center; margin-bottom: 10px;">
+    <button class="tab-btn active" onclick="showTab('axis')">Axes Explained</button>
+    <button class="tab-btn" onclick="showTab('quadrants')">Ideology Zones</button>
+    <button class="tab-btn" onclick="showTab('faq')">FAQ</button>
+  </div>
+  <div id="axis" class="tab-content active">
+    <p><strong>Economic Axis (X):</strong> Left (Socialist) ↔ Right (Capitalist)</p>
+    <p><strong>Authority Axis (Y):</strong> Down (Reformist) ↔ Up (Traditionalist)</p>
+    <p><strong>Adherence Axis (Z):</strong> Forward (Relativistic) ↔ Back (Principled)</p>
+  </div>
+  <div id="quadrants" class="tab-content" style="display:none;">
+    <p><strong>Anarchism:</strong> Low authority, low adherence, right-leaning.</p>
+    <p><strong>Adherence Socialism:</strong> High authority, high adherence, left-leaning.</p>
+    <p><strong>Liberalism:</strong> Moderately right, moderately traditionalist, relativistic.</p>
+    <p><strong>Progressivism:</strong> Left, reformist, relativistic.</p>
+  </div>
+  <div id="faq" class="tab-content" style="display:none;">
+    <p><strong>Why a 3D model?</strong> Because 2D fails to capture moral adherence and historical complexity.</p>
+    <p><strong>Is this test accurate?</strong> It's meant to illustrate ideological orientation — not label people.</p>
+  </div>
+</div>
 <hr style="border: none; height: 4px; background: #2196f3; margin-bottom: 20px;">
 <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 20px; gap: 12px;">
   <img src="Ethos-Brand-Logo.png" alt="Ethos Logo" style="height: 75px; width: 75px; object-fit: contain;">
@@ -284,5 +366,13 @@ function toggleDonations() {
     </div>
 </div>
 <script src="script.js" defer></script>
+<script>
+function showTab(id) {
+  document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(tab => tab.style.display = 'none');
+  document.querySelector(`[onclick="showTab('${id}')"]`).classList.add('active');
+  document.getElementById(id).style.display = 'block';
+}
+</script>
 </body>
 </html>
