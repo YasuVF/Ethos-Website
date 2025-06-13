@@ -65,6 +65,7 @@
   body.dark-mode .question-box,
   body.dark-mode .answer-option {
     background-color: #222;
+  height: 56px;
     border-color: #444;
   }
   body.dark-mode .answer-text {
@@ -286,10 +287,8 @@ function toggleDonations() {
     <button class="tab-btn" onclick="showTab('faq')">FAQ</button>
   </div>
   <div id="axis" class="tab-content active">
-    <p><strong>Economic Axis (X):</strong> Left (Socialist) ↔ Right (Capitalist)</p>
-    <p><strong>Authority Axis (Y):</strong> Down (Reformist) ↔ Up (Traditionalist)</p>
-    <p><strong>Adherence Axis (Z):</strong> Forward (Relativistic) ↔ Back (Principled)</p>
-  </div>
+  <!-- Axis explanation removed as requested -->
+</div>
   <div id="quadrants" class="tab-content" style="display:none;">
     <p><strong>Anarchism:</strong> Low authority, low adherence, right-leaning.</p>
     <p><strong>Adherence Socialism:</strong> High authority, high adherence, left-leaning.</p>
@@ -354,7 +353,18 @@ function toggleDonations() {
   <div id="progress-text" style="position: absolute; top: -20px; left: 50%; transform: translateX(-50%); font-size: 12px;">0%</div>
 </div>
 <div id="quiz"></div>
-<div id="graph" style="height: 500px; margin-top: 30px;"></div>
+<div style="display: flex; gap: 20px; align-items: flex-start; margin-top: 30px;">
+  <div style="flex: 1;">
+    <div id="graph" style="height: 500px;"></div>
+  </div>
+  <div style="flex: 1;">
+    <div id="faq" style="background: #f1f1f1; padding: 16px; border-radius: 8px;">
+      <h3>FAQ</h3>
+      <p><strong>Why a 3D model?</strong> Because 2D fails to capture moral adherence and historical complexity.</p>
+      <p><strong>Is this test accurate?</strong> It's meant to illustrate ideological orientation — not label people.</p>
+    </div>
+  </div>
+</div>
     </div>
 </div>
 <script src="script.js" defer></script>
@@ -368,4 +378,3 @@ function showTab(id) {
 </script>
 </body>
 </html>
-
