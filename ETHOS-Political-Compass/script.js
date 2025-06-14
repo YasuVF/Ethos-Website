@@ -473,7 +473,12 @@ function plot3D(x, y, z) {
   const savedIndex = localStorage.getItem("ethosSectionIndex");
 
   if (savedResponses) {
-    responses = JSON.parse(savedResponses);
+    const loaded = JSON.parse(savedResponses);
+    responses = new Array(questions.length).fill(null);
+
+    for (let i = 0; i < loaded.length; i++) {
+      if (loaded[i] !== undefined) responses[i] = loaded[i];
+    }
   }
 
   if (savedIndex !== null) {
