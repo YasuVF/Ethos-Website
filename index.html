@@ -331,6 +331,23 @@ function toggleDonations() {
   button.classList.toggle('active', isHidden);
   button.classList.toggle('inactive', !isHidden);
 }
+
+.result-box {
+  background-color: #f1f1f1;
+  color: #111;
+  padding: 40px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Fix for dark mode */
+body.dark-mode .result-box {
+  background-color: #1e1e1e;
+  color: #e0e0e0;
+  box-shadow: 0 2px 8px rgba(255,255,255,0.05);
+}
 </script>
 </head>
 <body>
