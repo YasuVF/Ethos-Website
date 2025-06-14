@@ -455,25 +455,4 @@ function plot3D(x, y, z) {
 
   document.getElementById("graph").appendChild(downloadBtn);
 
-  document.addEventListener("DOMContentLoaded", () => {
-    const savedResponses = localStorage.getItem("ethosResponses");
-    const savedIndex = localStorage.getItem("ethosSectionIndex");
-
-    if (savedResponses) {
-      const loaded = JSON.parse(savedResponses);
-      responses = new Array(questions.length).fill('');
-      for (let i = 0; i < loaded.length; i++) {
-        if (typeof loaded[i] === 'string') responses[i] = loaded[i];
-      }
-    }
-
-    // 👇 Add a safety check for index
-    if (savedIndex !== null) {
-      const parsed = parseInt(savedIndex);
-      sectionIndex = isNaN(parsed) ? 0 : Math.min(parsed, sectionTitles.length - 1);
-    }
-
-    showSection();
-  });
-
 
