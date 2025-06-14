@@ -421,12 +421,12 @@ function plot3D(x, y, z) {
   };
 
   Plotly.newPlot('graph', data, layout);
-}
+  }
 
   function toggleMore(button) {
     const content = document.getElementById("moreContent");
-    const isVisible = content.style.display === "block";
+    const isOpen = content.classList.contains("open");
 
-    content.style.display = isVisible ? "none" : "block";
-    button.textContent = isVisible ? "Show More ▼" : "Show Less ▲";
+    content.classList.toggle("open");
+    button.textContent = isOpen ? "Show More ▼" : "Show Less ▲";
   }
