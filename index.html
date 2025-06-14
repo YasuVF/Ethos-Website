@@ -242,13 +242,14 @@ body.dark-mode .main-header {
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.6s ease;
+  opacity: 0;
+  pointer-events: none;
 }
-
 .collapsible-content.open {
-  max-height: 2000px; /* Enough space to expand fully */
+  max-height: 2000px; /* Adjust if needed */
+  opacity: 1;
+  pointer-events: auto;
 }
-
-
 </style>
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 
@@ -332,7 +333,7 @@ function toggleDonations() {
       <p><em>Located in the back-top-left quadrant.</em></p>
       <img src="hitler-3d-placement.png" alt="3D Compass Position of Hitler" style="width: 100%; border-radius: 6px;">
     </div>
-  </div>
+</div>
 
   <p>This visual comparison illustrates how ideological misclassification can occur when compressed into two dimensions. While the traditional chart places Hitler in the far-right authoritarian quadrant due to a multitude of misinformed factors, it primarily neglects the doctrinaire moralism and centralized collectivism that more accurately define realist socialism in this 3D model. This is not to sanitize or relativize, but to emphasize ideological structure over modern semantic bias.</p>
 
