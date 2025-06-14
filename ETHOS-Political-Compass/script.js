@@ -222,7 +222,7 @@ function calculateResults() {
       ${examples[label] || 'No historical context available for this quadrant.'}
     </div>
     <div style="margin-top: 20px;">
-      <button onclick="retakeTest()" style="padding: 12px 24px; font-size: 16px; background-color: #4caf50; color: white; border: none; border-radius: 8px; cursor: pointer;">
+      <button onclick="retakeTest()" style="padding: 12px 24px; font-size: 16px; background-color: #444; color: white; border: none; border-radius: 8px; cursor: pointer;">
         Retake Test
       </button>
     </div>
