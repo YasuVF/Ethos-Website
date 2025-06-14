@@ -308,7 +308,7 @@ function plot3D(x, y, z) {
     ]
   },
   {
-    name: 'Anarchism', color: '#00bcd4',
+    name: 'Liberalism', color: '#00bcd4',
     vertices: [
       [0, -1, 0], [1, -1, 0], [1, 0, 0], [0, 0, 0],
       [0, -1, 1], [1, -1, 1], [1, 0, 1], [0, 0, 1]
@@ -336,7 +336,7 @@ function plot3D(x, y, z) {
     ]
   },
   {
-    name: 'Liberalism', color: '#03a9f4',
+    name: 'Anarchism', color: '#03a9f4',
     vertices: [
       [0, 0, 0], [1, 0, 0], [1, 1, 0], [0, 1, 0],
       [0, 0, 1], [1, 0, 1], [1, 1, 1], [0, 1, 1]
