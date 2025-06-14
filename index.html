@@ -280,6 +280,32 @@ body.dark-mode .light-box {
 .donation-toggle-btn:hover {
   background-color: #333; /* Slightly darker on hover */
 }
+
+.show-more-btn {
+  background: none;
+  border: none;
+  color: #2196f3;
+  font-size: 16px;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.show-more-btn:hover {
+  color: #1769aa; /* darker blue on hover */
+}
+
+.show-more-btn {
+  background: none;
+  border: none;
+  color: #444;
+  font-size: 16px;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.show-more-btn:hover {
+  color: #333; /* darker blue on hover */
+}
 </style>
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 
@@ -343,7 +369,7 @@ function toggleDonations() {
 </ul>
 
 <!-- More Info Toggle Button -->
-<button onclick="toggleMore(this)" style="margin-bottom: 12px; background: none; border: none; color: #2196f3; font-size: 16px; cursor: pointer;">Show More ▼</button>
+<button class="show-more-btn" onclick="toggleMore(this)">Show More ▼</button>
 
 <!-- Collapsible Content -->
 <div id="moreContent" class="collapsible-content">
