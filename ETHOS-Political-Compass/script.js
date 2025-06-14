@@ -112,6 +112,20 @@ document.addEventListener("DOMContentLoaded", () => {
   showSection();
 });
 
+function retakeTest() {
+  // Clear responses and section index
+  responses = [];
+  sectionIndex = 0;
+
+  // Clear localStorage to reset the test state
+  localStorage.removeItem("ethos-responses");
+  localStorage.removeItem("ethos-sectionIndex");
+
+  // Reinitialize the test
+  showSection(); // Show the first section again
+  document.getElementById("quiz").scrollIntoView({ behavior: 'smooth' });
+}
+
 function showSection() {
   const container = document.getElementById("quiz");
   const start = sectionIndex * 10;
@@ -204,9 +218,14 @@ function calculateResults() {
     <p><strong>Adherence (z):</strong> ${z.toFixed(2)}</p>
     <p><strong>Ideological Interpretation:</strong> ${label}</p>
     <div class="result-description" style="margin-top: 20px; padding: 12px; border: 1px solid #ccc; border-radius: 8px; background-color: #f9f9f9;">
-  <strong>Context:</strong><br>
-  ${examples[label] || 'No historical context available for this quadrant.'}
-</div>
+      <strong>Context:</strong><br>
+      ${examples[label] || 'No historical context available for this quadrant.'}
+    </div>
+    <div style="margin-top: 20px;">
+      <button onclick="retakeTest()" style="padding: 12px 24px; font-size: 16px; background-color: #4caf50; color: white; border: none; border-radius: 8px; cursor: pointer;">
+        Retake Test
+      </button>
+    </div>
   `;
 
   resultBox.classList.add("fade-out");
