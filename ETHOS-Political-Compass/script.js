@@ -133,7 +133,7 @@ function showSection() {
   }
 }
 
-function createAnswerOption(index, choice, label, currentResponse) {
+function createAnswerOption(index, choice, label, currentResponse = '') {
   const selectedClass = currentResponse === choice ? 'selected' : '';
   return `
     <div class="answer-option ${selectedClass}" onclick="submitAnswer(${index}, '${choice}', this)">
