@@ -256,21 +256,15 @@ function nextSection() {
 }
 
 function plot3D(x, y, z) {
+  // Make graph section visible first
+  const graphSection = document.getElementById("graph-section");
+  graphSection.style.display = "block";
+
+  // Clear any existing chart
+  const graph = document.getElementById("graph");
+  graph.innerHTML = "";
+  
   const ideology = getIdeologyLabel(x, y, z);
-
-    // 👉 This line makes the graph + button visible only after results
-  document.getElementById("graph-section").style.display = "block";
-
-  // Optional: make sure download button works after visibility toggle
-  document.getElementById("downloadBtn").onclick = function () {
-    Plotly.downloadImage('graph', {
-      format: 'png',
-      filename: 'ethos_3d_result',
-      height: 600,
-      width: 800,
-      scale: 2
-    });
-  };
   
   const colorMap = {
     'Realist Socialism': '#9c27b0',
@@ -435,5 +429,18 @@ function plot3D(x, y, z) {
   };
 
   Plotly.newPlot('graph', data, layout);
+    
+  // Attach Download Button handler
+  const downloadBtn = document.getElementById("downloadBtn");
+  if (downloadBtn) {
+    downloadBtn.onclick = function () {
+      Plotly.downloadImage('graph', {
+        format: 'png',
+        filename: 'ethos_3d_result',
+        height: 600,
+        width: 800,
+        scale: 2
+      });
+    };
+  }
 }
-
