@@ -225,6 +225,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function submitAnswer(index, choice, button) {
   responses[index] = choice;
+  localStorage.setItem("ethosResponses", JSON.stringify(responses));  // ← Save to localStorage
 
   const buttons = button.parentElement.querySelectorAll('.answer-option');
   buttons.forEach(btn => btn.classList.remove('selected'));
@@ -235,6 +236,7 @@ function submitAnswer(index, choice, button) {
 function prevSection() {
   if (sectionIndex > 0) {
     sectionIndex--;
+    localStorage.setItem("ethosSectionIndex", sectionIndex); // Save current section
     showSection();
     document.getElementById("quiz").scrollIntoView({ behavior: 'smooth' });
   }
@@ -251,6 +253,10 @@ function nextSection() {
   }
 
   sectionIndex++;
+  // Save progress to localStorage
+  localStorage.setItem("ethosResponses", JSON.stringify(responses));
+  localStorage.setItem("ethosSectionIndex", sectionIndex);
+
   if (sectionIndex * 10 < questions.length) {
     showSection();
     document.getElementById("quiz").scrollIntoView({ behavior: 'smooth' });
@@ -461,5 +467,20 @@ function plot3D(x, y, z) {
       button.textContent = "Show Less ▲";
     }
   }
+  
+  document.addEventListener("DOMContentLoaded", () => {
+  const savedResponses = localStorage.getItem("ethosResponses");
+  const savedIndex = localStorage.getItem("ethosSectionIndex");
+
+  if (savedResponses) {
+    responses = JSON.parse(savedResponses);
+  }
+
+  if (savedIndex !== null) {
+    sectionIndex = parseInt(savedIndex);
+  }
+
+  showSection();
+});
 
 
