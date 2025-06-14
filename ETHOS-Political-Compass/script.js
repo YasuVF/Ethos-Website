@@ -133,7 +133,8 @@ function showSection() {
   }
 }
 
-function createAnswerOption(index, choice, label, currentResponse = '') {
+function createAnswerOption(index, choice, label, currentResponse) {
+  if (typeof currentResponse !== 'string') currentResponse = '';
   const selectedClass = currentResponse === choice ? 'selected' : '';
   return `
     <div class="answer-option ${selectedClass}" onclick="submitAnswer(${index}, '${choice}', this)">
@@ -141,6 +142,7 @@ function createAnswerOption(index, choice, label, currentResponse = '') {
       <span class="answer-text">${label}</span>
     </div>`;
 }
+
 
 function calculateResults() {
   document.getElementById("progress-bar").style.width = "100%";
@@ -472,12 +474,14 @@ function plot3D(x, y, z) {
   const savedResponses = localStorage.getItem("ethosResponses");
   const savedIndex = localStorage.getItem("ethosSectionIndex");
 
-  if (savedResponses) {
+   if (savedResponses) {
     const loaded = JSON.parse(savedResponses);
-    responses = new Array(questions.length).fill(null);
+    responses = new Array(questions.length).fill('');
 
     for (let i = 0; i < loaded.length; i++) {
-      if (loaded[i] !== undefined) responses[i] = loaded[i];
+      if (typeof loaded[i] === 'string') {
+        responses[i] = loaded[i];
+      }
     }
   }
 
