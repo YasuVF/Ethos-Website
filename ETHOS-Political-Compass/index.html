@@ -478,6 +478,19 @@ function showTab(id) {
   document.querySelector(`[onclick="showTab('${id}')"]`).classList.add('active');
   document.getElementById(id).style.display = 'block';
 }
+
+const downloadBtn = document.getElementById("downloadBtn");
+if (downloadBtn) {
+  downloadBtn.onclick = function () {
+    Plotly.downloadImage('graph', {
+      format: 'png',
+      filename: 'ethos_3d_result',
+      height: 600,
+      width: 800,
+      scale: 2
+    });
+  };
+}
 </script>
 </body>
 </html>
