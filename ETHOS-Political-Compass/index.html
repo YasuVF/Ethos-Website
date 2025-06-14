@@ -366,19 +366,6 @@ function toggleDonations() {
   button.innerText = isHidden ? 'Hide Donations' : 'Show Donations';
   button.classList.toggle('active', isHidden);
   button.classList.toggle('inactive', !isHidden);
-
-function toggleMore(this) {
-  const content = document.getElementById("moreContent");
-  const isOpen = content.classList.contains("open");
-
-  if (isOpen) {
-    content.classList.remove("open");
-    button.textContent = "Show More ▼";
-  } else {
-    content.classList.add("open");
-    button.textContent = "Show Less ▲";
-  }
-}
 </script>
 </head>
 <body>
@@ -484,6 +471,19 @@ function showTab(id) {
   document.querySelectorAll('.tab-content').forEach(tab => tab.style.display = 'none');
   document.querySelector(`[onclick="showTab('${id}')"]`).classList.add('active');
   document.getElementById(id).style.display = 'block';
+}
+
+function toggleMore(this) {
+  const content = document.getElementById("moreContent");
+  const isOpen = content.classList.contains("open");
+
+  if (isOpen) {
+    content.classList.remove("open");
+    button.textContent = "Show More ▼";
+  } else {
+    content.classList.add("open");
+    button.textContent = "Show Less ▲";
+  }
 }
 
 const downloadBtn = document.getElementById("downloadBtn");
