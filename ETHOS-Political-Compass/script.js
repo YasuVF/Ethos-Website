@@ -238,13 +238,13 @@ document.addEventListener("DOMContentLoaded", () => {
 function submitAnswer(index, choice, button) {
   responses[index] = choice;
 
-  // Save current responses to localStorage for persistence
-  localStorage.setItem('ethosResponses', JSON.stringify(responses));
-
   const buttons = button.parentElement.querySelectorAll('.answer-option');
   buttons.forEach(btn => btn.classList.remove('selected'));
 
   button.classList.add('selected');
+
+  // Save to localStorage
+  localStorage.setItem("ethos-responses", JSON.stringify(responses));
 }
 
 function nextSection() {
