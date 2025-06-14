@@ -451,23 +451,13 @@ function toggleDonations() {
   <div id="progress-text" style="position: absolute; top: -20px; left: 50%; transform: translateX(-50%); font-size: 12px;">0%</div>
 </div>
 
-  <div id="quiz"></div>
-
-      <!-- Graph Wrapper & Result Display -->
-      <div id="graph-wrapper" style="display: none; margin-top: 30px;">
-        <div id="graph-container" style="display: flex; gap: 20px; align-items: flex-start;">
-          <div id="graph" style="height: 500px; flex: 1;"></div>
-          <div id="graph-controls">
-            <button id="downloadBtn">Download Chart</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Result Info -->
-      <div id="result-info"></div>
-
-    </main>
-  </div>
+<div id="quiz"></div>
+<section aria-label="3D Political Graph">
+  <div id="graph" style="height: 500px; margin-top: 40px;"></div>
+</section>
+<section id="result-info" aria-label="Result Explanation"></section>
+</main>
+</div>
 </div>
 
 <script src="script.js" defer></script>
