@@ -427,6 +427,13 @@ function plot3D(x, y, z) {
     const content = document.getElementById("moreContent");
     const isOpen = content.classList.contains("open");
 
-    content.classList.toggle("open");
-    button.textContent = isOpen ? "Show More ▼" : "Show Less ▲";
+    if (isOpen) {
+      content.classList.remove("open");
+      button.textContent = "Show More ▼";
+    } else {
+      content.classList.add("open");
+      button.textContent = "Show Less ▲";
+    }
   }
+
+
