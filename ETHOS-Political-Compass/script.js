@@ -196,6 +196,7 @@ function calculateResults() {
     setTimeout(() => resultBox.classList.remove("fade-in"), 300);
 
   // Plot 3D point
+  document.getElementById("graph").style.display = "block";
   plot3D(x, y, z);
   }, 1500);
 }
