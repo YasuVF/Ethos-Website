@@ -229,26 +229,26 @@
     
 .header-nav {
   display: flex;
-  justify-content: center;   /* centers the items */
-  gap: 32px;                 /* increase spacing between links/buttons */
+  justify-content: center;
   align-items: center;
+  gap: 32px;
 }
 
-.header-nav a,
+.header-nav .nav-link,
 .header-nav button {
   background: none;
   border: none;
   color: white;
   font-size: 16px;
   cursor: pointer;
-  text-decoration: none;        /* no underline by default */
-  transition: text-decoration 0.2s ease, color 0.2s ease;
+  text-decoration: none;
+  transition: color 0.2s ease, text-decoration 0.2s ease;
 }
 
-.header-nav a:hover,
+.header-nav .nav-link:hover,
 .header-nav button:hover {
-  text-decoration: underline;   /* underline only on hover */
-  color: #64b5f6;               /* optional hover color */
+  text-decoration: underline;
+  color: #64b5f6;
 }
 
 .header-right {
@@ -381,9 +381,9 @@ function toggleDonations() {
 
   <nav class="header-nav" style="display: flex; gap: 16px; align-items: center;">
     <button onclick="document.getElementById('faq').scrollIntoView({ behavior: 'smooth' })">Home</button>
-    <a href="explanation.html" style="color: white; text-decoration: none; font-size: 16px;">Explanation</a>
+    <a href="explanation.html" class="nav-link">Explanation</a>
     <button onclick="document.getElementById('quiz').scrollIntoView({ behavior: 'smooth' })">Test</button>
-    <a href="faq.html" style="color: white; text-decoration: none; font-size: 16px;">FAQ</a>
+    <a href="faq.html" class="nav-link"">FAQ</a>
   </nav>
 
   <div class="header-right" style="display: flex; align-items: center; gap: 8px;">
