@@ -208,9 +208,9 @@ function getIdeologyLabel(x, y, z) {
     'Left,Anarchist,Religious': 'Utopian Socialism',
     'Left,Anarchist,Secular': 'Corporatism',
     'Right,Authoritarian,Religious': 'Conservatism',
-    'Right,Authoritarian,Secular': 'Anarchism',  // swapped here
+    'Right,Authoritarian,Secular': 'Liberalism',  // swapped here
     'Right,Anarchist,Religious': 'Libertarianism',
-    'Right,Anarchist,Secular': 'Liberalism'       // swapped here
+    'Right,Anarchist,Secular': 'Anarchism'       // swapped here
   };
   return map[quadrant] || 'Unclassified Position';
 }
