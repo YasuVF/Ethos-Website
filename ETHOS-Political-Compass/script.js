@@ -444,6 +444,18 @@ function plot3D(x, y, z) {
   };
 
   document.getElementById("graph").appendChild(downloadBtn);
+
+  function toggleMore(button) {
+    const content = document.getElementById("moreContent");
+    const isOpen = content.classList.contains("open");
+
+    if (isOpen) {
+      content.classList.remove("open");
+      button.textContent = "Show More ▼";
+    } else {
+      content.classList.add("open");
+      button.textContent = "Show Less ▲";
+    }
   }
 
 
