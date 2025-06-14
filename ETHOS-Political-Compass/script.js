@@ -102,11 +102,11 @@ function showSection() {
 
   sectionQuestions.forEach((q, i) => {
     const index = start + i;
-    const currentResponse = responses[index] ?? ''; // Ensure no undefined!
+    const currentResponse = responses[index] ?? ''; // Protect from undefined
 
     html += `
       <div class="question-box">
-        <p><strong>Q${index + 1}:</strong> ${q.text}</p>
+        <p><strong>Q${index + 1}:</strong> ${q.text || ''}</p>
         <div class="answer-set">
           ${createAnswerOption(index, 'agree', 'Agree', currentResponse)}
           ${createAnswerOption(index, 'somewhat_agree', 'Somewhat Agree', currentResponse)}
@@ -118,11 +118,12 @@ function showSection() {
   });
 
   html += `
-  <div style="display: flex; justify-content: space-between; gap: 10px;">
-    ${sectionIndex > 0 ? '<button onclick="prevSection()">Back</button>' : '<div></div>'}
-    <button onclick="nextSection()">Next Section</button>
-  </div>
-`;
+    <div style="display: flex; justify-content: space-between; gap: 10px;">
+      ${sectionIndex > 0 ? '<button onclick="prevSection()">Back</button>' : '<div></div>'}
+      <button onclick="nextSection()">Next Section</button>
+    </div>
+  `;
+
   container.innerHTML = html;
 
   const progress = (Math.min(responses.filter(Boolean).length, questions.length) / questions.length) * 100;
