@@ -423,17 +423,27 @@ function plot3D(x, y, z) {
   Plotly.newPlot('graph', data, layout);
   }
 
-  function toggleMore(button) {
-    const content = document.getElementById("moreContent");
-    const isOpen = content.classList.contains("open");
+  const downloadBtn = document.createElement("button");
+  downloadBtn.textContent = "Download Chart";
+  downloadBtn.style.marginTop = "16px";
+  downloadBtn.style.padding = "10px 14px";
+  downloadBtn.style.backgroundColor = "#2196f3";
+  downloadBtn.style.color = "white";
+  downloadBtn.style.border = "none";
+  downloadBtn.style.borderRadius = "6px";
+  downloadBtn.style.cursor = "pointer";
 
-    if (isOpen) {
-      content.classList.remove("open");
-      button.textContent = "Show More ▼";
-    } else {
-      content.classList.add("open");
-      button.textContent = "Show Less ▲";
-    }
+  downloadBtn.onclick = function () {
+    Plotly.downloadImage('graph', {
+      format: 'png',
+      filename: 'ethos_3d_result',
+      height: 600,
+      width: 800,
+      scale: 2
+    });
+  };
+
+  document.getElementById("graph").appendChild(downloadBtn);
   }
 
 
