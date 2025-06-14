@@ -295,6 +295,26 @@ body.dark-mode .light-box {
 .show-more-btn:focus-visible {
   outline: none; /* optional: or add a custom dashed border for accessibility */
 }
+
+.donation-sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 260px;
+  height: 100%;
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.4s ease, opacity 0.4s ease;
+  z-index: 100;
+}
+
+.donation-sidebar.hidden {
+  transform: translateX(-280px); /* slide out to the left */
+  opacity: 0;
+  pointer-events: none;
+}
 </style>
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 
@@ -336,7 +356,7 @@ function toggleDonations() {
 </header>
 
 <div style="position: relative; display: flex; justify-content: center;">
-  <aside style="position: fixed; left: 0; top: 0; width: 260px; background-color: #ffffff; border-radius: 12px; padding: 16px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
+  <aside class="donation-sidebar">
   <h3>Support This Project</h3>
   <p style="font-size: 14px;">If you found this tool valuable, consider donating crypto to help with hosting and development:</p>
   <p><a href="https://nowpayments.io/donation?api_key=YOUR_API_KEY&currency=btc" target="_blank"><button style="display: flex; align-items: center; gap: 8px; padding: 10px 14px; background-color: black; color: white; font-weight: bold; border: none; border-radius: 6px; cursor: pointer;"><img src="https://cryptologos.cc/logos/bitcoin-btc-logo.png" alt="BTC" style="height: 20px;"> Bitcoin</button></a></p>
