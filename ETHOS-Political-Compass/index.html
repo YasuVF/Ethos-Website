@@ -473,19 +473,6 @@ function showTab(id) {
   document.getElementById(id).style.display = 'block';
 }
 
-function toggleMore(this) {
-  const content = document.getElementById("moreContent");
-  const isOpen = content.classList.contains("open");
-
-  if (isOpen) {
-    content.classList.remove("open");
-    button.textContent = "Show More ▼";
-  } else {
-    content.classList.add("open");
-    button.textContent = "Show Less ▲";
-  }
-}
-
 const downloadBtn = document.getElementById("downloadBtn");
 if (downloadBtn) {
   downloadBtn.onclick = function () {
