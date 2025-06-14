@@ -321,12 +321,16 @@ body.dark-mode .light-box {
 
 <script>
 function toggleDonations() {
-  const aside = document.querySelector('aside');
+  const aside = document.querySelector('.donation-sidebar');
   const main = document.querySelector('main').parentElement;
-  const hidden = aside.style.display === 'none';
-  aside.style.display = hidden ? 'block' : 'none';
-  main.style.marginLeft = hidden ? '260px' : '60px';
-  document.getElementById('donationToggleBtn').innerText = hidden ? 'Hide Donations' : 'Show Donations';
+  const button = document.getElementById('donationToggleBtn');
+  const isHidden = aside.classList.contains('hidden');
+
+  aside.classList.toggle('hidden');
+  main.style.marginLeft = isHidden ? '260px' : '60px';
+  button.innerText = isHidden ? 'Hide Donations' : 'Show Donations';
+  button.classList.toggle('active', isHidden);
+  button.classList.toggle('inactive', !isHidden);
 }
 </script>
 </head>
