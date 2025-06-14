@@ -96,8 +96,16 @@ document.addEventListener("DOMContentLoaded", () => {
   const savedResponses = localStorage.getItem("ethos-responses"); // Retrieve the saved responses
   if (savedResponses) {
     responses = JSON.parse(savedResponses); // Parse and set the responses
+  } else {
+    // Initialize empty responses array if nothing is stored
+    responses = new Array(questions.length).fill('');
   }
+
+  // Set default section index if it's not already set
+  sectionIndex = parseInt(localStorage.getItem("ethos-sectionIndex")) || 0;
+
   showSection(); // Make sure to call showSection after loading
+});
 
 function showSection() {
   const container = document.getElementById("quiz");
