@@ -191,15 +191,16 @@ function calculateResults() {
 </div>
   `;
 
-  resultBox.classList.add("fade-out");
   setTimeout(() => {
-    resultBox.innerHTML = html;
-    resultBox.classList.remove("fade-out");
+    resultBox.innerHTML = `
+      <h2>Your Results:</h2>
+      <p><strong>Economic (x):</strong> ${x.toFixed(2)}</p>
+      <p><strong>Authority (y):</strong> ${y.toFixed(2)}</p>
+      <p><strong>Adherence (z):</strong> ${z.toFixed(2)}</p>
+      <p><strong>Ideological Interpretation:</strong> ${label}</p>
+    `;
     resultBox.classList.add("fade-in");
-    setTimeout(() => resultBox.classList.remove("fade-in"), 300);
-
-  // Plot 3D point
-  plot3D(x, y, z);
+    plot3D(x, y, z, label);
   }, 1500);
 }
 
