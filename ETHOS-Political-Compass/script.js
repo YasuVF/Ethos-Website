@@ -102,15 +102,16 @@ function showSection() {
 
   sectionQuestions.forEach((q, i) => {
     const index = start + i;
-    const borderStyle = 'class="question-box"';
+    const currentResponse = responses[index] ?? ''; // Ensure no undefined!
+
     html += `
-      <div ${borderStyle}>
+      <div class="question-box">
         <p><strong>Q${index + 1}:</strong> ${q.text}</p>
         <div class="answer-set">
-          ${createAnswerOption(index, 'agree', 'Agree', responses[index])}
-          ${createAnswerOption(index, 'somewhat_agree', 'Somewhat Agree', responses[index])}
-          ${createAnswerOption(index, 'somewhat_disagree', 'Somewhat Disagree', responses[index])}
-          ${createAnswerOption(index, 'disagree', 'Disagree', responses[index])}
+          ${createAnswerOption(index, 'agree', 'Agree', currentResponse)}
+          ${createAnswerOption(index, 'somewhat_agree', 'Somewhat Agree', currentResponse)}
+          ${createAnswerOption(index, 'somewhat_disagree', 'Somewhat Disagree', currentResponse)}
+          ${createAnswerOption(index, 'disagree', 'Disagree', currentResponse)}
         </div>
       </div>
     `;
