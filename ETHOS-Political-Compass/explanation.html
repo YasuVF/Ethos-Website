@@ -1,1 +1,255 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Explination – ETHOS Political Compass</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 40px;
+      max-width: 800px;
+      margin: auto;
+      background-color: #EFEFEF;
+      color: #333;
+    }
+    h1 { text-align: center; }
+    h2 { margin-top: 30px; }
 
+    /* Toggle styles */
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 46px;
+  height: 24px;
+}
+    
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+    
+.toggle-slider {
+  width: 46px;  /* Match the toggle-switch container */
+  position: absolute;
+  cursor: pointer;
+  top: 0; left: 0;
+  right: 0; bottom: 0;
+  background-color: #333;
+  border-radius: 34px;
+  transition: 0.4s;
+}
+    
+.toggle-knob {
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  left: 2px;
+  top: 2px;
+  background-color: white;
+  border-radius: 50%;
+  transition: 0.4s;
+}
+    
+.toggle-switch input:checked + .toggle-slider {
+  background-color: #999;
+}
+    
+.toggle-switch input:checked + .toggle-slider .toggle-knob {
+  transform: translateX(22px); /* correct size for 46px track with 20px knob */
+}
+    
+  body.dark-mode {
+    background-color: #121212;
+    color: #e0e0e0;
+  }
+    
+  body.dark-mode #quiz {
+    background-color: #1e1e1e;
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.05);
+  }
+    
+  body.dark-mode .question-box,
+  body.dark-mode .answer-option {
+    background-color: #222;
+    border-color: #444;
+    
+  }
+  body.dark-mode .answer-text {
+    color: #ddd;
+    
+  }
+    
+  body.dark-mode .answer-option.selected {
+    background-color: rgba(33, 150, 243, 0.3);
+    border-color: #2196f3;
+  }
+
+   button {
+    display: block;
+    margin: 10px 0;
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    background-color: #2196f3;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+
+  button:hover {
+    background-color: #1976d2;
+  }
+
+    .fade-out {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  .fade-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+    
+  .main-header {
+  box-sizing: border-box;
+  position: sticky;
+  top: 0;
+  background-color: #222;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 24px;
+  height: 48px;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+    
+.brand {
+  font-size: 22px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+    
+.header-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+}
+
+.header-nav .nav-link,
+.header-nav button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: color 0.2s ease, text-decoration 0.2s ease;
+}
+
+.header-nav .nav-link:hover,
+.header-nav button:hover {
+  text-decoration: underline;
+  color: #64b5f6;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+}
+
+body.dark-mode .main-header {
+  background-color: #111;
+  color: #e0e0e0;
+  box-shadow: 0 2px 4px rgba(255,255,255,0.1);
+}
+
+body.dark-mode aside {
+  color: #111111; /* Dark gray text inside white box */
+}
+
+.donation-toggle-btn {
+  background-color: #444; /* ← Pick your new color here */
+  color: white;
+  padding: 8px 12px;
+  font-size: 14px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.donation-sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 260px;
+  height: 100%;
+  background-color: #ffffff;
+  border-radius: 12px 0 0 12px;
+  padding: 16px;
+  box-shadow: 2px 0 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.4s ease, opacity 0.4s ease;
+  z-index: 100;
+}
+
+.donation-sidebar.hidden {
+  transform: translateX(-280px);
+  opacity: 0;
+  pointer-events: none;
+}
+</style>
+<script>
+function toggleDonations() {
+  const aside = document.querySelector('.donation-sidebar');
+  const button = document.getElementById('donationToggleBtn');
+  const isHidden = aside.classList.contains('hidden');
+
+  aside.classList.toggle('hidden');
+  button.innerText = isHidden ? 'Hide Donations' : 'Show Donations';
+  button.classList.toggle('active', isHidden);
+  button.classList.toggle('inactive', !isHidden);
+}
+</script>
+</head>
+<body>
+
+<!-- Header Bar -->
+<header class="main-header" style="display: flex; justify-content: space-between; align-items: center; padding: 4px 24px; height: 48px;">
+  <div class="header-left" style="display: flex; align-items: center;">
+    <img src="../SRC/Ethos-Brand-Logo.png" alt="ETHOS Logo" style="height: 40px; margin-right: 10px;">
+    <span class="brand">ETHOS</span>
+  </div>
+
+  <nav class="header-nav" style="display: flex; gap: 16px; align-items: center;">
+    <button onclick="document.getElementById('faq').scrollIntoView({ behavior: 'smooth' })">Home</button>
+    <a href="explanation.html" class="nav-link">Explanation</a>
+    <button onclick="document.getElementById('quiz').scrollIntoView({ behavior: 'smooth' })">Test</button>
+    <a href="faq.html" class="nav-link"">FAQ</a>
+  </nav>
+
+  <div class="header-right" style="display: flex; align-items: center; gap: 8px;">
+    <button id="donationToggleBtn" class="donation-toggle-btn" onclick="toggleDonations()">Hide Donations</button>
+    <label class="toggle-switch">
+      <input type="checkbox" onchange="document.body.classList.toggle('dark-mode')">
+      <span class="toggle-slider"><span class="toggle-knob"></span></span>
+    </label>
+  </div>
+</header>
+
+<div style="position: relative; display: flex; justify-content: center;">
+  <aside class="donation-sidebar">
+  <h3>Support This Project</h3>
+  <p style="font-size: 14px;">If you found this tool valuable, consider donating crypto to help with hosting and development:</p>
+  <p><a href="https://nowpayments.io/donation?api_key=YOUR_API_KEY&currency=btc" target="_blank"><button style="display: flex; align-items: center; gap: 8px; padding: 10px 14px; background-color: black; color: white; font-weight: bold; border: none; border-radius: 6px; cursor: pointer;"><img src="https://cryptologos.cc/logos/bitcoin-btc-logo.png" alt="BTC" style="height: 20px;"> Bitcoin</button></a></p>
+  <p><a href="https://nowpayments.io/donation?api_key=YOUR_API_KEY&currency=eth" target="_blank"><button style="display: flex; align-items: center; gap: 8px; padding: 10px 14px; background-color: #444; color: white; font-weight: bold; border: none; border-radius: 6px; cursor: pointer;"><img src="https://cryptologos.cc/logos/ethereum-eth-logo.png" alt="ETH" style="height: 20px;"> Ethereum</button></a></p>
+  <p><a href="https://nowpayments.io/donation?api_key=YOUR_API_KEY&currency=rvn" target="_blank"><button style="display: flex; align-items: center; gap: 8px; padding: 10px 14px; background-color: #444; color: white; font-weight: bold; border: none; border-radius: 6px; cursor: pointer;"><img src="https://cryptologos.cc/logos/ravencoin-rvn-logo.png" alt="RVN" style="height: 20px;"> Ravencoin</button></a></p>
+  <p><a href="https://nowpayments.io/donation?api_key=YOUR_API_KEY&currency=etc" target="_blank"><button style="display: flex; align-items: center; gap: 8px; padding: 10px 14px; background-color: #444; color: white; font-weight: bold; border: none; border-radius: 6px; cursor: pointer;"><img src="https://cryptologos.cc/logos/ethereum-classic-etc-logo.png" alt="ETC" style="height: 20px;"> Ethereum Classic</button></a></p>
+  <p><a href="https://nowpayments.io/donation?api_key=YOUR_API_KEY&currency=xmr" target="_blank"><button style="display: flex; align-items: center; gap: 8px; padding: 10px 14px; background-color: #444; color: white; font-weight: bold; border: none; border-radius: 6px; cursor: pointer;"><img src="https://cryptologos.cc/logos/monero-xmr-logo.png" alt="XMR" style="height: 20px;"> Monero</button></a></p>
+</aside>
+  <div style="margin-left: 160px; margin-right: 80px; max-width: 1100px;">
+  <main style="flex: 1;">
