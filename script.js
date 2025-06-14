@@ -182,7 +182,7 @@ function calculateResults() {
     <p><strong>Authority (y):</strong> ${y.toFixed(2)}</p>
     <p><strong>Adherence (z):</strong> ${z.toFixed(2)}</p>
     <p><strong>Ideological Interpretation:</strong> ${label}</p>
-    <div class="result-description" style="margin-top: 20px; padding: 12px; border: 1px solid #ccc; border-radius: 8px; background-color: #f9f9f9;">
+    <div class="result-description">
   <strong>Context:</strong><br>
   ${examples[label] || 'No historical context available for this quadrant.'}
 </div>
