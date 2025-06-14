@@ -451,37 +451,25 @@ function toggleDonations() {
   <div id="progress-text" style="position: absolute; top: -20px; left: 50%; transform: translateX(-50%); font-size: 12px;">0%</div>
 </div>
 
-<div id="quiz"></div>
-<div id="graph" style="height: 500px; margin-top: 40px;"></div>
+  <div id="quiz"></div>
 
-<!-- Graph & Result Info (side-by-side) -->
-<div style="display: flex; gap: 20px; align-items: flex-start; margin-top: 30px;">
-  <!-- Graph Container -->
-  <div style="flex: 1;">
-    <div id="graph" style="height: 500px;"></div>
-  </div>
+      <!-- Graph Wrapper & Result Display -->
+      <div id="graph-wrapper" style="display: none; margin-top: 30px;">
+        <div id="graph-container" style="display: flex; gap: 20px; align-items: flex-start;">
+          <div id="graph" style="height: 500px; flex: 1;"></div>
+          <div id="graph-controls">
+            <button id="downloadBtn">Download Chart</button>
+          </div>
+        </div>
+      </div>
 
-  <!-- Placeholder for result interpretation, label, etc. -->
-  <div style="flex: 1;">
-    <div id="result-info">
-      <!-- This is where result label, context, etc. can go -->
-    </div>
+      <!-- Result Info -->
+      <div id="result-info"></div>
+
+    </main>
   </div>
 </div>
-    
-  </div>
-</div>
-  </div>
-</div>
-  </div>
-  
-  </div>
-</div>
-  </div>
-  
-</div>
-    </div>
-</div>
+
 <script src="script.js" defer></script>
 <script>
 function showTab(id) {
