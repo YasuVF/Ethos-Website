@@ -145,28 +145,6 @@ function createAnswerOption(index, choice, label, currentResponse) {
     </div>`;
 }
 
-  const downloadBtn = document.createElement("button");
-  downloadBtn.textContent = "Download Chart";
-  downloadBtn.style.marginTop = "16px";
-  downloadBtn.style.padding = "10px 14px";
-  downloadBtn.style.backgroundColor = "#2196f3";
-  downloadBtn.style.color = "white";
-  downloadBtn.style.border = "none";
-  downloadBtn.style.borderRadius = "6px";
-  downloadBtn.style.cursor = "pointer";
-
-  downloadBtn.onclick = function () {
-    Plotly.downloadImage('graph', {
-      format: 'png',
-      filename: 'ethos_3d_result',
-      height: 600,
-      width: 800,
-      scale: 2
-    });
-  };
-
-  document.getElementById("graph").appendChild(downloadBtn);
-
 function calculateResults() {
   document.getElementById("progress-bar").style.width = "100%";
   const progressText = document.getElementById("progress-text");
@@ -221,6 +199,10 @@ function calculateResults() {
     setTimeout(() => resultBox.classList.remove("fade-in"), 300);
 
   // Plot 3D point
+  const controls = document.getElementById("graph-controls");
+  controls.innerHTML = ''; // Clear any existing content
+  controls.appendChild(downloadBtn);
+
   plot3D(x, y, z);
   }, 1500);
 }
@@ -288,8 +270,6 @@ function nextSection() {
 
 function plot3D(x, y, z) {
   document.getElementById("graph-wrapper").style.display = "block";
-  const graph = document.getElementById("graph");
-  graph.innerHTML = "";
 
   const colorMap = {
     'Realist Socialism': '#9c27b0',
@@ -468,7 +448,22 @@ function plot3D(x, y, z) {
       button.textContent = "Show Less ▲";
     }
   }
-  
+
+  const downloadBtn = document.getElementById("downloadBtn");
+  if (downloadBtn) {
+    downloadBtn.onclick = function () {
+      Plotly.downloadImage('graph', {
+        format: 'png',
+        filename: 'ethos_3d_result',
+        height: 600,
+        width: 800,
+        scale: 2
+      });
+    };
+  }
+
+  document.getElementById("graph").appendChild(downloadBtn);
+
   document.addEventListener("DOMContentLoaded", () => {
     const savedResponses = localStorage.getItem("ethosResponses");
     const savedIndex = localStorage.getItem("ethosSectionIndex");
