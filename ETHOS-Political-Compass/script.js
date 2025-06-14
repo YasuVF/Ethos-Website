@@ -91,20 +91,25 @@ const answerScores = {
 let sectionIndex = 0;
 let responses = [];
 
-// Load responses from localStorage if they exist
 document.addEventListener("DOMContentLoaded", () => {
-  const savedResponses = localStorage.getItem("ethos-responses"); // Retrieve the saved responses
+  const savedResponses = localStorage.getItem("ethos-responses");
+  const savedIndex = localStorage.getItem("ethos-sectionIndex");
+
   if (savedResponses) {
-    responses = JSON.parse(savedResponses); // Parse and set the responses
-  } else {
-    // Initialize empty responses array if nothing is stored
-    responses = new Array(questions.length).fill('');
+    responses = JSON.parse(savedResponses);
   }
 
-  // Set default section index if it's not already set
-  sectionIndex = parseInt(localStorage.getItem("ethos-sectionIndex")) || 0;
+  if (savedIndex !== null) {
+    sectionIndex = parseInt(savedIndex);
 
-  showSection(); // Make sure to call showSection after loading
+    // If the user had finished the test before
+    if (sectionIndex * 10 >= questions.length) {
+      calculateResults(); // ← This line fixes the undefined
+      return;
+    }
+  }
+
+  showSection();
 });
 
 function showSection() {
