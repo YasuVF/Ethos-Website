@@ -422,3 +422,12 @@ function plot3D(x, y, z) {
 
   Plotly.newPlot('graph', data, layout);
 }
+
+function toggleMore() {
+  const content = document.getElementById("moreContent");
+  const button = event.target;
+  const isVisible = content.style.display === "block";
+
+  content.style.display = isVisible ? "none" : "block";
+  button.textContent = isVisible ? "Show More ▼" : "Show Less ▲";
+}
