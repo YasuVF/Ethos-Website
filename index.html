@@ -316,21 +316,6 @@ body.dark-mode .light-box {
   opacity: 0;
   pointer-events: none;
 }
-</style>
-<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-
-
-<script>
-function toggleDonations() {
-  const aside = document.querySelector('.donation-sidebar');
-  const button = document.getElementById('donationToggleBtn');
-  const isHidden = aside.classList.contains('hidden');
-
-  aside.classList.toggle('hidden');
-  button.innerText = isHidden ? 'Hide Donations' : 'Show Donations';
-  button.classList.toggle('active', isHidden);
-  button.classList.toggle('inactive', !isHidden);
-}
 
 .result-box {
   background-color: #f1f1f1;
@@ -347,6 +332,21 @@ body.dark-mode .result-box {
   background-color: #1e1e1e;
   color: #e0e0e0;
   box-shadow: 0 2px 8px rgba(255,255,255,0.05);
+}
+</style>
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+
+<script>
+function toggleDonations() {
+  const aside = document.querySelector('.donation-sidebar');
+  const button = document.getElementById('donationToggleBtn');
+  const isHidden = aside.classList.contains('hidden');
+
+  aside.classList.toggle('hidden');
+  button.innerText = isHidden ? 'Hide Donations' : 'Show Donations';
+  button.classList.toggle('active', isHidden);
+  button.classList.toggle('inactive', !isHidden);
 }
 </script>
 </head>
