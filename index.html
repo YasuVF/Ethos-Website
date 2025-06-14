@@ -242,6 +242,17 @@ body.dark-mode aside {
   color: #111111; /* Dark gray text inside white box */
 }
 
+.light-box {
+  background-color: #f1f1f1;
+  color: #111;
+  padding: 16px;
+  border-radius: 8px;
+}
+
+body.dark-mode .light-box {
+  color: #111; /* Ensure text stays dark in dark mode */
+}
+
 .collapsible-content {
   max-height: 0;
   overflow: hidden;
@@ -324,13 +335,13 @@ function toggleDonations() {
   <p>The original Political Compass — while widely used — suffers from oversimplification and misinformed framing. It reduces complex ideological tendencies to two axes without accounting for depth of belief or moral foundations. For instance, moral absolutism vs relativism is a meaningful third axis that is entirely absent. Additionally, the original test tends to reflect contemporary Western political narratives and may misplace certain ideologies when viewed historically or cross-culturally. For example, Adolf Hitler is frequently placed on the far-right of the traditional 2D compass, yet his regime combined economically socialist policies, extreme nationalism, and moral absolutism rooted in a dogmatic worldview — making him more accurately categorized as a realist socialist: authoritarian, principled, and socialist.</p>
 
   <div style="display: flex; gap: 20px; margin-top: 20px;">
-    <div style="flex: 1; background: #f1f1f1; padding: 16px; border-radius: 8px;">
+    <div class="light-box">
       <h4 style="margin-top: 0;">Traditional 2D Compass</h4>
       <p><strong>Position:</strong> Far-Right, Authoritarian</p>
       <p><em>Often shown at the top-right of the grid.</em></p>
       <img src="hitler-2d-example.png" alt="2D Compass Position of Hitler" style="width: 100%; border-radius: 6px;">
     </div>
-    <div style="flex: 1; background: #f1f1f1; padding: 16px; border-radius: 8px;">
+    <div class="light-box">
       <h4 style="margin-top: 0;">Reinterpreted 3D Compass</h4>
       <p><strong>Position:</strong> Authoritarian, Realist Socialist</p>
       <p><em>Located in the back-top-left quadrant.</em></p>
