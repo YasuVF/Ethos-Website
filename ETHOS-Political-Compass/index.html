@@ -366,6 +366,18 @@ function toggleDonations() {
   button.innerText = isHidden ? 'Hide Donations' : 'Show Donations';
   button.classList.toggle('active', isHidden);
   button.classList.toggle('inactive', !isHidden);
+
+function toggleMore(button) {
+  const content = document.getElementById("moreContent");
+  const isOpen = content.classList.contains("open");
+
+  if (isOpen) {
+    content.classList.remove("open");
+    button.textContent = "Show More ▼";
+  } else {
+    content.classList.add("open");
+    button.textContent = "Show Less ▲";
+  }
 }
 </script>
 </head>
