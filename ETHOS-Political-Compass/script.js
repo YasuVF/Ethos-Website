@@ -201,7 +201,7 @@ function calculateResults() {
 }
 
 function getIdeologyLabel(x, y, z) {
-  const quadrant = `${x < 0 ? 'Left' : 'Right'},${y > 0 ? 'Anarchist' : 'Authoritarian'},${z > 0 ? 'Secular' : 'Religious'}`;
+  const quadrant = `${x < 0 ? 'Left' : 'Right'},${y > 0 ? 'Authoritarian' : 'Anarchist'},${z > 0 ? 'Religious' : 'Secular'}`;
   const map = {
     'Left,Authoritarian,Religious': 'Realist Socialism',
     'Left,Authoritarian,Secular': 'Progressivism',
