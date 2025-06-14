@@ -282,15 +282,13 @@ body.dark-mode .light-box {
 }
 
 .show-more-btn {
-  background: none;
-  border: none;
-  padding: 0;
-  margin: 0;
+  all: unset;                 /* wipes ALL default button styles */
+  display: inline;            /* make sure it's only as wide as the text */
   color: #444;
   font-size: 16px;
   cursor: pointer;
-  display: inline;
   transition: color 0.2s ease;
+  line-height: normal;
 }
 
 .show-more-btn:hover {
