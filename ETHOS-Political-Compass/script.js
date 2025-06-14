@@ -200,9 +200,9 @@ function calculateResults() {
     setTimeout(() => resultBox.classList.remove("fade-in"), 300);
 
   // Plot 3D point
-  const graph = document.getElementById("graph");
-  graph.style.display = "block";
-  setTimeout(() => graph.classList.add("show"), 50);
+  const controls = document.getElementById("graph-controls");
+  controls.innerHTML = ''; // Clear any existing content
+  controls.appendChild(downloadBtn);
 
   plot3D(x, y, z);
   }, 1500);
