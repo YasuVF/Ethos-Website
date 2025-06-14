@@ -270,7 +270,9 @@ function nextSection() {
 }
 
 function plot3D(x, y, z) {
-  const ideology = getIdeologyLabel(x, y, z);
+  document.getElementById("graph-wrapper").style.display = "block";
+  const graph = document.getElementById("graph");
+  graph.innerHTML = "";
 
   const colorMap = {
     'Realist Socialism': '#9c27b0',
