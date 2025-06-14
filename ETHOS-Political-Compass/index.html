@@ -465,12 +465,13 @@ function toggleDonations() {
   <div id="progress-text" style="position: absolute; top: -20px; left: 50%; transform: translateX(-50%); font-size: 12px;">0%</div>
 </div>
 <div id="quiz"></div>
-
-  <div style="display: flex; gap: 20px; align-items: flex-start; margin-top: 30px;">
-  <div style="flex: 1;">
-    <div id="graph" style="height: 500px;"></div>
+<div id="graph-wrapper" style="display: none; margin-top: 30px;">
+  <div id="graph-container" style="display: flex; gap: 20px; align-items: flex-start;">
+    <div id="graph" style="height: 500px; flex: 1;"></div>
+    <div id="graph-controls"></div>
   </div>
-  <div style="flex: 1;">
+</div>
+
     
   </div>
 </div>
