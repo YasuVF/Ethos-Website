@@ -145,6 +145,27 @@ function createAnswerOption(index, choice, label, currentResponse) {
     </div>`;
 }
 
+  const downloadBtn = document.createElement("button");
+  downloadBtn.textContent = "Download Chart";
+  downloadBtn.style.marginTop = "16px";
+  downloadBtn.style.padding = "10px 14px";
+  downloadBtn.style.backgroundColor = "#2196f3";
+  downloadBtn.style.color = "white";
+  downloadBtn.style.border = "none";
+  downloadBtn.style.borderRadius = "6px";
+  downloadBtn.style.cursor = "pointer";
+
+  downloadBtn.onclick = function () {
+    Plotly.downloadImage('graph', {
+      format: 'png',
+      filename: 'ethos_3d_result',
+      height: 600,
+      width: 800,
+      scale: 2
+    });
+  };
+
+  document.getElementById("graph").appendChild(downloadBtn);
 
 function calculateResults() {
   document.getElementById("progress-bar").style.width = "100%";
@@ -438,28 +459,6 @@ function plot3D(x, y, z) {
 
   Plotly.newPlot('graph', data, layout);
   }
-
-  const downloadBtn = document.createElement("button");
-  downloadBtn.textContent = "Download Chart";
-  downloadBtn.style.marginTop = "16px";
-  downloadBtn.style.padding = "10px 14px";
-  downloadBtn.style.backgroundColor = "#2196f3";
-  downloadBtn.style.color = "white";
-  downloadBtn.style.border = "none";
-  downloadBtn.style.borderRadius = "6px";
-  downloadBtn.style.cursor = "pointer";
-
-  downloadBtn.onclick = function () {
-    Plotly.downloadImage('graph', {
-      format: 'png',
-      filename: 'ethos_3d_result',
-      height: 600,
-      width: 800,
-      scale: 2
-    });
-  };
-
-  document.getElementById("graph").appendChild(downloadBtn);
 
   function toggleMore(button) {
     const content = document.getElementById("moreContent");
