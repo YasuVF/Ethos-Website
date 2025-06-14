@@ -91,6 +91,14 @@ const answerScores = {
 let sectionIndex = 0;
 let responses = [];
 
+// Load responses from localStorage if they exist
+document.addEventListener("DOMContentLoaded", () => {
+  const savedResponses = localStorage.getItem("ethos-responses"); // Retrieve the saved responses
+  if (savedResponses) {
+    responses = JSON.parse(savedResponses); // Parse and set the responses
+  }
+  showSection(); // Make sure to call showSection after loading
+
 function showSection() {
   const container = document.getElementById("quiz");
   const start = sectionIndex * 10;
@@ -221,6 +229,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function submitAnswer(index, choice, button) {
   responses[index] = choice;
+
+  // Save current responses to localStorage for persistence
+  localStorage.setItem('ethosResponses', JSON.stringify(responses));
 
   const buttons = button.parentElement.querySelectorAll('.answer-option');
   buttons.forEach(btn => btn.classList.remove('selected'));
