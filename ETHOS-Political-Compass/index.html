@@ -453,14 +453,12 @@ function toggleDonations() {
 
 <div id="quiz"></div>
 <!-- Graph Display Section -->
-<section aria-label="3D Political Graph" style="margin-top: 40px;">
-  <div style="display: flex; gap: 20px; align-items: flex-start;">
-    <div id="graph" style="height: 500px; flex: 1;"></div>
-    <div>
-      <button id="downloadBtn" style="padding: 10px 14px; background-color: #2196f3; color: white; border: none; border-radius: 6px; cursor: pointer;">
-        Download Chart
-      </button>
-    </div>
+<section aria-label="3D Political Graph" style="display: none;" id="graph-section">
+  <div id="graph" style="height: 500px; margin-top: 40px;"></div>
+  <div id="graph-controls" style="margin-top: 10px;">
+    <button id="downloadBtn" style="padding: 10px 14px; background-color: #2196f3; color: white; border: none; border-radius: 6px; cursor: pointer;">
+      Download Chart
+    </button>
   </div>
 </section>
 </main>
