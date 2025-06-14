@@ -163,7 +163,7 @@ function calculateResults() {
   z = z / questions.filter(q => q.axis === "adherence").length;
 
   const resultBox = document.getElementById("quiz");
-  resultBox.innerHTML = '<div style="text-align:center;padding:40px;"><div class="spinner"></div><p>Loading results...</p></div>';
+  resultBox.innerHTML = '<div class="result-box"><div class="spinner"></div><p>Loading results...</p></div>';
   const label = getIdeologyLabel(x, y, z);
   const examples = {
     'Realist Socialism': 'A system where socialist policies favor select groups while enforcing strict ideological rules, as seen in the USSR, Maoist China, and other centrally planned regimes.',
