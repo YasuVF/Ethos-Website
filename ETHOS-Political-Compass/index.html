@@ -450,13 +450,23 @@ function toggleDonations() {
   <div id="progress-bar" style="height: 100%; width: 0%; background: linear-gradient(to right, #2196f3, #64b5f6); transition: width 0.3s ease-in-out;"></div>
   <div id="progress-text" style="position: absolute; top: -20px; left: 50%; transform: translateX(-50%); font-size: 12px;">0%</div>
 </div>
+
 <div id="quiz"></div>
-  <div style="display: flex; gap: 20px; align-items: flex-start; margin-top: 30px;">
+
+<!-- Graph & Result Info (side-by-side) -->
+<div style="display: flex; gap: 20px; align-items: flex-start; margin-top: 30px;">
+  <!-- Graph Container -->
   <div style="flex: 1;">
     <div id="graph" style="height: 500px;"></div>
   </div>
-  <div style="flex: 1;">
 
+  <!-- Placeholder for result interpretation, label, etc. -->
+  <div style="flex: 1;">
+    <div id="result-info">
+      <!-- This is where result label, context, etc. can go -->
+    </div>
+  </div>
+</div>
     
   </div>
 </div>
