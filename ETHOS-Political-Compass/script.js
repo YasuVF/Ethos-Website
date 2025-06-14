@@ -102,16 +102,16 @@ function showSection() {
 
   sectionQuestions.forEach((q, i) => {
     const index = start + i;
-    const currentResponse = responses[index] ?? ''; // Protect from undefined
-
+    const borderStyle = 'class="question-box"';
+  
     html += `
-      <div class="question-box">
-        <p><strong>Q${index + 1}:</strong> ${q.text || ''}</p>
+      <div ${borderStyle}>
+        <p><strong>Q${index + 1}:</strong> ${q.text}</p>
         <div class="answer-set">
-          ${createAnswerOption(index, 'agree', 'Agree', currentResponse)}
-          ${createAnswerOption(index, 'somewhat_agree', 'Somewhat Agree', currentResponse)}
-          ${createAnswerOption(index, 'somewhat_disagree', 'Somewhat Disagree', currentResponse)}
-          ${createAnswerOption(index, 'disagree', 'Disagree', currentResponse)}
+          ${createAnswerOption(index, 'agree', 'Agree', responses[index])}
+          ${createAnswerOption(index, 'somewhat_agree', 'Somewhat Agree', responses[index])}
+          ${createAnswerOption(index, 'somewhat_disagree', 'Somewhat Disagree', responses[index])}
+          ${createAnswerOption(index, 'disagree', 'Disagree', responses[index])}
         </div>
       </div>
     `;
@@ -199,10 +199,6 @@ function calculateResults() {
     setTimeout(() => resultBox.classList.remove("fade-in"), 300);
 
   // Plot 3D point
-  const controls = document.getElementById("graph-controls");
-  controls.innerHTML = ''; // Clear any existing content
-  controls.appendChild(downloadBtn);
-
   plot3D(x, y, z);
   }, 1500);
 }
@@ -239,7 +235,6 @@ function submitAnswer(index, choice, button) {
 function prevSection() {
   if (sectionIndex > 0) {
     sectionIndex--;
-    localStorage.setItem("ethosSectionIndex", sectionIndex); // Save current section
     showSection();
     document.getElementById("quiz").scrollIntoView({ behavior: 'smooth' });
   }
@@ -256,10 +251,6 @@ function nextSection() {
   }
 
   sectionIndex++;
-  // Save progress to localStorage
-  localStorage.setItem("ethosResponses", JSON.stringify(responses));
-  localStorage.setItem("ethosSectionIndex", sectionIndex);
-
   if (sectionIndex * 10 < questions.length) {
     showSection();
     document.getElementById("quiz").scrollIntoView({ behavior: 'smooth' });
