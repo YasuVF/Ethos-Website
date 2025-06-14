@@ -221,10 +221,6 @@ function calculateResults() {
     setTimeout(() => resultBox.classList.remove("fade-in"), 300);
 
   // Plot 3D point
-  const controls = document.getElementById("graph-controls");
-  controls.innerHTML = ''; // Clear any existing content
-  controls.appendChild(downloadBtn);
-
   plot3D(x, y, z);
   }, 1500);
 }
