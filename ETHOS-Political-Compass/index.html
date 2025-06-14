@@ -52,24 +52,30 @@
 .toggle-switch input:checked + .toggle-slider {
   background-color: #999;
 }
+    
 .toggle-switch input:checked + .toggle-slider .toggle-knob {
   transform: translateX(22px); /* correct size for 46px track with 20px knob */
 }
+    
   body.dark-mode {
     background-color: #121212;
     color: #e0e0e0;
   }
+    
   body.dark-mode #quiz {
     background-color: #1e1e1e;
     box-shadow: 0 4px 12px rgba(255, 255, 255, 0.05);
   }
+    
   body.dark-mode .question-box,
   body.dark-mode .answer-option {
     background-color: #222;
     border-color: #444;
+    
   }
   body.dark-mode .answer-text {
     color: #ddd;
+    
   }
   body.dark-mode .answer-option.selected {
     background-color: rgba(33, 150, 243, 0.3);
@@ -199,6 +205,7 @@
     opacity: 1;
     transform: translateY(0);
   }
+    
   .main-header {
   box-sizing: border-box;
   position: sticky;
@@ -213,22 +220,35 @@
   z-index: 1000;
   box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
+    
 .brand {
   font-size: 22px;
   font-weight: bold;
   letter-spacing: 1px;
 }
     
+.header-nav {
+  display: flex;
+  justify-content: center;   /* centers the items */
+  gap: 32px;                 /* increase spacing between links/buttons */
+  align-items: center;
+}
+
 .header-nav a,
 .header-nav button {
-  text-decoration: underline;
-  color: white;
-  font-size: 16px;
   background: none;
   border: none;
+  color: white;
+  font-size: 16px;
   cursor: pointer;
-  font-family: inherit;
-  padding: 0;
+  text-decoration: none;        /* no underline by default */
+  transition: text-decoration 0.2s ease, color 0.2s ease;
+}
+
+.header-nav a:hover,
+.header-nav button:hover {
+  text-decoration: underline;   /* underline only on hover */
+  color: #64b5f6;               /* optional hover color */
 }
 
 .header-right {
