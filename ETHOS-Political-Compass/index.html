@@ -367,7 +367,7 @@ function toggleDonations() {
   button.classList.toggle('active', isHidden);
   button.classList.toggle('inactive', !isHidden);
 
-function toggleMore(button) {
+function toggleMore(this) {
   const content = document.getElementById("moreContent");
   const isOpen = content.classList.contains("open");
 
