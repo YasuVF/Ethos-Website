@@ -247,14 +247,6 @@ function submitAnswer(index, choice, button) {
   button.classList.add('selected');
 }
 
-function prevSection() {
-  if (sectionIndex > 0) {
-    sectionIndex--;
-    showSection();
-    document.getElementById("quiz").scrollIntoView({ behavior: 'smooth' });
-  }
-}
-
 function nextSection() {
   const start = sectionIndex * 10;
   const end = start + 10;
@@ -266,11 +258,21 @@ function nextSection() {
   }
 
   sectionIndex++;
+  localStorage.setItem("ethos-sectionIndex", sectionIndex); // ✅ Save progress
   if (sectionIndex * 10 < questions.length) {
     showSection();
     document.getElementById("quiz").scrollIntoView({ behavior: 'smooth' });
   } else {
     calculateResults();
+  }
+}
+
+function prevSection() {
+  if (sectionIndex > 0) {
+    sectionIndex--;
+    localStorage.setItem("ethos-sectionIndex", sectionIndex); // ✅ Save progress
+    showSection();
+    document.getElementById("quiz").scrollIntoView({ behavior: 'smooth' });
   }
 }
 
