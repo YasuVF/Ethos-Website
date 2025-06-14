@@ -103,7 +103,6 @@ function showSection() {
   sectionQuestions.forEach((q, i) => {
     const index = start + i;
     const borderStyle = 'class="question-box"';
-  
     html += `
       <div ${borderStyle}>
         <p><strong>Q${index + 1}:</strong> ${q.text}</p>
@@ -118,12 +117,11 @@ function showSection() {
   });
 
   html += `
-    <div style="display: flex; justify-content: space-between; gap: 10px;">
-      ${sectionIndex > 0 ? '<button onclick="prevSection()">Back</button>' : '<div></div>'}
-      <button onclick="nextSection()">Next Section</button>
-    </div>
-  `;
-
+  <div style="display: flex; justify-content: space-between; gap: 10px;">
+    ${sectionIndex > 0 ? '<button onclick="prevSection()">Back</button>' : '<div></div>'}
+    <button onclick="nextSection()">Next Section</button>
+  </div>
+`;
   container.innerHTML = html;
 
   const progress = (Math.min(responses.filter(Boolean).length, questions.length) / questions.length) * 100;
@@ -136,7 +134,6 @@ function showSection() {
 }
 
 function createAnswerOption(index, choice, label, currentResponse) {
-  if (typeof currentResponse !== 'string') currentResponse = '';
   const selectedClass = currentResponse === choice ? 'selected' : '';
   return `
     <div class="answer-option ${selectedClass}" onclick="submitAnswer(${index}, '${choice}', this)">
@@ -166,17 +163,17 @@ function calculateResults() {
   z = z / questions.filter(q => q.axis === "adherence").length;
 
   const resultBox = document.getElementById("quiz");
-  resultBox.innerHTML = '<div class="result-box"><div class="spinner"></div><p>Loading results...</p></div>';
+  resultBox.innerHTML = '<div style="text-align:center;padding:40px;"><div class="spinner"></div><p>Loading results...</p></div>';
   const label = getIdeologyLabel(x, y, z);
   const examples = {
-    'Realist Socialism': 'A system where socialist policies favor select groups while enforcing strict ideological rules, as seen in the USSR, Maoist China, and other centrally planned regimes.',
-    'Progressivism': 'A system where socialist policies benefit select groups while enforcing secular ideology, seen in welfare democracies like post-WWII Scandinavia and FDR’s New Deal.',
-    'Utopian Socialism': 'A system where socialist policies support the whole society, emphasizing acceptance over enforcement, seen in visionary models like Robert Owen’s New Harmony.',
-    'Corporatism': 'A political system of interest representation and policymaking whereby corporate groups come together and negotiate contracts or policy on the basis of their common interests.',
-    'Conservatism': 'A system where capitalist policies uphold traditional structures with strict enforcement, seen in monarchist states and religious nationalisms.',
-    'Anarchism': 'An anti-socialist and anti-traditionalist movement rejecting socialist corporatism and state governance, exemplified by Anarcho-Capitalism and Technocratic Movements.',
-    'Libertarianism': 'A movement centered on individual liberty, often adhering to traditional values and laws, supporting limited government interventions.',
-    'Liberalism': 'An ideology enforcing secular laws while promoting individual rights, civil liberties, and equity, often reflected in civil rights and social justice movements.'
+    'Adherence Socialism (e.g., Marxism, National-Socialism)': 'Examples include the USSR, Maoist China, and other centrally planned regimes. Known for both economic equality and severe authoritarian repression.',
+    'Progressivism': 'Found in many welfare democracies. Examples include post-WWII Scandinavia, FDR’s New Deal, and civil rights movements.',
+    'Utopian Socialism': 'Visionary and idealistic systems like Robert Owen’s New Harmony or early 19th-century communal experiments.',
+    'Corporatism': 'Advocates cooperation between classes; seen in Mussolini’s Italy and some managed economies.',
+    'Conservatism': 'Tradition-oriented systems such as monarchist states, religious nationalisms, or modern culture-focused right-wing movements.',
+    'Anarchism': 'Anti-authoritarian left-wing thought, like anarcho-communism or syndicalism. Associated with figures like Kropotkin and Emma Goldman.',
+    'Libertarianism': 'Individual freedom-oriented. Examples include U.S. right-libertarians like Ron Paul and economic minarchism.',
+    'Liberalism': 'Classical liberalism and modern centrism. Foundational to most Western democracies; values civil rights and free markets.'
   };
 
   const html = `
@@ -185,36 +182,35 @@ function calculateResults() {
     <p><strong>Authority (y):</strong> ${y.toFixed(2)}</p>
     <p><strong>Adherence (z):</strong> ${z.toFixed(2)}</p>
     <p><strong>Ideological Interpretation:</strong> ${label}</p>
-    <div class="result-description">
+    <div class="result-description" style="margin-top: 20px; padding: 12px; border: 1px solid #ccc; border-radius: 8px; background-color: #f9f9f9;">
   <strong>Context:</strong><br>
   ${examples[label] || 'No historical context available for this quadrant.'}
 </div>
   `;
 
+  resultBox.classList.add("fade-out");
   setTimeout(() => {
-    resultBox.innerHTML = `
-      <h2>Your Results:</h2>
-      <p><strong>Economic (x):</strong> ${x.toFixed(2)}</p>
-      <p><strong>Authority (y):</strong> ${y.toFixed(2)}</p>
-      <p><strong>Adherence (z):</strong> ${z.toFixed(2)}</p>
-      <p><strong>Ideological Interpretation:</strong> ${label}</p>
-    `;
+    resultBox.innerHTML = html;
+    resultBox.classList.remove("fade-out");
     resultBox.classList.add("fade-in");
-    plot3D(x, y, z, label);
+    setTimeout(() => resultBox.classList.remove("fade-in"), 300);
+
+  // Plot 3D point
+  plot3D(x, y, z);
   }, 1500);
 }
 
 function getIdeologyLabel(x, y, z) {
-  const quadrant = `${x < 0 ? 'Left' : 'Right'},${y > 0 ? 'Authoritarian' : 'Anarchist'},${z > 0 ? 'Religious' : 'Secular'}`;
+  const quadrant = `${x < 0 ? 'Left' : 'Right'},${y > 0 ? 'Anarchist' : 'Authoritarian'},${z > 0 ? 'Secular' : 'Religious'}`;
   const map = {
-    'Left,Authoritarian,Religious': 'Realist Socialism',
+    'Left,Authoritarian,Religious': 'Adherence Socialism (e.g., Marxism, National-Socialism)',
     'Left,Authoritarian,Secular': 'Progressivism',
     'Left,Anarchist,Religious': 'Utopian Socialism',
     'Left,Anarchist,Secular': 'Corporatism',
     'Right,Authoritarian,Religious': 'Conservatism',
-    'Right,Authoritarian,Secular': 'Liberalism',  // swapped here
+    'Right,Authoritarian,Secular': 'Anarchism',  // swapped here
     'Right,Anarchist,Religious': 'Libertarianism',
-    'Right,Anarchist,Secular': 'Anarchism'       // swapped here
+    'Right,Anarchist,Secular': 'Liberalism'       // swapped here
   };
   return map[quadrant] || 'Unclassified Position';
 }
@@ -225,7 +221,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function submitAnswer(index, choice, button) {
   responses[index] = choice;
-  localStorage.setItem("ethosResponses", JSON.stringify(responses));  // ← Save to localStorage
 
   const buttons = button.parentElement.querySelectorAll('.answer-option');
   buttons.forEach(btn => btn.classList.remove('selected'));
@@ -261,10 +256,10 @@ function nextSection() {
 }
 
 function plot3D(x, y, z) {
-  document.getElementById("graph-wrapper").style.display = "block";
+  const ideology = getIdeologyLabel(x, y, z);
 
   const colorMap = {
-    'Realist Socialism': '#9c27b0',
+    'Adherence Socialism (e.g., Marxism, National-Socialism)': '#9c27b0',
     'Progressivism': '#e91e63',
     'Utopian Socialism': '#f44336',
     'Corporatism': '#ff9800',
@@ -280,8 +275,8 @@ function plot3D(x, y, z) {
     type: 'scatter3d',
     mode: 'markers',
     x: [x],
-    y: [y],
-    z: [z],
+    y: [-y],
+    z: [-z],
     marker: {
       size: 8,
       color: pointColor
@@ -291,7 +286,7 @@ function plot3D(x, y, z) {
 
   const regionDefinitions = [
   {
-    name: 'Realist Socialism', color: '#9c27b0',
+    name: 'Adherence Socialism (e.g., Marxism, National-Socialism)', color: '#9c27b0',
     vertices: [
       [-1, -1, -1], [0, -1, -1], [0, 0, -1], [-1, 0, -1],
       [-1, -1, 0], [0, -1, 0], [0, 0, 0], [-1, 0, 0]
@@ -426,34 +421,5 @@ function plot3D(x, y, z) {
   };
 
   Plotly.newPlot('graph', data, layout);
-  }
-
-  function toggleMore(button) {
-    const content = document.getElementById("moreContent");
-    const isOpen = content.classList.contains("open");
-
-    if (isOpen) {
-      content.classList.remove("open");
-      button.textContent = "Show More ▼";
-    } else {
-      content.classList.add("open");
-      button.textContent = "Show Less ▲";
-    }
-  }
-
-  const downloadBtn = document.getElementById("downloadBtn");
-  if (downloadBtn) {
-    downloadBtn.onclick = function () {
-      Plotly.downloadImage('graph', {
-        format: 'png',
-        filename: 'ethos_3d_result',
-        height: 600,
-        width: 800,
-        scale: 2
-      });
-    };
-  }
-
-  document.getElementById("graph").appendChild(downloadBtn);
-
+}
 
