@@ -258,8 +258,22 @@ function nextSection() {
 function plot3D(x, y, z) {
   const ideology = getIdeologyLabel(x, y, z);
 
+    // 👉 This line makes the graph + button visible only after results
+  document.getElementById("graph-section").style.display = "block";
+
+  // Optional: make sure download button works after visibility toggle
+  document.getElementById("downloadBtn").onclick = function () {
+    Plotly.downloadImage('graph', {
+      format: 'png',
+      filename: 'ethos_3d_result',
+      height: 600,
+      width: 800,
+      scale: 2
+    });
+  };
+  
   const colorMap = {
-    'Adherence Socialism (e.g., Marxism, National-Socialism)': '#9c27b0',
+    'Realist Socialism': '#9c27b0',
     'Progressivism': '#e91e63',
     'Utopian Socialism': '#f44336',
     'Corporatism': '#ff9800',
