@@ -202,6 +202,17 @@ body.dark-mode aside {
   opacity: 0;
   pointer-events: none;
 }
+
+/* Temporary fade-in on page load */
+.donation-sidebar.fade-init {
+  opacity: 0;
+  transform: translateX(-40px);
+}
+.donation-sidebar.fade-init-animate {
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  opacity: 1;
+  transform: translateX(0);
+}
 </style>
 <script>
 function toggleDonations() {
@@ -214,6 +225,22 @@ function toggleDonations() {
   button.classList.toggle('active', isHidden);
   button.classList.toggle('inactive', !isHidden);
 }
+
+  window.addEventListener('DOMContentLoaded', () => {
+    const sidebar = document.querySelector('.donation-sidebar');
+
+    // Temporarily apply fade-in effect
+    sidebar.classList.add('fade-init');
+
+    requestAnimationFrame(() => {
+      sidebar.classList.add('fade-init-animate');
+
+      // Remove the helper classes after animation ends (optional)
+      setTimeout(() => {
+        sidebar.classList.remove('fade-init', 'fade-init-animate');
+      }, 700); // just longer than the transition time
+    });
+  });
 </script>
 </head>
 <body>
