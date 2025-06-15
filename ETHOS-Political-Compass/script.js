@@ -201,14 +201,14 @@ function calculateResults() {
   resultBox.innerHTML = '<div style="text-align:center;padding:40px;"><div class="spinner"></div><p>Loading results...</p></div>';
   const label = getIdeologyLabel(x, y, z);
   const examples = {
-    'Realist Socialism': 'Examples include the USSR, Maoist China, and other centrally planned regimes. Known for both economic equality and severe authoritarian repression.',
-    'Progressivism': 'Found in many welfare democracies. Examples include post-WWII Scandinavia, FDR’s New Deal, and civil rights movements.',
-    'Utopian Socialism': 'Visionary and idealistic systems like Robert Owen’s New Harmony or early 19th-century communal experiments.',
-    'Corporatism': 'Advocates cooperation between classes; seen in Mussolini’s Italy and some managed economies.',
-    'Conservatism': 'Tradition-oriented systems such as monarchist states, religious nationalisms, or modern culture-focused right-wing movements.',
-    'Anarchism': 'Anti-authoritarian left-wing thought, like anarcho-communism or syndicalism. Associated with figures like Kropotkin and Emma Goldman.',
-    'Libertarianism': 'Individual freedom-oriented. Examples include U.S. right-libertarians like Ron Paul and economic minarchism.',
-    'Liberalism': 'Classical liberalism and modern centrism. Foundational to most Western democracies; values civil rights and free markets.'
+    'Realist Socialism': 'A form of socialism that embraces group ownership and collective welfare but recognizes the need for authority, central planning, and often coercive power to achieve and maintain its vision.',
+    'Progressivism': 'A political orientation that emphasizes reform, social advancement, and the active correction of perceived injustices. It sees society as improvable through the pursuit of a more equitable future.',
+    'Utopian Socialism': 'A visionary form of socialism that imagines a perfect, harmonious society built on cooperation, equality, and shared ownership—often without the use of force, class struggle, or state control.',
+    'Corporatism': 'A form of socialist organization in which society is divided into functional groups—such as industries, labor unions, religious institutions, and professions—that are granted formal authority to govern themselves within their sphere.',
+    'Conservatism': 'A political philosophy focused on preserving long-standing institutions, cultural norms, and moral traditions. It emphasizes order, continuity, and inherited wisdom over social experimentation or forced progress.',
+    'Anarchism': 'A political philosophy that rejects all centralized authority, coercive hierarchy, and imposed systems of control. It emphasizes individual autonomy, voluntary association, and decentralized organization.',
+    'Libertarianism': 'A political philosophy that champions individual liberty, personal responsibility, and the absolute right to private ownership. It opposes state intervention in both economic and personal life, favoring voluntary contracts, self-regulation, and minimal to zero government.',
+    'Liberalism': 'A political philosophy that prioritizes individual rights, equality under law, and regulated markets—while supporting an active role for the state in enforcing civil protections and shaping social outcomes. It values pluralism and reform, often resisting rigid moral or cultural traditions.'
   };
 
   const html = `
