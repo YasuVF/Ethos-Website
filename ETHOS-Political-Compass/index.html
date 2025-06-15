@@ -380,6 +380,21 @@ function toggleMore(button) {
     button.textContent = "Show Less ▲";
   }
 }
+
+  window.addEventListener('DOMContentLoaded', () => {
+    const sidebar = document.querySelector('.donation-sidebar');
+    
+    // Set initial hidden style inline (so we don't need to change CSS)
+    sidebar.style.opacity = '0';
+    sidebar.style.transform = 'translateX(-40px)';
+
+    // Force layout to apply those styles before starting the animation
+    requestAnimationFrame(() => {
+      sidebar.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+      sidebar.style.opacity = '1';
+      sidebar.style.transform = 'translateX(0)';
+    });
+  });
 </script>
 </head>
 <body>
