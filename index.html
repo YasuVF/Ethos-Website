@@ -8,8 +8,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Merriweather:wght@400;700&display=swap" rel="stylesheet" />
   <style>
     body {
-      background-color: #0f0f0f;  /* Rich black */
-      color: #f8f6f0;             /* Soft cream */
+      background-color: #0f0f0f; /* Deep black */
+      color: #f8f6f0;           /* Cream */
       font-family: 'Inter', sans-serif;
     }
 
@@ -17,26 +17,28 @@
       font-family: 'Merriweather', serif;
     }
 
-    .highlight {
-      color: #3b82f6;
+    a {
+      color: #e5e5e5;
       transition: color 0.2s ease;
     }
 
-    .highlight:hover {
-      color: #60a5fa;
+    a:hover {
+      color: #ffffff;
     }
 
-    .btn-primary {
-      background-color: #3b82f6;
+    .btn-neutral {
+      background-color: #1f1f1f;
       color: #f8f6f0;
       padding: 0.75rem 1.5rem;
       border-radius: 0.375rem;
       font-weight: 600;
-      transition: background-color 0.3s ease;
+      border: 1px solid #333;
+      transition: background-color 0.3s ease, border-color 0.3s ease;
     }
 
-    .btn-primary:hover {
-      background-color: #2563eb;
+    .btn-neutral:hover {
+      background-color: #2a2a2a;
+      border-color: #555;
     }
   </style>
 </head>
@@ -44,11 +46,11 @@
 
   <!-- Navigation -->
   <header class="w-full px-8 py-5 border-b border-gray-700 flex justify-between items-center">
-    <h1 class="text-3xl font-bold highlight tracking-tight">Ethos</h1>
+    <h1 class="text-3xl font-bold tracking-tight">Ethos</h1>
     <nav class="space-x-8 text-base font-medium">
-      <a href="#mission" class="highlight">Mission</a>
-      <a href="#projects" class="highlight">Projects</a>
-      <a href="#contact" class="highlight">Contact</a>
+      <a href="#mission">Mission</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
     </nav>
   </header>
 
@@ -60,7 +62,7 @@
     <p class="text-xl max-w-2xl mb-10 opacity-90">
       Ethos is building a more honest, accessible political landscape—one where truth rises above noise, and understanding is within reach for everyone.
     </p>
-    <a href="#mission" class="btn-primary">Our Mission</a>
+    <a href="#mission" class="btn-neutral">Our Mission</a>
   </section>
 
   <!-- Mission Section -->
@@ -82,6 +84,7 @@
 
 </body>
 </html>
+
   
 <button onclick="location.href='ETHOS-Political-Compass/index.html'" style="padding: 10px 20px; font-size: 16px;">
   Take the Test
