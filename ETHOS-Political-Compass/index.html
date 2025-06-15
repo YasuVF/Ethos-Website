@@ -353,6 +353,17 @@ body.dark-mode .result-description {
   border-color: #444 !important;
   color: #e0e0e0 !important;
 }
+
+/* Temporary fade-in on page load */
+.donation-sidebar.fade-init {
+  opacity: 0;
+  transform: translateX(-40px);
+}
+.donation-sidebar.fade-init-animate {
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  opacity: 1;
+  transform: translateX(0);
+}
 </style>
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 
@@ -381,18 +392,19 @@ function toggleMore(button) {
   }
 }
 
-  window.addEventListener('DOMContentLoaded', () => {
+window.addEventListener('DOMContentLoaded', () => {
     const sidebar = document.querySelector('.donation-sidebar');
-    
-    // Set initial hidden style inline (so we don't need to change CSS)
-    sidebar.style.opacity = '0';
-    sidebar.style.transform = 'translateX(-40px)';
 
-    // Force layout to apply those styles before starting the animation
+    // Temporarily apply fade-in effect
+    sidebar.classList.add('fade-init');
+
     requestAnimationFrame(() => {
-      sidebar.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
-      sidebar.style.opacity = '1';
-      sidebar.style.transform = 'translateX(0)';
+      sidebar.classList.add('fade-init-animate');
+
+      // Remove the helper classes after animation ends (optional)
+      setTimeout(() => {
+        sidebar.classList.remove('fade-init', 'fade-init-animate');
+      }, 700); // just longer than the transition time
     });
   });
 </script>
