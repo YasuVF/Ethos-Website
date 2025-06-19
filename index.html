@@ -96,6 +96,10 @@
       cursor: pointer;
     }
 
+    .dropdown {
+      position: relative;
+    }
+
     .dropdown-content {
       display: none;
       position: absolute;
@@ -121,19 +125,21 @@
       background-color: #ece7dd;
     }
 
+    /* Hover support */
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    /* Click support */
     .dropdown.show .dropdown-content {
       display: block;
     }
   </style>
 <body class="flex flex-col min-h-screen">
 
- <header>
-    <!-- Logo -->
+  <header>
     <div class="logo">Ethos</div>
-
-    <!-- Navigation -->
     <nav>
-      <!-- Dropdown with click trigger -->
       <div class="dropdown" id="projectsDropdown">
         <button onclick="toggleDropdown()">Projects ▾</button>
         <div class="dropdown-content">
@@ -200,9 +206,12 @@
       dropdown.classList.toggle('show');
     }
 
-    // Optional: Close dropdown when clicking outside
+    // Close when clicking outside
     document.addEventListener('click', function (event) {
       const dropdown = document.getElementById('projectsDropdown');
+      const button = dropdown.querySelector('button');
+      const content = dropdown.querySelector('.dropdown-content');
+
       if (!dropdown.contains(event.target)) {
         dropdown.classList.remove('show');
       }
