@@ -60,7 +60,7 @@
       opacity: 1;
       transform: translateY(0);
 
-  header {
+    header {
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -69,16 +69,24 @@
       border-bottom: 1px solid #ccc;
     }
 
+    .logo {
+      font-size: 28px;
+      font-weight: bold;
+      color: #111;
+    }
+
     nav {
       display: flex;
       align-items: center;
       gap: 24px;
+      position: relative;
     }
 
     nav a {
       text-decoration: none;
       color: #111;
       padding: 8px 0;
+      font-size: 16px;
       position: relative;
     }
 
@@ -97,7 +105,7 @@
       border-radius: 6px;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       min-width: 200px;
-      z-index: 10;
+      z-index: 1000;
     }
 
     .dropdown-content a {
@@ -114,16 +122,14 @@
       display: block;
     }
   </style>
-</head>
-<body class="flex flex-col min-h-screen">
 
   <header>
-    <!-- Logo -->
+    <!-- Left: Logo -->
     <div class="logo">Ethos</div>
 
-    <!-- Navigation -->
+    <!-- Right: Navigation -->
     <nav>
-      <!-- Projects with dropdown -->
+      <!-- Dropdown menu -->
       <div class="dropdown">
         <a href="#">Projects ▾</a>
         <div class="dropdown-content">
@@ -133,7 +139,6 @@
         </div>
       </div>
 
-      <!-- Other nav links -->
       <a href="Donation-Page/Index.html">Donate</a>
       <a href="#contact">Contact</a>
     </nav>
