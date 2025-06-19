@@ -70,20 +70,22 @@
     <h1 class="text-3xl font-bold">Ethos</h1>
 
     <!-- Right side: Navigation -->
-    <nav class="flex space-x-8 text-base font-medium items-center">
-      <!-- Projects Dropdown -->
+    <nav class="flex space-x-8 text-base font-medium items-center relative">
+      <!-- Projects dropdown wrapper -->
       <div class="relative group">
         <button class="focus:outline-none">
           Projects ▾
         </button>
-        <div class="absolute left-0 mt-2 w-48 bg-[#f8f5ee] border border-gray-300 shadow-md rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-          <a href="project1.html" class="block px-4 py-2 hover:bg-[#ece7dd]">Election Guide</a>
-          <a href="project2.html" class="block px-4 py-2 hover:bg-[#ece7dd]">Policy Tracker</a>
-          <a href="ETHOS-Political-Compass/index.html" class="block px-4 py-2 hover:bg-[#ece7dd]">Political Compass</a>
+        <!-- Dropdown content -->
+        <div class="absolute right-0 mt-2 w-52 bg-[#f8f5ee] border border-gray-300 shadow-md rounded-md 
+                    opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-200 z-50">
+          <a href="project1.html" class="block px-4 py-2 hover:bg-[#ece7dd] transition">Election Guide</a>
+          <a href="project2.html" class="block px-4 py-2 hover:bg-[#ece7dd] transition">Policy Tracker</a>
+          <a href="ETHOS-Political-Compass/index.html" class="block px-4 py-2 hover:bg-[#ece7dd] transition">Political Compass</a>
         </div>
       </div>
 
-      <!-- Other Nav Items -->
+      <!-- Other nav items -->
       <a href="Donation-Page/Index.html">Donate</a>
       <a href="#contact">Contact</a>
     </nav>
