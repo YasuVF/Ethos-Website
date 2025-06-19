@@ -60,7 +60,7 @@
       opacity: 1;
       transform: translateY(0);
     }
-    /* Header container */
+ 
     header {
       display: flex;
       justify-content: space-between;
@@ -70,7 +70,6 @@
       border-bottom: 1px solid #ccc;
     }
 
-    /* Logo */
     .logo {
       font-size: 36px;
       font-weight: bold;
@@ -78,7 +77,6 @@
       color: #111;
     }
 
-    /* Nav bar */
     nav {
       display: flex;
       gap: 32px;
@@ -86,17 +84,16 @@
       position: relative;
     }
 
-    nav a {
+    nav a,
+    nav button {
+      background: none;
+      border: none;
       text-decoration: none;
       color: #111;
       font-size: 16px;
       font-weight: 500;
       padding: 8px 0;
-    }
-
-    /* Dropdown container */
-    .dropdown {
-      position: relative;
+      cursor: pointer;
     }
 
     .dropdown-content {
@@ -117,28 +114,28 @@
       padding: 10px 16px;
       color: #111;
       font-size: 15px;
+      text-decoration: none;
     }
 
     .dropdown-content a:hover {
       background-color: #ece7dd;
     }
 
-    /* Show dropdown on hover */
-    .dropdown:hover .dropdown-content {
+    .dropdown.show .dropdown-content {
       display: block;
     }
   </style>
 <body class="flex flex-col min-h-screen">
 
-  <header>
-    <!-- Left: Logo -->
+ <header>
+    <!-- Logo -->
     <div class="logo">Ethos</div>
 
-    <!-- Right: Navigation -->
+    <!-- Navigation -->
     <nav>
-      <!-- Projects with dropdown -->
-      <div class="dropdown">
-        <a href="#">Projects ▾</a>
+      <!-- Dropdown with click trigger -->
+      <div class="dropdown" id="projectsDropdown">
+        <button onclick="toggleDropdown()">Projects ▾</button>
         <div class="dropdown-content">
           <a href="project1.html">Election Guide</a>
           <a href="project2.html">Policy Tracker</a>
@@ -202,7 +199,19 @@
 </body>
 </html>
 
-  
-<button onclick="location.href='ETHOS-Political-Compass/index.html'" style="padding: 10px 20px; font-size: 16px;">
-  Take the Test
 </button>
+
+  <script>
+    function toggleDropdown() {
+      const dropdown = document.getElementById('projectsDropdown');
+      dropdown.classList.toggle('show');
+    }
+
+    // Optional: Close dropdown when clicking outside
+    document.addEventListener('click', function (event) {
+      const dropdown = document.getElementById('projectsDropdown');
+      if (!dropdown.contains(event.target)) {
+        dropdown.classList.remove('show');
+      }
+    });
+  </script>
