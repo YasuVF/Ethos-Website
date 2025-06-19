@@ -59,31 +59,71 @@
     .fade-in.show {
       opacity: 1;
       transform: translateY(0);
+
+      header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      background-color: #f5f0e6;
+      border-bottom: 1px solid #ccc;
+    }
+
+    nav {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background-color: #f8f5ee;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      min-width: 200px;
+    }
+
+    .dropdown-content a {
+      display: block;
+      padding: 10px 16px;
+      text-decoration: none;
+      color: #111;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #ece7dd;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
     }
   </style>
 </head>
 <body class="flex flex-col min-h-screen">
 
-<header class="w-full px-8 py-5 border-b border-gray-300 bg-[#f5f0e6]/90 backdrop-blur z-50">
-  <div class="flex justify-between items-center">
-    <!-- Left side: Logo -->
-    <h1 class="text-3xl font-bold">Ethos</h1>
-
-    <!-- Right side: Navigation -->
-    <nav class="flex space-x-8 text-base font-medium items-center relative">
-      <!-- Projects dropdown wrapper -->
-      <div class="relative group">
-        <button class="focus:outline-none">
-          Projects ▾
-        </button>
-        <!-- Dropdown content -->
-        <div class="absolute right-0 mt-2 w-52 bg-[#f8f5ee] border border-gray-300 shadow-md rounded-md 
-                    opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-200 z-50">
-          <a href="project1.html" class="block px-4 py-2 hover:bg-[#ece7dd] transition">Election Guide</a>
-          <a href="project2.html" class="block px-4 py-2 hover:bg-[#ece7dd] transition">Policy Tracker</a>
-          <a href="ETHOS-Political-Compass/index.html" class="block px-4 py-2 hover:bg-[#ece7dd] transition">Political Compass</a>
+  <header>
+    <h1 style="font-size: 28px; font-weight: bold;">Ethos</h1>
+    <nav>
+      <div class="dropdown">
+        <a href="#" style="text-decoration: none; color: #111;">Projects ▾</a>
+        <div class="dropdown-content">
+          <a href="project1.html">Election Guide</a>
+          <a href="project2.html">Policy Tracker</a>
+          <a href="ETHOS-Political-Compass/index.html">Political Compass</a>
         </div>
       </div>
+      <a href="Donation-Page/Index.html" style="text-decoration: none; color: #111;">Donate</a>
+      <a href="#contact" style="text-decoration: none; color: #111;">Contact</a>
+    </nav>
+  </header>
 
       <!-- Other nav items -->
       <a href="Donation-Page/Index.html">Donate</a>
