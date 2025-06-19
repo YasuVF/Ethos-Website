@@ -60,7 +60,7 @@
       opacity: 1;
       transform: translateY(0);
 
-      header {
+  header {
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -71,10 +71,18 @@
 
     nav {
       display: flex;
-      gap: 24px;
       align-items: center;
+      gap: 24px;
     }
 
+    nav a {
+      text-decoration: none;
+      color: #111;
+      padding: 8px 0;
+      position: relative;
+    }
+
+    /* Dropdown container */
     .dropdown {
       position: relative;
     }
@@ -87,14 +95,14 @@
       background-color: #f8f5ee;
       border: 1px solid #ccc;
       border-radius: 6px;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       min-width: 200px;
+      z-index: 10;
     }
 
     .dropdown-content a {
       display: block;
       padding: 10px 16px;
-      text-decoration: none;
       color: #111;
     }
 
@@ -110,27 +118,26 @@
 <body class="flex flex-col min-h-screen">
 
   <header>
-    <h1 style="font-size: 28px; font-weight: bold;">Ethos</h1>
+    <!-- Logo -->
+    <div class="logo">Ethos</div>
+
+    <!-- Navigation -->
     <nav>
+      <!-- Projects with dropdown -->
       <div class="dropdown">
-        <a href="#" style="text-decoration: none; color: #111;">Projects ▾</a>
+        <a href="#">Projects ▾</a>
         <div class="dropdown-content">
           <a href="project1.html">Election Guide</a>
           <a href="project2.html">Policy Tracker</a>
           <a href="ETHOS-Political-Compass/index.html">Political Compass</a>
         </div>
       </div>
-      <a href="Donation-Page/Index.html" style="text-decoration: none; color: #111;">Donate</a>
-      <a href="#contact" style="text-decoration: none; color: #111;">Contact</a>
-    </nav>
-  </header>
 
-      <!-- Other nav items -->
+      <!-- Other nav links -->
       <a href="Donation-Page/Index.html">Donate</a>
       <a href="#contact">Contact</a>
     </nav>
-  </div>
-</header>
+  </header>
 
   <!-- Hero Section -->
   <section class="flex flex-col items-center justify-center text-center py-32 px-6">
