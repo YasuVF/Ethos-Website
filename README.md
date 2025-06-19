@@ -1,2 +1,2 @@
-# 3d-political-compass
-A good political compass quiz
+# Ethos Website
+The website for Ethos
