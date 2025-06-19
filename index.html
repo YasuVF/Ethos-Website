@@ -59,19 +59,98 @@
     .fade-in.show {
       opacity: 1;
       transform: translateY(0);
+    }
+    /* Header container */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #f5f0e6;
+      padding: 20px 40px;
+      border-bottom: 1px solid #ccc;
+    }
+
+    /* Logo */
+    .logo {
+      font-size: 36px;
+      font-weight: bold;
+      font-family: 'Georgia', serif;
+      color: #111;
+    }
+
+    /* Nav bar */
+    nav {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+      position: relative;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #111;
+      font-size: 16px;
+      font-weight: 500;
+      padding: 8px 0;
+    }
+
+    /* Dropdown container */
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background-color: #f8f5ee;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      min-width: 200px;
+      z-index: 1000;
+    }
+
+    .dropdown-content a {
+      display: block;
+      padding: 10px 16px;
+      color: #111;
+      font-size: 15px;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #ece7dd;
+    }
+
+    /* Show dropdown on hover */
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
   </style>
 <body class="flex flex-col min-h-screen">
 
-  <!-- Navigation -->
-  <header class="w-full px-8 py-5 border-b border-gray-300 flex justify-between items-center bg-[#f5f0e6]/90 backdrop-blur">
-    <h1 class="text-3xl font-bold">Ethos</h1>
-    <nav class="space-x-8 text-base font-medium">
-      <a href="">Projects</a>
+  <header>
+    <!-- Left: Logo -->
+    <div class="logo">Ethos</div>
+
+    <!-- Right: Navigation -->
+    <nav>
+      <!-- Projects with dropdown -->
+      <div class="dropdown">
+        <a href="#">Projects ▾</a>
+        <div class="dropdown-content">
+          <a href="project1.html">Election Guide</a>
+          <a href="project2.html">Policy Tracker</a>
+          <a href="ETHOS-Political-Compass/index.html">Political Compass</a>
+        </div>
+      </div>
+
       <a href="Donation-Page/Index.html">Donate</a>
       <a href="#contact">Contact</a>
     </nav>
   </header>
-
+  
   <!-- Hero Section -->
   <section class="flex flex-col items-center justify-center text-center py-32 px-6">
     <h2 class="text-5xl md:text-6xl font-extrabold mb-6 leading-tight fade-in">
