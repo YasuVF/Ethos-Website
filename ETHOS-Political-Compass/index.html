@@ -501,6 +501,83 @@ window.addEventListener('DOMContentLoaded', () => {
 </div>
 </div>
 
+<!-- Trigger Button (at the end of the quiz) -->
+<button onclick="showConsentPrompt()" class="btn-neutral">
+  Share My Results
+</button>
+
+<!-- Consent + Form Modal -->
+<div id="consentPrompt" style="display: none; position: fixed; top: 0; left: 0;
+     width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5);
+     display: flex; justify-content: center; align-items: center; z-index: 1000;">
+  <div style="background: #f8f5ee; padding: 30px; border-radius: 8px; width: 90%; max-width: 500px; max-height: 90vh; overflow-y: auto;">
+    <h3 style="margin-top: 0;">Help us with our research.</h3>
+    <p>
+      By sharing your results, you agree to submit anonymized demographic data.
+      This helps us analyze political trends and improve civic tools.
+      <strong>We never sell or store personally identifying data.</strong>
+    </p>
+
+    <form id="shareForm" onsubmit="submitForm(event)">
+      <label>Age:<br>
+        <input type="number" name="age" required style="width: 100%; margin-bottom: 10px;">
+      </label><br>
+
+      <label>Sex:<br>
+        <select name="sex" required style="width: 100%; margin-bottom: 10px;">
+          <option value="">Select</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+          <option value="intersex">Other</option>
+          <option value="prefer_not_say">Prefer not to say</option>
+        </select>
+      </label><br>
+
+      <label>Location:<br>
+        <input type="text" name="location" placeholder="City, Country" style="width: 100%; margin-bottom: 10px;">
+      </label><br>
+
+      <label>Income Range:<br>
+        <select name="income" style="width: 100%; margin-bottom: 20px;">
+          <option value="">Select</option>
+          <option value="under_25k">Under $25,000</option>
+          <option value="25k_50k">$25,000 - $50,000</option>
+          <option value="50k_100k">$50,000 - $100,000</option>
+          <option value="100k_plus">$100,000+</option>
+          <option value="prefer_not_say">Prefer not to say</option>
+        </select>
+      </label><br>
+
+      <div style="text-align: right;">
+        <button type="button" onclick="hideConsentPrompt()" style="margin-right: 10px;">Cancel</button>
+        <button type="submit">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+  function showConsentPrompt() {
+    document.getElementById('consentPrompt').style.display = 'flex';
+  }
+
+  function hideConsentPrompt() {
+    document.getElementById('consentPrompt').style.display = 'none';
+  }
+
+  function submitForm(event) {
+    event.preventDefault();
+    const form = document.getElementById('shareForm');
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+
+    console.log("User shared data:", data); // Replace with actual backend send
+    alert("Thank you for sharing your information!");
+    hideConsentPrompt();
+    form.reset();
+  }
+</script>
+  
 <script src="script.js" defer></script>
 <script>
 function showTab(id) {
