@@ -509,8 +509,8 @@ window.addEventListener('DOMContentLoaded', () => {
 <!-- Consent + Form Modal -->
 <div id="consentPrompt" style="display: none; position: fixed; top: 0; left: 0;
      width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5);
-     display: flex; justify-content: center; align-items: center; z-index: 1000;">
-  <div style="background: #f8f5ee; padding: 30px; border-radius: 8px; width: 90%; max-width: 500px; max-height: 90vh; overflow-y: auto;">
+     justify-content: center; align-items: center; z-index: 1000;">
+  <div style="background: #f8f5ee; padding: 30px; border-radius: 8px; width: 90%; max-width: 500px; max-height: 90vh; overflow-y: auto; margin: auto;">
     <h3 style="margin-top: 0;">Help Us Understand Our Audience</h3>
     <p>
       By sharing your results, you agree to submit anonymized demographic data.
@@ -604,15 +604,18 @@ window.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Call this after test completes to reveal the button
-  if (typeof calculateResults === 'function') {
-    const originalCalculateResults = calculateResults;
-    calculateResults = function () {
-      originalCalculateResults();
-      showShareButton();
-    };
-  }
+  // Override calculateResults to show the Share button
+  window.addEventListener('DOMContentLoaded', () => {
+    if (typeof calculateResults === 'function') {
+      const originalCalculateResults = calculateResults;
+      calculateResults = function () {
+        originalCalculateResults();
+        showShareButton();
+      };
+    }
+  });
 </script>
+
   
 <script src="script.js" defer></script>
 <script>
