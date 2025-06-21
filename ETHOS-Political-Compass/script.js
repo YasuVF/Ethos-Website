@@ -255,10 +255,6 @@ function getIdeologyLabel(x, y, z) {
   return map[quadrant] || 'Unclassified Position';
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  showSection();
-});
-
 function submitAnswer(index, choice, button) {
   responses[index] = choice;
 
