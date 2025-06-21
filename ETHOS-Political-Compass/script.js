@@ -486,3 +486,5 @@ function plot3D(x, y, z) {
       });
     };
   }
+
+window.addEventListener('DOMContentLoaded', showSection);
