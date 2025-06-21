@@ -213,23 +213,23 @@ function calculateResults() {
     'Liberalism': 'A political philosophy that prioritizes individual rights, equality under law, and regulated markets—while supporting an active role for the state in enforcing civil protections and shaping social outcomes. It values pluralism and reform, often resisting rigid moral or cultural traditions.'
   };
 
-const html = `
-  <h2>Your Results:</h2>
-  <p><strong>Economic (x):</strong> ${x.toFixed(2)}</p>
-  <p><strong>Authority (y):</strong> ${y.toFixed(2)}</p>
-  <p><strong>Adherence (z):</strong> ${z.toFixed(2)}</p>
-  <p><strong>Ideological Interpretation:</strong> ${label}</p>
-  <div class="result-description" style="margin-top: 20px; padding: 12px; border: 1px solid #ccc; border-radius: 8px; background-color: #f9f9f9;">
-    <strong>Context:</strong><br>
-    ${examples[label] || 'No historical context available for this quadrant.'}
-  </div>
-  <div style="display: flex; justify-content: center; gap: 12px; margin-top: 30px;">
-    <button onclick="retakeTest()" style="padding: 12px 24px; background-color: #444; color: white; border: none; border-radius: 8px; cursor: pointer;">
-      Retake Test
-    </button>
-  </div>
-`;
-
+  const html = `
+    <h2>Your Results:</h2>Add commentMore actions
+    <p><strong>Economic (x):</strong> ${x.toFixed(2)}</p>
+    <p><strong>Authority (y):</strong> ${y.toFixed(2)}</p>
+    <p><strong>Adherence (z):</strong> ${z.toFixed(2)}</p>
+    <p><strong>Ideological Interpretation:</strong> ${label}</p>
+    <div class="result-description" style="margin-top: 20px; padding: 12px; border: 1px solid #ccc; border-radius: 8px; background-color: #f9f9f9;">
+      <strong>Context:</strong><br>
+      ${examples[label] || 'No historical context available for this quadrant.'}
+    </div>
+    <div style="margin-top: 20px;">
+      <button onclick="retakeTest()" style="padding: 12px 24px; font-size: 16px; background-color: #444; color: white; border: none; border-radius: 8px; cursor: pointer;">
+        Retake Test
+      </button>
+    </div>
+  `;
+  
   resultBox.classList.add("fade-out");
   setTimeout(() => {
     resultBox.innerHTML = html;
