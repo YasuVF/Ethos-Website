@@ -222,12 +222,15 @@ function calculateResults() {
       <strong>Context:</strong><br>
       ${examples[label] || 'No historical context available for this quadrant.'}
     </div>
-    <div style="margin-top: 20px;">
+    <div style="display: flex; justify-content: center; gap: 12px; margin-top: 30px;">
       <button onclick="retakeTest()" style="padding: 12px 24px; font-size: 16px; background-color: #444; color: white; border: none; border-radius: 8px; cursor: pointer;">
         Retake Test
       </button>
+      <button onclick="openShareForm()" style="padding: 12px 24px; font-size: 16px; background-color: #2196f3; color: white; border: none; border-radius: 8px; cursor: pointer;">
+        Share Your Results
+      </button>
     </div>
-  `;
+
   
   resultBox.classList.add("fade-out");
   setTimeout(() => {
