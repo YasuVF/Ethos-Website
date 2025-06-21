@@ -496,5 +496,16 @@ function plot3D(x, y, z) {
       });
     };
   }
+
+  function openSharePrompt(x, y, z) {
+  finalX = x;
+  finalY = y;
+  finalZ = z;
+
+  document.getElementById("inputX").value = x;
+  document.getElementById("inputY").value = y;
+  document.getElementById("inputZ").value = z;
+
+  showConsentPrompt();
 }
 
