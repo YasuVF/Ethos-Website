@@ -197,7 +197,7 @@ function calculateResults() {
   y = y / questions.filter(q => q.axis === "authority").length;
   z = z / questions.filter(q => q.axis === "adherence").length;
 
-  const resultBox = document.getElementById("quiz-content");
+  const resultBox = document.getElementById("quiz");
   resultBox.innerHTML = '<div style="text-align:center;padding:40px;"><div class="spinner"></div><p>Loading results...</p></div>';
   const label = getIdeologyLabel(x, y, z);
   const examples = {
