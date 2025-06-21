@@ -502,8 +502,8 @@ window.addEventListener('DOMContentLoaded', () => {
 </div>
 
 <!-- Trigger Button (initially hidden) -->
-<div class="max-w-4xl mx-auto text-center my-8">
-  <button id="shareResultsBtn" onclick="showConsentPrompt()" class="btn-neutral" style="display: none;">
+<div id="shareButtonContainer" class="max-w-4xl mx-auto text-center my-8" style="display: none;">
+  <button id="shareResultsBtn" onclick="showConsentPrompt()" class="btn-neutral">
     Share My Results
   </button>
 </div>
@@ -594,13 +594,12 @@ window.addEventListener('DOMContentLoaded', () => {
     form.reset();
   }
 
-  // Show Share button after test is complete
-  function showShareButton() {
-    const shareBtn = document.getElementById('shareResultsBtn');
-    if (shareBtn) {
-      shareBtn.style.display = 'inline-block';
-    }
+function showShareButton() {
+  const container = document.getElementById('shareButtonContainer');
+  if (container) {
+    container.style.display = 'block';
   }
+}
 
   // Override calculateResults to show the Share button
   window.addEventListener('DOMContentLoaded', () => {
