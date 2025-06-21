@@ -364,6 +364,21 @@ body.dark-mode .result-description {
   opacity: 1;
   transform: translateX(0);
 }
+
+.share-button {
+  padding: 8px 16px;
+  font-size: 14px;
+  background-color: #2196f3;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.share-button.cancel {
+  background-color: #777;
+}
 </style>
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 
@@ -552,10 +567,8 @@ window.addEventListener('DOMContentLoaded', () => {
         </select>
       </label><br><br>
 
-      <input type="submit" value="Submit" style="padding: 8px 16px; font-size: 14px; background-color:#2196f3; color:white; border:none; border-radius:6px; cursor:pointer; display: inline-block;">
-      <button type="button" onclick="closeShareForm()" style="padding: 8px 16px; font-size: 14px; background-color:#777; color:white; border:none; border-radius:6px; cursor:pointer; display: inline-block; margin-left: 10px;">
-        Cancel
-      </button>
+     <input type="submit" value="Submit" class="share-button">
+     <button type="button" onclick="closeShareForm()" class="share-button cancel">Cancel</button>
     </form>
   </div>
 </div>
