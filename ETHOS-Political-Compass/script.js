@@ -221,8 +221,7 @@ const html = `
     <strong>Context:</strong><br>
     ${examples[label] || 'No historical context available for this quadrant.'}
   </div>
-
-  <div style="display: flex; justify-content: center; gap: 12px; margin-top: 30px;">
+  <div style="display: flex; justify-content: center; gap: 12px; margin-top: 24px;">
     <button onclick="retakeTest()" style="padding: 12px 24px; background-color: #444; color: white; border: none; border-radius: 8px; cursor: pointer;">
       Retake Test
     </button>
@@ -231,6 +230,7 @@ const html = `
     </button>
   </div>
 `;
+
 
   resultBox.classList.add("fade-out");
   setTimeout(() => {
