@@ -594,14 +594,13 @@ window.addEventListener('DOMContentLoaded', () => {
     form.reset();
   }
 
-function showShareButton() {
-  const container = document.getElementById('shareButtonContainer');
-  if (container) {
-    container.style.display = 'block';
+  function showShareButton() {
+    const container = document.getElementById('shareButtonContainer');
+    if (container) {
+      container.style.display = 'block';
+    }
   }
-}
 
-  // Override calculateResults to show the Share button
   window.addEventListener('DOMContentLoaded', () => {
     if (typeof calculateResults === 'function') {
       const originalCalculateResults = calculateResults;
