@@ -221,13 +221,9 @@ const html = `
     <strong>Context:</strong><br>
     ${examples[label] || 'No historical context available for this quadrant.'}
   </div>
-
   <div style="display: flex; justify-content: center; gap: 12px; margin-top: 30px;">
     <button onclick="retakeTest()" style="padding: 12px 24px; background-color: #444; color: white; border: none; border-radius: 8px; cursor: pointer;">
       Retake Test
-    </button>
-    <button onclick="openSharePrompt(${x.toFixed(2)}, ${y.toFixed(2)}, ${z.toFixed(2)})" style="padding: 12px 24px; background-color: #444; color: white; border: none; border-radius: 8px; cursor: pointer;">
-      Share My Results
     </button>
   </div>
 `;
@@ -238,10 +234,6 @@ const html = `
     resultBox.classList.remove("fade-out");
     resultBox.classList.add("fade-in");
     setTimeout(() => resultBox.classList.remove("fade-in"), 300);
-
-  finalX = x.toFixed(2);
-  finalY = y.toFixed(2);
-  finalZ = z.toFixed(2);
     
   // Plot 3D point
   plot3D(x, y, z);
@@ -496,15 +488,3 @@ function plot3D(x, y, z) {
       });
     };
   }
-
-  function openSharePrompt(x, y, z) {
-  finalX = x;
-  finalY = y;
-  finalZ = z;
-
-  document.getElementById("inputX").value = x;
-  document.getElementById("inputY").value = y;
-  document.getElementById("inputZ").value = z;
-
-  showConsentPrompt();
-}
