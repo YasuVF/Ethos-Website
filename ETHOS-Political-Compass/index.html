@@ -562,21 +562,21 @@ window.addEventListener('DOMContentLoaded', () => {
   window.finalY = 0;
   window.finalZ = 0;
 
-  window.showConsentPrompt = function () {
+  function showConsentPrompt() {
     const prompt = document.getElementById('consentPrompt');
     if (prompt) {
       prompt.style.display = 'flex';
     }
-  };
+  }
 
-  window.hideConsentPrompt = function () {
+  function hideConsentPrompt() {
     const prompt = document.getElementById('consentPrompt');
     if (prompt) {
       prompt.style.display = 'none';
     }
-  };
+  }
 
-  window.submitForm = function (event) {
+  function submitForm(event) {
     event.preventDefault();
 
     document.getElementById('inputX').value = window.finalX;
@@ -589,9 +589,18 @@ window.addEventListener('DOMContentLoaded', () => {
 
     console.log("User shared data including plot points:", data);
     alert("Thank you for sharing your information!");
-    window.hideConsentPrompt();
+    hideConsentPrompt();
     form.reset();
-  };
+  }
+
+  // ⚠️ This is key: combine all startup logic in a single event
+  document.addEventListener('DOMContentLoaded', () => {
+    if (typeof showSection === 'function') {
+      showSection(); // From your quiz logic
+    }
+
+    // Other startup logic here if needed
+  });
 </script>
  
 <script src="script.js" defer></script>
