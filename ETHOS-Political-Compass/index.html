@@ -589,17 +589,6 @@ window.addEventListener('DOMContentLoaded', () => {
         container.style.display = 'block';
       }
     }
-
-    // Hook into results
-    window.addEventListener("load", () => {
-      if (typeof calculateResults === 'function') {
-        const original = calculateResults;
-        calculateResults = function () {
-          original();
-          showShareButton();
-        };
-      }
-    });
   
 function showTab(id) {
   document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
