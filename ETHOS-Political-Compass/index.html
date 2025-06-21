@@ -500,11 +500,18 @@ window.addEventListener('DOMContentLoaded', () => {
 </main>
 </div>
 </div>
-<!-- Consent Modal -->
+<!-- Trigger Button (initially hidden) -->
+<div id="shareButtonContainer" class="max-w-4xl mx-auto text-center my-8" style="display: none;">
+  <button id="shareResultsBtn" onclick="showConsentPrompt()" class="btn-neutral">
+    Share My Results
+  </button>
+</div>
+
+<!-- Consent + Form Modal -->
 <div id="consentPrompt" style="display: none; position: fixed; top: 0; left: 0;
      width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5);
-     justify-content: center; align-items: center; z-index: 9999;">
-  <div style="background: #f8f5ee; padding: 30px; border-radius: 8px; width: 90%; max-width: 500px; max-height: 90vh; overflow-y: auto;">
+     justify-content: center; align-items: center; z-index: 1000;">
+  <div style="background: #f8f5ee; padding: 30px; border-radius: 8px; width: 90%; max-width: 500px; max-height: 90vh; overflow-y: auto; margin: auto;">
     <h3 style="margin-top: 0;">Help Us Understand Our Audience</h3>
     <p>
       By sharing your results, you agree to submit anonymized demographic data.
@@ -542,7 +549,7 @@ window.addEventListener('DOMContentLoaded', () => {
         </select>
       </label><br>
 
-      <!-- Hidden inputs for test data -->
+      <!-- Hidden fields for test coordinates -->
       <input type="hidden" name="x" id="inputX">
       <input type="hidden" name="y" id="inputY">
       <input type="hidden" name="z" id="inputZ">
@@ -555,33 +562,55 @@ window.addEventListener('DOMContentLoaded', () => {
   </div>
 </div>
 
+<!-- JavaScript for Prompt Control -->
 <script>
-  window.finalX = 0;
-  window.finalY = 0;
-  window.finalZ = 0;
+  let finalX = 0;
+  let finalY = 0;
+  let finalZ = 0;
 
   function showConsentPrompt() {
-    document.getElementById("consentPrompt").style.display = "flex";
+    document.getElementById('consentPrompt').style.display = 'flex';
   }
 
   function hideConsentPrompt() {
-    document.getElementById("consentPrompt").style.display = "none";
+    document.getElementById('consentPrompt').style.display = 'none';
   }
 
   function submitForm(event) {
     event.preventDefault();
 
-    document.getElementById("inputX").value = window.finalX;
-    document.getElementById("inputY").value = window.finalY;
-    document.getElementById("inputZ").value = window.finalZ;
+    document.getElementById('inputX').value = finalX;
+    document.getElementById('inputY').value = finalY;
+    document.getElementById('inputZ').value = finalZ;
 
-    const data = Object.fromEntries(new FormData(document.getElementById("shareForm")).entries());
-    console.log("Submitted:", data);
+    const form = document.getElementById('shareForm');
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
 
-    alert("Thank you for sharing!");
+    console.log("User shared data including plot points:", data);
+    alert("Thank you for sharing your information!");
     hideConsentPrompt();
-    document.getElementById("shareForm").reset();
+    form.reset();
   }
+
+  function showShareButton() {
+    const container = document.getElementById('shareButtonContainer');
+    if (container) {
+      container.style.display = 'block';
+    }
+  }
+
+  window.addEventListener('DOMContentLoaded', () => {
+    setTimeout(() => {
+      if (typeof calculateResults === 'function') {
+        const originalCalculateResults = calculateResults;
+        calculateResults = function () {
+          originalCalculateResults();
+          showShareButton();
+        };
+      }
+    }, 0);
+  });
 </script>
  
 <script src="script.js" defer></script>
