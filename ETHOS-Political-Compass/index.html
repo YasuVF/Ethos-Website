@@ -373,7 +373,6 @@ body.dark-mode .result-description {
   border: none;
   border-radius: 6px;
   cursor: pointer;
-  display: inline-block;
 }
 
 .share-button.cancel {
@@ -567,8 +566,11 @@ window.addEventListener('DOMContentLoaded', () => {
         </select>
       </label><br><br>
 
-     <input type="submit" value="Submit" class="share-button">
-     <button type="button" onclick="closeShareForm()" class="share-button cancel">Cancel</button>
+    <div style="display: flex; gap: 10px; justify-content: flex-end; margin-top: 20px;">
+      <input type="submit" value="Submit" class="share-button">
+      <button type="button" onclick="closeShareForm()" class="share-button cancel">Cancel</button>
+    </div>
+      
     </form>
   </div>
 </div>
