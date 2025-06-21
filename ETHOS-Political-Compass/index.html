@@ -558,30 +558,30 @@ window.addEventListener('DOMContentLoaded', () => {
 
 <!-- JavaScript for Prompt Control -->
 <script>
-  let finalX = 0;
-  let finalY = 0;
-  let finalZ = 0;
+  window.finalX = 0;
+  window.finalY = 0;
+  window.finalZ = 0;
 
-  function showConsentPrompt() {
+  window.showConsentPrompt = function () {
     const prompt = document.getElementById('consentPrompt');
     if (prompt) {
       prompt.style.display = 'flex';
     }
-  }
+  };
 
-  function hideConsentPrompt() {
+  window.hideConsentPrompt = function () {
     const prompt = document.getElementById('consentPrompt');
     if (prompt) {
       prompt.style.display = 'none';
     }
-  }
+  };
 
-  function submitForm(event) {
+  window.submitForm = function (event) {
     event.preventDefault();
 
-    document.getElementById('inputX').value = finalX;
-    document.getElementById('inputY').value = finalY;
-    document.getElementById('inputZ').value = finalZ;
+    document.getElementById('inputX').value = window.finalX;
+    document.getElementById('inputY').value = window.finalY;
+    document.getElementById('inputZ').value = window.finalZ;
 
     const form = document.getElementById('shareForm');
     const formData = new FormData(form);
@@ -589,9 +589,9 @@ window.addEventListener('DOMContentLoaded', () => {
 
     console.log("User shared data including plot points:", data);
     alert("Thank you for sharing your information!");
-    hideConsentPrompt();
+    window.hideConsentPrompt();
     form.reset();
-  }
+  };
 </script>
  
 <script src="script.js" defer></script>
