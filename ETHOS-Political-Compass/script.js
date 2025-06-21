@@ -239,6 +239,10 @@ const html = `
     resultBox.classList.add("fade-in");
     setTimeout(() => resultBox.classList.remove("fade-in"), 300);
 
+  finalX = x.toFixed(2);
+  finalY = y.toFixed(2);
+  finalZ = z.toFixed(2);
+    
   // Plot 3D point
   plot3D(x, y, z);
   }, 1500);
