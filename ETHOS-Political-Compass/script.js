@@ -245,7 +245,8 @@ const html = `
     
   // Plot 3D point
   plot3D(x, y, z);
-  }, 1500);
+  showShareButton(); // ✅ Add this line to show the Share button
+}, 1500);
 }
 
 function getIdeologyLabel(x, y, z) {
