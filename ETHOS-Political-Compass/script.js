@@ -108,7 +108,6 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
   }
-
   showSection();
 });
 
@@ -165,6 +164,8 @@ function showSection() {
   const progressText = document.getElementById("progress-text");
   if (progressText) {
     progressText.textContent = `${Math.round(progress)}%`;
+
+  document.getElementById('quiz').style.background = 'red';
   }
 }
 
