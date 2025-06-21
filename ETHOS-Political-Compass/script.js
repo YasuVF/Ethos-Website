@@ -171,10 +171,12 @@ function showSection() {
 function createAnswerOption(index, choice, label, currentResponse) {
   const selectedClass = currentResponse === choice ? 'selected' : '';
   return `
-    <div class="answer-option ${selectedClass}" onclick="submitAnswer(${index}, '${choice}', this)">
+    <div class="answer-option ${selectedClass}"
+         onclick="submitAnswer(${index}, '${choice}', this)">
       <span class="circle"></span>
       <span class="answer-text">${label}</span>
-    </div>`;
+    </div>
+  `;
 }
 
 function calculateResults() {
