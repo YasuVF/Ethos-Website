@@ -483,6 +483,7 @@ function plot3D(x, y, z) {
   };
 
   Plotly.newPlot('graph', data, layout);
+  showShareButton();
     
   // Attach Download Button handler
   const downloadBtn = document.getElementById("downloadBtn");
