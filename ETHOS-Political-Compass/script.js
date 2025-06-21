@@ -245,7 +245,6 @@ const html = `
     
   // Plot 3D point
   plot3D(x, y, z);
-  showShareButton(); // ✅ Add this line to show the Share button
 }, 1500);
 }
 
@@ -483,8 +482,7 @@ function plot3D(x, y, z) {
   };
 
   Plotly.newPlot('graph', data, layout);
-  showShareButton();
-    
+
   // Attach Download Button handler
   const downloadBtn = document.getElementById("downloadBtn");
   if (downloadBtn) {
