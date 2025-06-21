@@ -541,6 +541,13 @@ window.addEventListener('DOMContentLoaded', () => {
 
 <script src="script.js"></script>
 <script> 
+function openShareForm() {
+  document.getElementById("shareModal").style.display = "block";
+}
+function closeShareForm() {
+  document.getElementById("shareModal").style.display = "none";
+}
+
 function showTab(id) {
   document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
   document.querySelectorAll('.tab-content').forEach(tab => tab.style.display = 'none');
