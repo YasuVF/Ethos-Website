@@ -226,7 +226,7 @@ const html = `
     <button onclick="retakeTest()" style="padding: 12px 24px; background-color: #444; color: white; border: none; border-radius: 8px; cursor: pointer;">
       Retake Test
     </button>
-    <button onclick="openSharePrompt(${x.toFixed(2)}, ${y.toFixed(2)}, ${z.toFixed(2)})" style="padding: 12px 24px; background-color: #222; color: white; border: none; border-radius: 8px; cursor: pointer;">
+    <button onclick="openSharePrompt(${x.toFixed(2)}, ${y.toFixed(2)}, ${z.toFixed(2)})" style="padding: 12px 24px; background-color: #444; color: white; border: none; border-radius: 8px; cursor: pointer;">
       Share My Results
     </button>
   </div>
