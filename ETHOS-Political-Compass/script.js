@@ -506,6 +506,6 @@ function plot3D(x, y, z) {
   document.getElementById("inputY").value = y;
   document.getElementById("inputZ").value = z;
 
-  showConsentPrompt();
+  showconsentPrompt();
 }
 
