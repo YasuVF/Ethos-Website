@@ -500,12 +500,11 @@ window.addEventListener('DOMContentLoaded', () => {
 </main>
 </div>
 </div>
-
-<!-- Consent + Form Modal -->
+<!-- Consent Modal -->
 <div id="consentPrompt" style="display: none; position: fixed; top: 0; left: 0;
      width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5);
-     justify-content: center; align-items: center; z-index: 1000;">
-  <div style="background: #f8f5ee; padding: 30px; border-radius: 8px; width: 90%; max-width: 500px; max-height: 90vh; overflow-y: auto; margin: auto;">
+     justify-content: center; align-items: center; z-index: 9999;">
+  <div style="background: #f8f5ee; padding: 30px; border-radius: 8px; width: 90%; max-width: 500px; max-height: 90vh; overflow-y: auto;">
     <h3 style="margin-top: 0;">Help Us Understand Our Audience</h3>
     <p>
       By sharing your results, you agree to submit anonymized demographic data.
@@ -543,7 +542,7 @@ window.addEventListener('DOMContentLoaded', () => {
         </select>
       </label><br>
 
-      <!-- Hidden fields for test coordinates -->
+      <!-- Hidden inputs for test data -->
       <input type="hidden" name="x" id="inputX">
       <input type="hidden" name="y" id="inputY">
       <input type="hidden" name="z" id="inputZ">
@@ -556,51 +555,33 @@ window.addEventListener('DOMContentLoaded', () => {
   </div>
 </div>
 
-<!-- JavaScript for Prompt Control -->
 <script>
   window.finalX = 0;
   window.finalY = 0;
   window.finalZ = 0;
 
   function showConsentPrompt() {
-    const prompt = document.getElementById('consentPrompt');
-    if (prompt) {
-      prompt.style.display = 'flex';
-    }
+    document.getElementById("consentPrompt").style.display = "flex";
   }
 
   function hideConsentPrompt() {
-    const prompt = document.getElementById('consentPrompt');
-    if (prompt) {
-      prompt.style.display = 'none';
-    }
+    document.getElementById("consentPrompt").style.display = "none";
   }
 
   function submitForm(event) {
     event.preventDefault();
 
-    document.getElementById('inputX').value = window.finalX;
-    document.getElementById('inputY').value = window.finalY;
-    document.getElementById('inputZ').value = window.finalZ;
+    document.getElementById("inputX").value = window.finalX;
+    document.getElementById("inputY").value = window.finalY;
+    document.getElementById("inputZ").value = window.finalZ;
 
-    const form = document.getElementById('shareForm');
-    const formData = new FormData(form);
-    const data = Object.fromEntries(formData.entries());
+    const data = Object.fromEntries(new FormData(document.getElementById("shareForm")).entries());
+    console.log("Submitted:", data);
 
-    console.log("User shared data including plot points:", data);
-    alert("Thank you for sharing your information!");
+    alert("Thank you for sharing!");
     hideConsentPrompt();
-    form.reset();
+    document.getElementById("shareForm").reset();
   }
-
-  // ⚠️ This is key: combine all startup logic in a single event
-  document.addEventListener('DOMContentLoaded', () => {
-    if (typeof showSection === 'function') {
-      showSection(); // From your quiz logic
-    }
-
-    // Other startup logic here if needed
-  });
 </script>
  
 <script src="script.js" defer></script>
