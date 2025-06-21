@@ -563,11 +563,17 @@ window.addEventListener('DOMContentLoaded', () => {
   let finalZ = 0;
 
   function showConsentPrompt() {
-    document.getElementById('consentPrompt').style.display = 'flex';
+    const prompt = document.getElementById('consentPrompt');
+    if (prompt) {
+      prompt.style.display = 'flex';
+    }
   }
 
   function hideConsentPrompt() {
-    document.getElementById('consentPrompt').style.display = 'none';
+    const prompt = document.getElementById('consentPrompt');
+    if (prompt) {
+      prompt.style.display = 'none';
+    }
   }
 
   function submitForm(event) {
@@ -587,8 +593,7 @@ window.addEventListener('DOMContentLoaded', () => {
     form.reset();
   }
 </script>
-
-  
+ 
 <script src="script.js" defer></script>
 <script>
 function showTab(id) {
