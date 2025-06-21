@@ -487,4 +487,8 @@ function plot3D(x, y, z) {
     };
   }
 
-window.addEventListener('DOMContentLoaded', showSection);
+  window.addEventListener('DOMContentLoaded', () => {
+  const c = document.getElementById('quiz');
+  console.log('quiz container exists?', c);
+  c.textContent = '🔥 Quiz is working!';
+});
